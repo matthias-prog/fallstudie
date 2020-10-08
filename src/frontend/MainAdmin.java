@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class MainAdmin extends JFrame {
 
-	private JFrame mainFrame;
+	private JFrame mainAdminFrame;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField txtSuchfeld;
@@ -60,7 +60,7 @@ public class MainAdmin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainAdmin() {
-		mainFrame = new JFrame();
+		mainAdminFrame = new JFrame();
 		
 		setTitle("ItemPro - Startseite (Administrator)");
 		setBackground(Color.WHITE);
@@ -167,6 +167,7 @@ public class MainAdmin extends JFrame {
 		btnZurückMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO: ActionEvent: Funktionalität hinzufügen
+				mainAdminFrame.dispose();
 				Main startseite = new Main();
 				startseite.setVisible(true);
 			}
