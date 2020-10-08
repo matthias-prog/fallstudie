@@ -12,6 +12,7 @@ public class hauptprogramm {
     private static int currentCITyp;
     private static Connection con;
     private static Statement stmt;
+    private static Statement stmt2;
 
     /**
      * stellt eine Verbindung zur Datenbank her
@@ -25,6 +26,7 @@ public class hauptprogramm {
 
         try {
             stmt = con.createStatement();
+            stmt2 = con.createStatement();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -406,7 +408,7 @@ public class hauptprogramm {
      */
     public static Message aktualisiereCIRecord(String CITyp, int RecordID, ArrayList<String> neueAttribute) {
         String abfrageRecord = "Select * from " + CITyp + " where RecordID=" + RecordID;
-        String abfrageCITyp = "Select * from CITyp where Typname=" + CITyp;
+        String abfrageCITyp = "Select * from CITyp where Typname='" + CITyp+"'";
         ResultSet rs1;
         ResultSet rs2;
         ResultSetMetaData rsmd1;
@@ -417,41 +419,44 @@ public class hauptprogramm {
         //SQL-Abfragen werden abgeschickt
         try {
             rs1 = stmt.executeQuery(abfrageRecord);
-            rs2 = stmt.executeQuery(abfrageCITyp);
-            rsmd1 = rs2.getMetaData();
+            rsmd1 = rs1.getMetaData();
+            rs2 = stmt2.executeQuery(abfrageCITyp);
             rsmd2 = rs2.getMetaData();
         } catch (SQLException e) {
+        	e.printStackTrace();
             return new Message(false, "Datenbank-Abfrage fehlgeschlagen");
         }
 
         //ruft den momentanen Stand des Records ab
         try {
             rs1.next();
-            ArrayList<String> alteAttribute = null;
+            ArrayList<String> alteAttribute = new ArrayList<String>();
             int momRecordID = rs1.getInt(1);
             int index = 2;
             while (index <= rsmd1.getColumnCount()) {
                 alteAttribute.add(rs1.getString(index));
                 index++;
             }
-            alterSatz = new CIRecord(momRecordID, neueAttribute);
+            alterSatz = new CIRecord(momRecordID, alteAttribute);
         } catch (SQLException e) {
+        	e.printStackTrace();
             return new Message(false, "Fehler bei DB-Abruf");
         }
 
         //ruft den passenden CITypen ab
         try {
             rs2.next();
-            ArrayList<String> spaltennamen = null;
+            ArrayList<String> spaltennamen = new ArrayList<String>();
             int momRecordID = rs1.getInt(1);
             String typname = rs1.getString(2);
             int index = 3;
             while (index <= rsmd2.getColumnCount()) {
-                spaltennamen.add(rs1.getString(index));
+                spaltennamen.add(rs2.getString(index));
                 index++;
             }
-            passenderTyp = new CITyp(momRecordID, typname, neueAttribute);
+            passenderTyp = new CITyp(momRecordID, typname, spaltennamen);
         } catch (SQLException e) {
+        	e.printStackTrace();
             return new Message(false, "Fehler bei DB-Abruf");
         }
 
@@ -466,6 +471,7 @@ public class hauptprogramm {
                 try {
                     stmt.executeUpdate(update);
                 } catch (SQLException e) {
+                	e.printStackTrace();
                     return new Message(false, "SQL-Update fehlgeschlagen");
                 }
             }

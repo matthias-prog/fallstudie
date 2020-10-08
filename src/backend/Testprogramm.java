@@ -174,7 +174,7 @@ public class Testprogramm {
 
                     break;
 
-                case 'j': //funktioniert nicht
+                case 'j': //funktioniert
 
                     System.out.println("CIRecord aktualisieren: CITyp eingeben");
                     String citypName5 = scanner.next();
