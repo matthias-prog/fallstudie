@@ -49,7 +49,6 @@ public class NeuerCITyp extends JFrame {
 	private JTextField textField_ciTypName;
 	
 	static NeuerCITyp frame = new NeuerCITyp();
-	private JButton btnAbmelden_1;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 
@@ -215,14 +214,6 @@ public class NeuerCITyp extends JFrame {
 		textField_ciTypName.setBounds(10, 43, 105, 20);
 		contentPane.add(textField_ciTypName);
 		textField_ciTypName.setColumns(10);
-		
-		btnAbmelden_1 = new JButton("Abmelden");
-		btnAbmelden_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnAbmelden_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnAbmelden_1.setBackground(Color.WHITE);
-		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnAbmelden_1.setBounds(212, 10, 89, 30);
-		contentPane.add(btnAbmelden_1);
 		
 		lblNewLabel = new JLabel("Neuer CI-Typ");
 		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
