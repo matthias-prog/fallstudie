@@ -35,6 +35,7 @@ public class Testprogramm {
         System.out.println("Benutzer löschen (l)");
         System.out.println("Benutzerrecht verändern (m)");
         System.out.println("Passwort ändern (n)");
+        System.out.println("Zeige Anzahl Records (o)");
 
 
         String was = scanner.next();
@@ -235,6 +236,14 @@ public class Testprogramm {
                     daten.Message message9 = hauptprogramm.benutzerPasswortVeraendern(benutzerID3, neuesPasswort);
 
                     System.out.println("Löschen des Benutzers: " + message9.getNachricht());
+
+                    break;
+                    
+                case 'o': //funktioniert
+                    System.out.println("Zeige Anzahl Records: CITyp eingeben");
+                    String citypName6 = scanner.next();
+
+                    System.out.println("Anzahl der Records beim CITyp " + citypName6 + ":" + hauptprogramm.zeigeAnzahlRecords(citypName6));
 
                     break;
 

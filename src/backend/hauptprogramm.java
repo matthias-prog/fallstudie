@@ -581,4 +581,28 @@ public class hauptprogramm {
 
         return new Message(true, "Update erfolgreich erledigt");
     }
+    
+    /**
+     * Holt Anzahl der CIRecords eines bestimmten CITyps
+     *
+     * @param CITyp CITyp zu dem die CIRecords gehören
+     * @return anzahl der Records eines Typs
+     */
+    public static int zeigeAnzahlRecords(String CITyp) {
+        String abfrage = "SELECT * from " + CITyp;
+        ResultSet rs;
+        int numberOfRows = 0;
+        
+        //SQL-Abfrage wird abgeschickt
+        try {
+            rs = stmt.executeQuery(abfrage);
+            rs.last();
+            numberOfRows = rs.getRow();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return numberOfRows;
+        }
+    
+        return numberOfRows;
+    }
 }
