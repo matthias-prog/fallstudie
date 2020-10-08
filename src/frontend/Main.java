@@ -18,11 +18,15 @@ import javax.swing.JTextField;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import daten.CITyp;
 
 public class Main extends JFrame {
 
@@ -70,8 +74,8 @@ public class Main extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		Image img = new ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
-		mainFrame.setIconImage(img);
+		//Image img = new ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
+		//mainFrame.setIconImage(img);
 
 		
 		txtSuchfeld = new JTextField();
@@ -100,36 +104,56 @@ public class Main extends JFrame {
 		scrollPane.setBounds(17, 160, 1029, 513);
 		contentPane.add(scrollPane);
 		
+		
+		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
+		
+		String [][] array = new String [listeCITypen.size()+1][17];
+		Vector row = new Vector(); 
+		
+		for (int i=0; i < listeCITypen.size(); i ++) {
+			CITyp cityp = listeCITypen.get(i);
+			array[i][0] = String.valueOf(cityp.getCItypID());
+			array[i][1] = cityp.getCItypName();
+			row.add(String.valueOf(cityp.getCItypID()));
+			row.add(cityp.getCItypName());
+			
+		            for (int j = 0; j < cityp.getAttributnamen().size(); j++) {
+		               array[i][j] = cityp.getAttributnamen().get(j);
+		               System.out.println(cityp.getAttributnamen().get(j));
+		               row.add(cityp.getAttributnamen().get(j));
+		            }
+			
+		}
+		
+		//TABelle ist nicht sichtbar... wieso?????
 		tableCITypen = new JTable();
 		scrollPane.setViewportView(tableCITypen);
 		tableCITypen.setRowHeight(30);
 		tableCITypen.setName("");
 		tableCITypen.setOpaque(false);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
-		tableCITypen.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"ID", "Name", "Attribut 1", "Attribut 2", "Attribut 3", "Attribut 4", "Attribut 5", "Attribut 6"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
 		
-		
+		 DefaultTableModel tableCITypen = new DefaultTableModel(); 
+		 tableCITypen.addColumn("ID"); 
+		 tableCITypen.addColumn("Name"); 
+		 tableCITypen.addColumn("Attribut1"); 
+		 tableCITypen.addColumn("Attribut2"); 
+		 tableCITypen.addColumn("Attribut3"); 
+		 tableCITypen.addColumn("Attribut4"); 
+		 tableCITypen.addColumn("Attribut5"); 
+		 tableCITypen.addColumn("Attribut6"); 
+		 tableCITypen.addColumn("Attribut7"); 
+		 tableCITypen.addColumn("Attribut8"); 
+		 tableCITypen.addColumn("Attribut9"); 
+		 tableCITypen.addColumn("Attribut10"); 
+		 tableCITypen.addColumn("Attribut11"); 
+		 tableCITypen.addColumn("Attribut12"); 
+		 tableCITypen.addColumn("Attribut13"); 
+		 tableCITypen.addColumn("Attribut14"); 
+		 tableCITypen.addColumn("Attribut15"); 
+	     JTable table = new JTable(tableCITypen); 	
+	     
+	     tableCITypen.addRow(row); 		
 		
 		
 	}
