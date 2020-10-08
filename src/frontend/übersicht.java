@@ -12,6 +12,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import backend.hauptprogramm;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -20,6 +23,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class übersicht extends JFrame {
 
@@ -55,11 +60,19 @@ public class übersicht extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("CI-Record l\u00F6schen");
+		
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
+				int recordID = Integer.valueOf((String) ciRecordID);
+				
+				String cityp = "";
+				
+				backend.hauptprogramm.loescheCIRecord(cityp, recordID);
 			}
 		});
 		btnNewButton.setBounds(392, 70, 180, 30);
@@ -117,6 +130,23 @@ public class übersicht extends JFrame {
 		));
 		
 		JButton btnNewButton_2 = new JButton("CI-Record bearbeiten");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					int selectedRow = table.getSelectedRow();
+					Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
+					int recordID = Integer.valueOf((String) ciRecordID);
+					// NeuerCIRecord neuerCIRecord = new NeuerCIRecord();
+					//neuerCIRecord.setVisible(true);
+				
+				}
+				catch(Exception a){
+					System.out.println("null");
+				}
+				
+			}
+		});
 		btnNewButton_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -124,6 +154,21 @@ public class übersicht extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("CI-Record anlegen");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					// NeuerCIRecord neuerCIRecord = new NeuerCIRecord();
+					//neuerCIRecord.setVisible(true);
+				
+				}
+				catch(Exception a){
+					System.out.println("null");
+				}
+				
+			}
+		});
+		
 		btnNewButton_3.setBorderPainted(false);
 		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
