@@ -44,6 +44,7 @@ public class Login {
 				try {
 					Login window = new Login();
 					window.frmItemproLogin.setVisible(true);
+					backend.hauptprogramm.dbVerbindungAufbauen();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -74,9 +75,7 @@ public class Login {
 		//Image img = new ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
 		//frmItemproLogin.setIconImage(img);
 		
-    
-		
-		
+    		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Calibri", Font.PLAIN, 12));
 		passwordField.setName("Passwort");
@@ -122,14 +121,21 @@ public class Login {
 				
 				try {
 					String username = txtBenutzername.getText();
-					String password = passwordField.getText();
-					System.out.println("Benutzername: " + username + " Passwort: " + password);
+					char [] passwort = passwordField.getPassword();
+					String password = String.valueOf(passwort);
+				
+					daten.Message message = backend.hauptprogramm.versucheLogin (username, password);
+					
+					if (message.isErfolg()) {
 					frmItemproLogin.dispose();
 					Main main = new Main();
-					main.setVisible(true);
+					main.setVisible(true);}
+					else {txtAnmeldungFehlgeschlagen.setVisible(true);}
 				
 				}
 				catch(Exception a){
+					a.printStackTrace();
+					System.out.println(a);
 					System.out.println("null");
 				}
 				
@@ -170,6 +176,7 @@ public class Login {
 		
 		txtAnmeldungFehlgeschlagen = new JTextField();
 		txtAnmeldungFehlgeschlagen.setEnabled(false);
+		txtAnmeldungFehlgeschlagen.setVisible(false);
 		txtAnmeldungFehlgeschlagen.setDisabledTextColor(Color.WHITE);
 		txtAnmeldungFehlgeschlagen.setBorder(null);
 		txtAnmeldungFehlgeschlagen.setCaretColor(Color.WHITE);
