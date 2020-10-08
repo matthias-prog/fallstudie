@@ -145,6 +145,11 @@ public class MainAdmin extends JFrame {
 		
 		//Button "CI-Typ Ändern"
 		btnCiTypAendern = new JButton("CI-Typ Bearbeiten");
+		btnCiTypAendern.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO: ActionEvent: Funktionalität hinzufügen
+			}
+		});
 		btnCiTypAendern.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiTypAendern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypAendern.setBackground(Color.WHITE);
@@ -153,6 +158,11 @@ public class MainAdmin extends JFrame {
 		
 		//Button "CI-Typ Löschen"
 		btnCiTypLoeschen = new JButton("CI-Typ Löschen");
+		btnCiTypLoeschen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO: ActionEvent: Funktionalität hinzufügen
+			}
+		});
 		btnCiTypLoeschen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiTypLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypLoeschen.setBackground(Color.WHITE);
