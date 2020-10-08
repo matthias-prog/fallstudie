@@ -50,7 +50,7 @@ public class übersicht extends JFrame {
 		setBounds(100, 100, 1080, 720);
 		contentPane = new JPanel();
 		contentPane.setFont(new Font("Calibri", Font.PLAIN, 14));
-		contentPane.setBackground(new Color(240, 240, 240));
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
