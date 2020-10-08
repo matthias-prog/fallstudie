@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 
-public class übersicht extends JFrame {
+public class CI_Record_Uebersicht extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -33,7 +33,7 @@ public class übersicht extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					übersicht frame = new übersicht();
+					CI_Record_Uebersicht frame = new CI_Record_Uebersicht();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class übersicht extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public übersicht() {
+	public CI_Record_Uebersicht() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
 		contentPane = new JPanel();
