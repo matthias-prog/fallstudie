@@ -67,9 +67,6 @@ public class Main extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		// Image img = new
-		// ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
-		// mainFrame.setIconImage(img);
 
 		txtSuchfeld = new JTextField();
 		txtSuchfeld.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -98,8 +95,8 @@ public class Main extends JFrame {
 		contentPane.add(scrollPane);
 
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
-		
-		//es wird berechnet wie lang der längste CITyp ist
+
+		// es wird berechnet wie lang der längste CITyp ist
 		int maxlength = 0;
 		for (CITyp c : listeCITypen) {
 			int i = 0;
@@ -126,7 +123,7 @@ public class Main extends JFrame {
 			datenArray[i][0] = String.valueOf(cityp.getCItypID());
 			datenArray[i][1] = cityp.getCItypName();
 
-			for (int j = 2; j < maxlength+2; j++) {
+			for (int j = 2; j < maxlength + 2; j++) {
 				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
 				System.out.println(cityp.getAttributnamen().get(j));
 			}
@@ -141,7 +138,6 @@ public class Main extends JFrame {
 		tableCITypen.setOpaque(false);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setViewportView(tableCITypen);
-	
 
 	}
 }
