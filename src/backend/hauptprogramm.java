@@ -99,13 +99,14 @@ public class hauptprogramm {
     public static ArrayList<CITyp> holeAlleCITypen() {
         String abfrage = "SELECT * from cityp;";
         ResultSet rs;
+        ResultSetMetaData rsmd;
         ArrayList<CITyp> listeCITypen = new ArrayList<CITyp>();
-        ArrayList<String> attribute = new ArrayList<String>();
-        int index = 2;
+
 
         //SQL-Abfrage wird abgeschickt
         try {
             rs = stmt.executeQuery(abfrage);
+            rsmd =rs.getMetaData();
         } catch (SQLException e) {
             return listeCITypen;
         }
@@ -114,18 +115,19 @@ public class hauptprogramm {
             while (rs.next()) {
                 int id = rs.getInt("TypId");
                 String name = rs.getString("Typname");
+                int index = 3;
+                ArrayList<String> attribute = new ArrayList<String>();
 
-                while (rs.getString(index) != null && index <= 16) {
+                while (index <= rsmd.getColumnCount()) {
                     attribute.add(rs.getString(index));
-                    ;
                     index++;
                 }
                 CITyp cityp = new CITyp(id, name, attribute);
-                attribute.clear();
                 listeCITypen.add(cityp);
             }
 
         } catch (SQLException e) {
+        	e.printStackTrace();
             return listeCITypen;
         }
         return listeCITypen;
@@ -140,12 +142,13 @@ public class hauptprogramm {
     public static CITyp holeCITyp(String CITyp) {
         String abfrage = "SELECT * from cityp where typname = '" + CITyp + "';";
         ResultSet rs;
+        ResultSetMetaData rsmd;
         ArrayList<String> attribute = new ArrayList<String>();
-        int index = 2;
 
         //SQL-Abfrage wird abgeschickt
         try {
             rs = stmt.executeQuery(abfrage);
+            rsmd = rs.getMetaData();
         } catch (SQLException e) {
             return null;
         }
@@ -154,10 +157,10 @@ public class hauptprogramm {
             rs.next();
             int id = rs.getInt("TypId");
             String name = rs.getString("Typname");
+            int index = 3;
 
-            while (rs.getString(index) != null && index <= 16) {
+            while (index <= rsmd.getColumnCount()) {
                 attribute.add(rs.getString(index));
-                ;
                 index++;
             }
 
@@ -165,6 +168,7 @@ public class hauptprogramm {
 
             return cityp;
         } catch (SQLException e) {
+        	e.printStackTrace();
             return null;
         }
 
