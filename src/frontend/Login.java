@@ -130,7 +130,9 @@ public class Login {
 					frmItemproLogin.dispose();
 					Main main = new Main();
 					main.setVisible(true);}
-					else {txtAnmeldungFehlgeschlagen.setVisible(true);}
+					else {
+						txtAnmeldungFehlgeschlagen.setEnabled(true);
+						txtAnmeldungFehlgeschlagen.setVisible(true);}
 				
 				}
 				catch(Exception a){
