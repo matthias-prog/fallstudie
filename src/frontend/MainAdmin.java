@@ -28,7 +28,7 @@ public class MainAdmin extends JFrame {
 	private JTextField textField;
 	private JTable tableCITypen;
 	private JScrollPane scrollPane;
-	private JButton btnCiTypHinzufügen;
+	private JButton btnCiTypHinzufuegen;
 	private JButton btnCiTypAendern;
 	private JButton btnCiTypLoeschen;
 	private JLabel lblNewLabel;
@@ -129,7 +129,7 @@ public class MainAdmin extends JFrame {
 		JButton btnBenutzerverwaltung = new JButton("Benutzerverwaltung");
 		btnBenutzerverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalität hinzufügen
+				//TODO: ActionEvent: Funktionalitï¿½t hinzufï¿½gen
 			}
 		});
 		btnBenutzerverwaltung.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -138,24 +138,25 @@ public class MainAdmin extends JFrame {
 		btnBenutzerverwaltung.setBounds(685, 70, 180, 30);
 		contentPane.add(btnBenutzerverwaltung);
 		
-		//Button "CI-Typ Hinzufügen"
-		btnCiTypHinzufügen = new JButton("CI-Typ Hinzufügen");
-		btnCiTypHinzufügen.addActionListener(new ActionListener() {
+		//Button "CI-Typ Hinzufï¿½gen"
+		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzufï¿½gen");
+		btnCiTypHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalität hinzufügen
+				//TODO: ActionEvent: Funktionalitï¿½t hinzufï¿½gen
+				
 			}
 		});
-		btnCiTypHinzufügen.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCiTypHinzufügen.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnCiTypHinzufügen.setBackground(Color.WHITE);
-		btnCiTypHinzufügen.setBounds(880, 120, 180, 50);
-		contentPane.add(btnCiTypHinzufügen);
+		btnCiTypHinzufuegen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiTypHinzufuegen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnCiTypHinzufuegen.setBackground(Color.WHITE);
+		btnCiTypHinzufuegen.setBounds(880, 120, 180, 50);
+		contentPane.add(btnCiTypHinzufuegen);
 		
-		//Button "CI-Typ Ändern"
+		//Button "CI-Typ ï¿½ndern"
 		btnCiTypAendern = new JButton("CI-Typ Bearbeiten");
 		btnCiTypAendern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalität hinzufügen
+				//TODO: ActionEvent: Funktionalitï¿½t hinzufï¿½gen
 			}
 		});
 		btnCiTypAendern.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -164,11 +165,11 @@ public class MainAdmin extends JFrame {
 		btnCiTypAendern.setBounds(880, 180, 180, 50);
 		contentPane.add(btnCiTypAendern);
 		
-		//Button "CI-Typ Löschen"
-		btnCiTypLoeschen = new JButton("CI-Typ Löschen");
+		//Button "CI-Typ Lï¿½schen"
+		btnCiTypLoeschen = new JButton("CI-Typ Lï¿½schen");
 		btnCiTypLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalität hinzufügen
+				//TODO: ActionEvent: Funktionalitï¿½t hinzufï¿½gen
 			}
 		});
 		btnCiTypLoeschen.setFont(new Font("Tahoma", Font.PLAIN, 14));
