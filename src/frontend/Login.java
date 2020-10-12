@@ -23,6 +23,8 @@ import java.awt.Rectangle;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Login {
 
@@ -42,6 +44,7 @@ public class Login {
 				try {
 					Login window = new Login();
 					window.frmItemproLogin.setVisible(true);
+					backend.hauptprogramm.dbVerbindungAufbauen();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,6 +64,7 @@ public class Login {
 	 */
 	private void initialize() {
 		frmItemproLogin = new JFrame();
+		frmItemproLogin.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		frmItemproLogin.setPreferredSize(new Dimension(400, 500));
 		frmItemproLogin.setBounds(new Rectangle(0, 0, 400, 500));
 		frmItemproLogin.setTitle("ItemPro - Login");
@@ -68,27 +72,45 @@ public class Login {
 		frmItemproLogin.setBounds(100, 100, 400, 500);
 		frmItemproLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmItemproLogin.getContentPane().setLayout(null);
+		frmItemproLogin.setLocationRelativeTo(null);
 		//Image img = new ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
 		//frmItemproLogin.setIconImage(img);
 		
+    		
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Calibri", Font.PLAIN, 12));
 		passwordField.setName("Passwort");
 		passwordField.setToolTipText("Passwort");
 		passwordField.setBounds(100, 250, 200, 30);
 		frmItemproLogin.getContentPane().add(passwordField);
 		
 		txtBenutzername = new JTextField();
+		txtBenutzername.setFont(new Font("Calibri", Font.PLAIN, 12));
 		txtBenutzername.setHorizontalAlignment(SwingConstants.LEFT);
 		txtBenutzername.setToolTipText("Benutzername");
 		txtBenutzername.setBounds(100, 185, 200, 30);
 		frmItemproLogin.getContentPane().add(txtBenutzername);
 		txtBenutzername.setColumns(10);
 		
-		JLabel lblWillkommen = new JLabel("Willkommen");
+		
+		Calendar stunde = Calendar.getInstance();
+		stunde.get(Calendar.HOUR_OF_DAY);
+		String gruss;
+		
+		//Zeitlich angepasste Begrüßung
+		int aktStunde = stunde.get(Calendar.HOUR_OF_DAY);
+		if (aktStunde < 11) {
+			gruss = "Guten Morgen!";}
+		else if(aktStunde < 18) {
+			gruss = "Guten Tag!";}
+		else {
+			gruss = "Guten Abend!";}
+		
+		JLabel lblWillkommen = new JLabel(gruss);
 		lblWillkommen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWillkommen.setBackground(Color.WHITE);
 		lblWillkommen.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblWillkommen.setBounds(125, 75, 150, 30);
+		lblWillkommen.setBounds(115, 75, 170, 30);
 		frmItemproLogin.getContentPane().add(lblWillkommen);
 		
 		JButton btnAnmelden = new JButton("Anmelden");
@@ -97,19 +119,29 @@ public class Login {
 				
 				try {
 					String username = txtBenutzername.getText();
-					String password = passwordField.getText();
-					System.out.println("Benutzername: " + username + " Passwort: " + password);
+					char [] passwort = passwordField.getPassword();
+					String password = String.valueOf(passwort);
+				
+					daten.Message message = backend.hauptprogramm.versucheLogin (username, password);
+					
+					if (message.isErfolg()) {
 					frmItemproLogin.dispose();
 					Main main = new Main();
-					main.setVisible(true);
+					main.setVisible(true);}
+					else {
+						txtAnmeldungFehlgeschlagen.setEnabled(true);
+						txtAnmeldungFehlgeschlagen.setVisible(true);}
 				
 				}
 				catch(Exception a){
+					a.printStackTrace();
+					System.out.println(a);
 					System.out.println("null");
 				}
 				
 			}
 		});
+		
 		btnAnmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAnmelden.setBackground(Color.WHITE);
 		btnAnmelden.setFont(new Font("Calibri", Font.PLAIN, 12));
@@ -143,6 +175,8 @@ public class Login {
 		frmItemproLogin.getContentPane().add(lblPasswort);
 		
 		txtAnmeldungFehlgeschlagen = new JTextField();
+		txtAnmeldungFehlgeschlagen.setEnabled(false);
+		txtAnmeldungFehlgeschlagen.setVisible(false);
 		txtAnmeldungFehlgeschlagen.setDisabledTextColor(Color.WHITE);
 		txtAnmeldungFehlgeschlagen.setBorder(null);
 		txtAnmeldungFehlgeschlagen.setCaretColor(Color.WHITE);
@@ -157,5 +191,42 @@ public class Login {
 		txtAnmeldungFehlgeschlagen.setColumns(10);
 		
 		
+		JButton btnAnmeldenAdmin = new JButton("Anmelden - Admin");
+		btnAnmeldenAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					String username = txtBenutzername.getText();
+					char [] passwort = passwordField.getPassword();
+					String password = String.valueOf(passwort);
+				
+					daten.Message message = backend.hauptprogramm.versucheLogin (username, password);
+					
+					if (message.isErfolg()) {
+					frmItemproLogin.dispose();
+					MainAdmin mainAdmin = new MainAdmin();
+					mainAdmin.setVisible(true);}
+					else {
+						txtAnmeldungFehlgeschlagen.setEnabled(true);
+						txtAnmeldungFehlgeschlagen.setVisible(true);}
+				
+				}
+				catch(Exception a){
+					a.printStackTrace();
+					System.out.println(a);
+					System.out.println("null");
+				}
+				
+			}
+		});
+		
+		btnAnmeldenAdmin.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAnmeldenAdmin.setBackground(Color.WHITE);
+		btnAnmeldenAdmin.setFont(new Font("Calibri", Font.PLAIN, 12));
+		btnAnmeldenAdmin.setBounds(150, 380, 100, 30);
+		frmItemproLogin.getContentPane().add(btnAnmeldenAdmin);
+		
+		
 	}
+
 }
