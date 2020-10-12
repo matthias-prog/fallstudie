@@ -25,10 +25,8 @@ public class Main extends JFrame {
 	private JFrame mainFrame;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField txtSuchfeld;
 	private JTable tableCITypen;
 	private JButton btnAbmelden;
-	private JButton btnSuche;
 	private JScrollPane scrollPane;
 
 	/**
@@ -60,6 +58,7 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setMaximumSize(new Dimension(1080, 720));
 		contentPane.setBounds(new Rectangle(0, 0, 1080, 720));
@@ -68,30 +67,16 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		txtSuchfeld = new JTextField();
-		txtSuchfeld.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtSuchfeld.setBorder(new LineBorder(new Color(171, 173, 179)));
-		txtSuchfeld.setBounds(17, 60, 600, 50);
-		contentPane.add(txtSuchfeld);
-		txtSuchfeld.setColumns(10);
-
 		btnAbmelden = new JButton("Abmelden");
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden.setBackground(Color.WHITE);
-		btnAbmelden.setBounds(861, 60, 185, 50);
+		btnAbmelden.setBounds(880, 70, 180, 30);
 		contentPane.add(btnAbmelden);
 
-		btnSuche = new JButton("\uD83D\uDD0D");
-		btnSuche.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
-		btnSuche.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnSuche.setBackground(Color.WHITE);
-		btnSuche.setBounds(622, 60, 50, 50);
-		contentPane.add(btnSuche);
-
 		scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		scrollPane.setBounds(17, 160, 1029, 513);
+		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
+		scrollPane.setBounds(10, 120, 1050, 450);
 		contentPane.add(scrollPane);
 
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
@@ -138,6 +123,11 @@ public class Main extends JFrame {
 		tableCITypen.setOpaque(false);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setViewportView(tableCITypen);
+		
+		JLabel lblCitypbersicht = new JLabel("CI-Typ-\u00DCbersicht");
+		lblCitypbersicht.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblCitypbersicht.setBounds(15, 15, 230, 30);
+		contentPane.add(lblCitypbersicht);
 
 	}
 }

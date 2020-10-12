@@ -72,6 +72,7 @@ public class Login {
 		frmItemproLogin.setBounds(100, 100, 400, 500);
 		frmItemproLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmItemproLogin.getContentPane().setLayout(null);
+		frmItemproLogin.setLocationRelativeTo(null);
 		//Image img = new ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
 		//frmItemproLogin.setIconImage(img);
 		
@@ -96,17 +97,14 @@ public class Login {
 		stunde.get(Calendar.HOUR_OF_DAY);
 		String gruss;
 		
+		//Zeitlich angepasste Begrüßung
 		int aktStunde = stunde.get(Calendar.HOUR_OF_DAY);
 		if (aktStunde < 11) {
-			gruss = "Guten Morgen!";			
-		}
+			gruss = "Guten Morgen!";}
 		else if(aktStunde < 18) {
-			
-			gruss = "Guten Tag!";
-		}
+			gruss = "Guten Tag!";}
 		else {
-			gruss = "Guten Abend!";
-		}
+			gruss = "Guten Abend!";}
 		
 		JLabel lblWillkommen = new JLabel(gruss);
 		lblWillkommen.setHorizontalAlignment(SwingConstants.CENTER);
@@ -191,6 +189,42 @@ public class Login {
 		txtAnmeldungFehlgeschlagen.setBounds(113, 290, 175, 15);
 		frmItemproLogin.getContentPane().add(txtAnmeldungFehlgeschlagen);
 		txtAnmeldungFehlgeschlagen.setColumns(10);
+		
+		
+		JButton btnAnmeldenAdmin = new JButton("Anmelden - Admin");
+		btnAnmeldenAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					String username = txtBenutzername.getText();
+					char [] passwort = passwordField.getPassword();
+					String password = String.valueOf(passwort);
+				
+					daten.Message message = backend.hauptprogramm.versucheLogin (username, password);
+					
+					if (message.isErfolg()) {
+					frmItemproLogin.dispose();
+					MainAdmin mainAdmin = new MainAdmin();
+					mainAdmin.setVisible(true);}
+					else {
+						txtAnmeldungFehlgeschlagen.setEnabled(true);
+						txtAnmeldungFehlgeschlagen.setVisible(true);}
+				
+				}
+				catch(Exception a){
+					a.printStackTrace();
+					System.out.println(a);
+					System.out.println("null");
+				}
+				
+			}
+		});
+		
+		btnAnmeldenAdmin.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAnmeldenAdmin.setBackground(Color.WHITE);
+		btnAnmeldenAdmin.setFont(new Font("Calibri", Font.PLAIN, 12));
+		btnAnmeldenAdmin.setBounds(150, 380, 100, 30);
+		frmItemproLogin.getContentPane().add(btnAnmeldenAdmin);
 		
 		
 	}

@@ -2,27 +2,22 @@ package frontend;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
-import java.awt.Color;
 import javax.swing.JTextField;
-import java.awt.Rectangle;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Dimension;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
-import java.awt.GridBagLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import daten.CITyp;
 
 //import com.sun.tools.javac.comp.Todo;
 
@@ -32,11 +27,11 @@ public class MainAdmin extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable tableCITypen;
-	private JButton btnAbmelden;
 	private JScrollPane scrollPane;
 	private JButton btnCiTypHinzufügen;
 	private JButton btnCiTypAendern;
 	private JButton btnCiTypLoeschen;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -64,8 +59,10 @@ public class MainAdmin extends JFrame {
 		setBackground(Color.WHITE);
 		setMaximumSize(new Dimension(1080, 720));
 		setBounds(new Rectangle(0, 0, 1080, 720));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setMaximumSize(new Dimension(1080, 720));
 		contentPane.setBounds(new Rectangle(0, 0, 1080, 720));
@@ -74,47 +71,58 @@ public class MainAdmin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnAbmelden = new JButton("Abmelden");
-		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnAbmelden.setBackground(Color.WHITE);
-		btnAbmelden.setBounds(873, 623, 175, 50);
-		contentPane.add(btnAbmelden);
-		
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		scrollPane.setBounds(17, 60, 840, 613);
+		scrollPane.setBounds(10, 120, 855, 450);
 		contentPane.add(scrollPane);
 		
-		tableCITypen = new JTable();
+		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
+
+		// es wird berechnet wie lang der lÃ¤ngste CITyp ist
+		int maxlength = 0;
+		for (CITyp c : listeCITypen) {
+			int i = 0;
+			for (String s : c.getAttributnamen()) {
+				if (s != null) {
+					i++;
+				}
+			}
+			if (i > maxlength) {
+				maxlength = i;
+			}
+		}
+
+		String[][] datenArray = new String[listeCITypen.size()][maxlength + 2];
+		String[] spaltenNamen = new String[maxlength + 2];
+		spaltenNamen[0] = "ID";
+		spaltenNamen[1] = "Name";
+		for (int i = 1; i <= maxlength; i++) {
+			spaltenNamen[i + 1] = "Attribut" + i;
+		}
+
+		for (int i = 0; i < listeCITypen.size(); i++) {
+			CITyp cityp = listeCITypen.get(i);
+			datenArray[i][0] = String.valueOf(cityp.getCItypID());
+			datenArray[i][1] = cityp.getCItypName();
+
+			for (int j = 2; j < maxlength + 2; j++) {
+				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
+				System.out.println(cityp.getAttributnamen().get(j));
+			}
+
+		}
+
+		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
+
+		
+		tableCITypen = new JTable(tabelle);
 		scrollPane.setViewportView(tableCITypen);
 		tableCITypen.setRowHeight(30);
 		tableCITypen.setName("");
 		tableCITypen.setOpaque(false);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
-		tableCITypen.setModel(new DefaultTableModel(
-				//TODO: Das zu befüllen wird ein totales Gef**ke...
-			new Object[][] {
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"ID", "Name", "Attribut 1", "Attribut 2", "Attribut 3", "Attribut 4", "Attribut 5", "Attribut 6"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
+		
+		
 		
 		
 		//Button "Benutzerverwaltung"
@@ -127,7 +135,7 @@ public class MainAdmin extends JFrame {
 		btnBenutzerverwaltung.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnBenutzerverwaltung.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnBenutzerverwaltung.setBackground(Color.WHITE);
-		btnBenutzerverwaltung.setBounds(873, 563, 175, 50);
+		btnBenutzerverwaltung.setBounds(685, 70, 180, 30);
 		contentPane.add(btnBenutzerverwaltung);
 		
 		//Button "CI-Typ Hinzufügen"
@@ -140,7 +148,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypHinzufügen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiTypHinzufügen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypHinzufügen.setBackground(Color.WHITE);
-		btnCiTypHinzufügen.setBounds(873, 60, 175, 50);
+		btnCiTypHinzufügen.setBounds(880, 120, 180, 50);
 		contentPane.add(btnCiTypHinzufügen);
 		
 		//Button "CI-Typ Ändern"
@@ -153,7 +161,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypAendern.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiTypAendern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypAendern.setBackground(Color.WHITE);
-		btnCiTypAendern.setBounds(873, 120, 175, 50);
+		btnCiTypAendern.setBounds(880, 180, 180, 50);
 		contentPane.add(btnCiTypAendern);
 		
 		//Button "CI-Typ Löschen"
@@ -166,8 +174,20 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiTypLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypLoeschen.setBackground(Color.WHITE);
-		btnCiTypLoeschen.setBounds(873, 180, 175, 50);
+		btnCiTypLoeschen.setBounds(880, 240, 180, 50);
 		contentPane.add(btnCiTypLoeschen);
+		
+		lblNewLabel = new JLabel("CI-Typ-\u00DCbersicht (Admin)");
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblNewLabel.setBounds(15, 15, 250, 30);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnAbmelden_1 = new JButton("Abmelden");
+		btnAbmelden_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAbmelden_1.setBackground(Color.WHITE);
+		btnAbmelden_1.setBounds(880, 70, 180, 30);
+		contentPane.add(btnAbmelden_1);
 		
 		
 	}
