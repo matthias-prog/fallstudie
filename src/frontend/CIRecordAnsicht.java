@@ -28,7 +28,7 @@ import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ciRecordAnsicht extends JFrame {
+public class CIRecordAnsicht extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -40,7 +40,7 @@ public class ciRecordAnsicht extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ciRecordAnsicht frame = new ciRecordAnsicht();
+					CIRecordAnsicht frame = new CIRecordAnsicht();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class ciRecordAnsicht extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ciRecordAnsicht() {
+	public CIRecordAnsicht() {
 		setTitle("ItemPro - CI-Record");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
