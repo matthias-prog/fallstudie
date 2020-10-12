@@ -28,7 +28,7 @@ import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ciRecordAnsicht extends JFrame {
+public class CIRecordAnsicht extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -40,7 +40,7 @@ public class ciRecordAnsicht extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ciRecordAnsicht frame = new ciRecordAnsicht();
+					CIRecordAnsicht frame = new CIRecordAnsicht();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class ciRecordAnsicht extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ciRecordAnsicht() {
+	public CIRecordAnsicht() {
 		setTitle("ItemPro - CI-Record");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
@@ -68,7 +68,7 @@ public class ciRecordAnsicht extends JFrame {
 		
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
@@ -156,7 +156,7 @@ public class ciRecordAnsicht extends JFrame {
 			}
 		});
 		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.setBounds(880, 120, 180, 50);
 		contentPane.add(btnNewButton_3);

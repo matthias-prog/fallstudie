@@ -24,13 +24,13 @@ import javax.swing.SpinnerListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class NeuerCITyp extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField txtCityp;
-	private JTextField txtAttribute;
 	private JTextField textField_Attribut1;
 	private JTextField textField_Attribut2;
 	private JTextField textField_Attribut3;
@@ -49,7 +49,8 @@ public class NeuerCITyp extends JFrame {
 	private JTextField textField_ciTypName;
 	
 	static NeuerCITyp frame = new NeuerCITyp();
-	private JButton btnAbmelden_1;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
@@ -73,6 +74,7 @@ public class NeuerCITyp extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 323, 560);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -110,20 +112,6 @@ public class NeuerCITyp extends JFrame {
 		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		scrollPane.setBounds(17, 160, 1029, 513);
 		contentPane_1.add(scrollPane);
-		
-		txtCityp = new JTextField();
-		txtCityp.setEditable(false);
-		txtCityp.setText("CI-Typ Name");
-		txtCityp.setBounds(10, 11, 78, 20);
-		contentPane.add(txtCityp);
-		txtCityp.setColumns(10);
-		
-		txtAttribute = new JTextField();
-		txtAttribute.setText("Attribute");
-		txtAttribute.setEditable(false);
-		txtAttribute.setBounds(10, 74, 78, 20);
-		contentPane.add(txtAttribute);
-		txtAttribute.setColumns(10);
 		
 		textField_Attribut1 = new JTextField();
 		textField_Attribut1.setBounds(10, 95, 291, 20);
@@ -201,17 +189,25 @@ public class NeuerCITyp extends JFrame {
 		contentPane.add(textField_Attribut15);
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnAbbrechen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAbbrechen.setBackground(Color.WHITE);
+		btnAbbrechen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbbrechen.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			frame.setVisible(false);
 			}
 		});
-		btnAbbrechen.setBounds(178, 491, 123, 23);
+		btnAbbrechen.setBounds(178, 491, 123, 30);
 		contentPane.add(btnAbbrechen);
 		
 		JButton btnSpeichern = new JButton("Speichern");
-		btnSpeichern.setBounds(10, 491, 123, 23);
+		btnSpeichern.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnSpeichern.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnSpeichern.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnSpeichern.setBackground(Color.WHITE);
+		btnSpeichern.setBounds(10, 491, 123, 30);
 		contentPane.add(btnSpeichern);
 		
 		textField_ciTypName = new JTextField();
@@ -219,9 +215,15 @@ public class NeuerCITyp extends JFrame {
 		contentPane.add(textField_ciTypName);
 		textField_ciTypName.setColumns(10);
 		
-		btnAbmelden_1 = new JButton("Abmelden");
-		btnAbmelden_1.setBounds(212, 10, 89, 23);
-		contentPane.add(btnAbmelden_1);
+		lblNewLabel = new JLabel("Neuer CI-Typ");
+		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNewLabel.setBounds(10, 19, 89, 21);
+		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Attribute");
+		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(10, 74, 82, 14);
+		contentPane.add(lblNewLabel_1);
 		btnSpeichern.addMouseListener(new MouseAdapter() {
 		
 			public void mouseClicked(MouseEvent e) {
