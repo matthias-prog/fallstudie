@@ -1,20 +1,23 @@
 package frontend;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.JTextField;
-
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
@@ -32,23 +35,10 @@ public class MainAdmin extends JFrame {
 	private JButton btnCiTypAendern;
 	private JButton btnCiTypLoeschen;
 	private JLabel lblNewLabel;
+	
+	static MainAdmin frame = new MainAdmin();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainAdmin frame = new MainAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -123,8 +113,6 @@ public class MainAdmin extends JFrame {
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		
-		
-		
 		//Button "Benutzerverwaltung"
 		JButton btnBenutzerverwaltung = new JButton("Benutzerverwaltung");
 		btnBenutzerverwaltung.addActionListener(new ActionListener() {
@@ -142,7 +130,8 @@ public class MainAdmin extends JFrame {
 		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzuf�gen");
 		btnCiTypHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalit�t hinzuf�gen
+				NeuerCITyp neuerCITyp = new NeuerCITyp();
+				neuerCITyp.setVisible(true);
 				
 			}
 		});
@@ -156,7 +145,8 @@ public class MainAdmin extends JFrame {
 		btnCiTypAendern = new JButton("CI-Typ Bearbeiten");
 		btnCiTypAendern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalit�t hinzuf�gen
+				NeuerCITyp neuerCITyp = new NeuerCITyp();
+				neuerCITyp.setVisible(true);
 			}
 		});
 		btnCiTypAendern.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -169,7 +159,8 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen = new JButton("CI-Typ L�schen");
 		btnCiTypLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: ActionEvent: Funktionalit�t hinzuf�gen
+				NeuerCITyp neuerCITyp = new NeuerCITyp();
+				neuerCITyp.setVisible(true);
 			}
 		});
 		btnCiTypLoeschen.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -180,10 +171,18 @@ public class MainAdmin extends JFrame {
 		
 		lblNewLabel = new JLabel("CI-Typ-\u00DCbersicht (Admin)");
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblNewLabel.setBounds(15, 15, 250, 30);
+		lblNewLabel.setBounds(15, 15, 354, 30);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnAbmelden_1 = new JButton("Abmelden");
+		btnAbmelden_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				Login login = new Login();
+				//login.initialize();
+			}
+		});
+		
 		btnAbmelden_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden_1.setBackground(Color.WHITE);
