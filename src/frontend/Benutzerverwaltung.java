@@ -16,6 +16,8 @@ import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Benutzerverwaltung extends JFrame {
 
@@ -42,9 +44,11 @@ public class Benutzerverwaltung extends JFrame {
 	 * Create the frame.
 	 */
 	public Benutzerverwaltung() {
+		setTitle("ItemPro - Benutzerverwaltung");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 1080, 720);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,7 +74,7 @@ public class Benutzerverwaltung extends JFrame {
 		btnNewButton_1.setBounds(200, 52, 180, 30);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Benutzer l\u00F6schen");
+		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
 		btnNewButton_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -104,6 +108,13 @@ public class Benutzerverwaltung extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton_3 = new JButton("Abmelden");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				
+			}
+		});
 		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnNewButton_3.setBackground(Color.WHITE);

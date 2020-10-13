@@ -19,6 +19,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Main extends JFrame {
 
@@ -28,6 +30,8 @@ public class Main extends JFrame {
 	private JTable tableCITypen;
 	private JButton btnAbmelden;
 	private JScrollPane scrollPane;
+	private JLabel lblNewLabel;
+	private JLabel lblWhlenSieEinen;
 
 	/**
 	 * Launch the application.
@@ -68,6 +72,11 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 
 		btnAbmelden = new JButton("Abmelden");
+		btnAbmelden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden.setBackground(Color.WHITE);
@@ -75,6 +84,14 @@ public class Main extends JFrame {
 		contentPane.add(btnAbmelden);
 
 		scrollPane = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				CIRecordAnsicht records = new CIRecordAnsicht();
+				records.setVisible(true);
+			}
+		});
 		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
 		scrollPane.setBounds(10, 120, 1050, 450);
 		contentPane.add(scrollPane);
@@ -124,10 +141,22 @@ public class Main extends JFrame {
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setViewportView(tableCITypen);
 		
-		JLabel lblCitypbersicht = new JLabel("CI-Typ-\u00DCbersicht");
+		JLabel lblCitypbersicht = new JLabel("CI-Typ-Uebersicht");
 		lblCitypbersicht.setFont(new Font("Calibri", Font.BOLD, 24));
 		lblCitypbersicht.setBounds(15, 15, 230, 30);
 		contentPane.add(lblCitypbersicht);
+		
+		lblNewLabel = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
+		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(10, 70, 300, 20);
+		contentPane.add(lblNewLabel);
+		
+		lblWhlenSieEinen = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
+		lblWhlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblWhlenSieEinen.setBackground(Color.WHITE);
+		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
+		contentPane.add(lblWhlenSieEinen);
 
 	}
 }

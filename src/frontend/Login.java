@@ -73,9 +73,7 @@ public class Login {
 		frmItemproLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmItemproLogin.getContentPane().setLayout(null);
 		frmItemproLogin.setLocationRelativeTo(null);
-		//Image img = new ImageIcon(this.getClass().getResource("/Favicon.png")).getImage();
-		//frmItemproLogin.setIconImage(img);
-		
+
     		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Calibri", Font.PLAIN, 12));

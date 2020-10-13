@@ -84,6 +84,12 @@ public class CIRecordAnsicht extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Abmelden");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+			}
+		});
 		btnNewButton_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -165,5 +171,13 @@ public class CIRecordAnsicht extends JFrame {
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
 		lblNewLabel.setBounds(15, 15, 230, 30);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblHeader = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Records.");
+		lblHeader.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblHeader.setBackground(Color.WHITE);
+		lblHeader.setBounds(10, 70, 350, 20);
+		contentPane.add(lblHeader);
+		
+		
 	}
 }

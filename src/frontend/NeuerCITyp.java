@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -64,8 +65,11 @@ public class NeuerCITyp extends JFrame {
 	 */
 	
 	public NeuerCITyp() {
+		setTitle("ItemPro - CI-Typ hinzufügen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 323, 560);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(null);
@@ -87,12 +91,12 @@ public class NeuerCITyp extends JFrame {
 		textField.setBounds(17, 60, 600, 50);
 		contentPane_1.add(textField);
 
-		JButton btnAbmelden = new JButton("Abmelden");
+		/*JButton btnAbmelden = new JButton("Abmelden");
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden.setBackground(Color.WHITE);
 		btnAbmelden.setBounds(861, 60, 185, 50);
-//		//contentPane_1.add(btnAbmelden);
+		//contentPane_1.add(btnAbmelden); */
 
 		JButton btnSuche = new JButton("\uD83D\uDD0D");
 		btnSuche.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
@@ -189,7 +193,7 @@ public class NeuerCITyp extends JFrame {
 		btnAbbrechen.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.setVisible(false);
+				dispose();
 			}
 		});
 		btnAbbrechen.setBounds(178, 491, 123, 30);
@@ -328,10 +332,10 @@ public class NeuerCITyp extends JFrame {
 		lblNewLabel_1 = new JLabel("Attribute");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(10, 74, 82, 14);
-		contentPane.add(lblNewLabel_1);
+		contentPane.add(lblNewLabel_1);}}
 						
 
-		btnAbmelden.addActionListener(new ActionListener() {
+	/*	btnAbmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				//MainAdmin.frame.setVisible(false);
@@ -345,4 +349,4 @@ public class NeuerCITyp extends JFrame {
 
 				}
 
-}
+} */

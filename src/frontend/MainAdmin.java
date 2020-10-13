@@ -7,6 +7,8 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -37,6 +39,8 @@ public class MainAdmin extends JFrame {
 	private JLabel lblNewLabel;
 	
 	static MainAdmin frame = new MainAdmin();
+	private JLabel lblNewLabel_1;
+	private JLabel lblWhlenSieEinen;
 
 	
 	/**
@@ -64,6 +68,14 @@ public class MainAdmin extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		scrollPane.setBounds(10, 120, 855, 450);
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				CIRecordAnsicht records = new CIRecordAnsicht();
+				records.setVisible(true);
+			}
+		});
 		contentPane.add(scrollPane);
 		
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
@@ -117,6 +129,10 @@ public class MainAdmin extends JFrame {
 		JButton btnBenutzerverwaltung = new JButton("Benutzerverwaltung");
 		btnBenutzerverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				Benutzerverwaltung benutzerverwaltung = new Benutzerverwaltung();
+				benutzerverwaltung.setVisible(true);
 				//TODO: ActionEvent: Funktionalit�t hinzuf�gen
 			}
 		});
@@ -127,7 +143,7 @@ public class MainAdmin extends JFrame {
 		contentPane.add(btnBenutzerverwaltung);
 		
 		//Button "CI-Typ Hinzuf�gen"
-		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzuf�gen");
+		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzufuegen");
 		btnCiTypHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NeuerCITyp neuerCITyp = new NeuerCITyp();
@@ -156,7 +172,7 @@ public class MainAdmin extends JFrame {
 		contentPane.add(btnCiTypAendern);
 		
 		//Button "CI-Typ L�schen"
-		btnCiTypLoeschen = new JButton("CI-Typ L�schen");
+		btnCiTypLoeschen = new JButton("CI-Typ Loeschen");
 		btnCiTypLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NeuerCITyp neuerCITyp = new NeuerCITyp();
@@ -169,7 +185,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen.setBounds(880, 240, 180, 50);
 		contentPane.add(btnCiTypLoeschen);
 		
-		lblNewLabel = new JLabel("CI-Typ-\u00DCbersicht (Admin)");
+		lblNewLabel = new JLabel("CI-Typ-Uebersicht (Admin)");
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
 		lblNewLabel.setBounds(15, 15, 354, 30);
 		contentPane.add(lblNewLabel);
@@ -177,8 +193,10 @@ public class MainAdmin extends JFrame {
 		JButton btnAbmelden_1 = new JButton("Abmelden");
 		btnAbmelden_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
-				Login login = new Login();
+				
+				dispose();
+				//frame.setVisible(false);
+				//Login login = new Login();
 				//login.initialize();
 			}
 		});
@@ -188,6 +206,18 @@ public class MainAdmin extends JFrame {
 		btnAbmelden_1.setBackground(Color.WHITE);
 		btnAbmelden_1.setBounds(880, 70, 180, 30);
 		contentPane.add(btnAbmelden_1);
+		
+		lblNewLabel_1 = new JLabel("Hier sehen Sie eine \u00DCbersicht \u00FCber alle CI-Typen.");
+		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNewLabel_1.setBackground(Color.WHITE);
+		lblNewLabel_1.setBounds(10, 70, 300, 20);
+		contentPane.add(lblNewLabel_1);
+		
+		lblWhlenSieEinen = new JLabel("W\u00E4hlen Sie einen CI-Typ aus um die zugeh\u00F6rigen Records anzuzeigen.");
+		lblWhlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblWhlenSieEinen.setBackground(Color.WHITE);
+		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
+		contentPane.add(lblWhlenSieEinen);
 		
 		
 	}
