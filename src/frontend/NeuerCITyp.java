@@ -313,6 +313,12 @@ public class NeuerCITyp extends JFrame {
 				daten.Message message = hauptprogramm.erstelleCITyp(citypName, attribute);
 				System.out.println(message.getNachricht());
 				
+				dispose();
+				
+				//MainAdmin.frame.dispose(); 
+
+				//new MainAdmin().setVisible(true);
+				
 				
 
 			}

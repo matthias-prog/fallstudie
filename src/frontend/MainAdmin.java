@@ -18,11 +18,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
+import javax.swing.ImageIcon;
 
 //import com.sun.tools.javac.comp.Todo;
 
@@ -124,6 +128,14 @@ public class MainAdmin extends JFrame {
 		tableCITypen.setOpaque(false);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
+		/* funktioniert nicht
+		tableCITypen.getModel().addTableModelListener(new TableModelListener() {
+
+			  public void tableChanged(TableModelEvent e) {
+				  tableCITypen.repaint();
+			  }
+			});
+		*/
 		
 		//Button "Benutzerverwaltung"
 		JButton btnBenutzerverwaltung = new JButton("Benutzerverwaltung");
@@ -207,17 +219,31 @@ public class MainAdmin extends JFrame {
 		btnAbmelden_1.setBounds(880, 70, 180, 30);
 		contentPane.add(btnAbmelden_1);
 		
-		lblNewLabel_1 = new JLabel("Hier sehen Sie eine \u00DCbersicht \u00FCber alle CI-Typen.");
+		lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblNewLabel_1.setBackground(Color.WHITE);
 		lblNewLabel_1.setBounds(10, 70, 300, 20);
 		contentPane.add(lblNewLabel_1);
 		
-		lblWhlenSieEinen = new JLabel("W\u00E4hlen Sie einen CI-Typ aus um die zugeh\u00F6rigen Records anzuzeigen.");
+		lblWhlenSieEinen = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
 		lblWhlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblWhlenSieEinen.setBackground(Color.WHITE);
 		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWhlenSieEinen);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(MainAdmin.class.getResource("/img/refresh.png")));
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.dispose(); //this will close frame i.e. NewJFrame
+
+				frame.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(645, 70, 30, 30);
+		contentPane.add(btnNewButton);
 		
 		
 	}

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
@@ -139,7 +141,7 @@ public class Main extends JFrame {
 		tableCITypen.setName("");
 		tableCITypen.setOpaque(false);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
-		scrollPane.setViewportView(tableCITypen);
+		scrollPane.setViewportView(tableCITypen);		
 		
 		JLabel lblCitypbersicht = new JLabel("CI-Typ-Uebersicht");
 		lblCitypbersicht.setFont(new Font("Calibri", Font.BOLD, 24));
