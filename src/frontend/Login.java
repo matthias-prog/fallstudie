@@ -227,4 +227,8 @@ public class Login {
 		
 	}
 
+	public JFrame getFrmItemproLogin() {
+		return frmItemproLogin;
+	}
+
 }

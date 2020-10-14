@@ -77,6 +77,8 @@ public class Main extends JFrame {
 		btnAbmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				Login login = new Login();
+				login.getFrmItemproLogin().setVisible(true);
 			}
 		});
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -97,7 +99,7 @@ public class Main extends JFrame {
 		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
 		scrollPane.setBounds(10, 120, 1050, 450);
 		contentPane.add(scrollPane);
-
+		
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
 
 		// es wird berechnet wie lang der längste CITyp ist

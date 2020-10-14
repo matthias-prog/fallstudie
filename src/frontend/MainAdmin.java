@@ -205,11 +205,9 @@ public class MainAdmin extends JFrame {
 		JButton btnAbmelden_1 = new JButton("Abmelden");
 		btnAbmelden_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				dispose();
-				//frame.setVisible(false);
-				//Login login = new Login();
-				//login.initialize();
+				Login login = new Login();
+				login.getFrmItemproLogin().setVisible(true);
 			}
 		});
 		
