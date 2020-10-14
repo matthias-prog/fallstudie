@@ -80,6 +80,7 @@ public class CIRecordAnsicht extends JFrame {
 					int recordID = Integer.valueOf((String) ciRecordID);
 					BearbeiteCIRecord bearbeiteFenster = new BearbeiteCIRecord(cityp, recordID);
 					bearbeiteFenster.setVisible(true);
+					ladeTabelle();
 				
 				}
 				catch(Exception a){
