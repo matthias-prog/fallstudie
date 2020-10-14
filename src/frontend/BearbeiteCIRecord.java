@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -26,7 +27,7 @@ import javax.swing.border.LineBorder;
 import backend.hauptprogramm;
 import daten.CITyp;
 
-public class NeuerCIRecord extends JDialog {
+public class BearbeiteCIRecord extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -53,7 +54,7 @@ public class NeuerCIRecord extends JDialog {
 	 * Create the frame.
 	 */
 
-	public NeuerCIRecord(CITyp cityp) {
+	public BearbeiteCIRecord(CITyp cityp, int RecordID) {
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setTitle("ItemPro - CI-Record hinzuf�gen");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
