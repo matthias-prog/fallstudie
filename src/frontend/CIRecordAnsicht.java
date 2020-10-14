@@ -78,8 +78,7 @@ public class CIRecordAnsicht extends JFrame {
 					int selectedRow = table.getSelectedRow();
 					Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
 					int recordID = Integer.valueOf((String) ciRecordID);
-					// NeuerCIRecord neuerCIRecord = new NeuerCIRecord();
-					//neuerCIRecord.setVisible(true);
+
 				
 				}
 				catch(Exception a){
@@ -99,9 +98,8 @@ public class CIRecordAnsicht extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
-					// NeuerCIRecord neuerCIRecord = new NeuerCIRecord();
-					//neuerCIRecord.setVisible(true);
-				
+					NeuerCIRecord neuerCIRecord = new NeuerCIRecord(cityp);
+					neuerCIRecord.setVisible(true);
 				}
 				catch(Exception a){
 					System.out.println("null");
