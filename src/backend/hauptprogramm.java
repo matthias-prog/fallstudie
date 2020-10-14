@@ -1,5 +1,6 @@
 package backend;
 
+import daten.Benutzer;
 import daten.CIRecord;
 import daten.CITyp;
 import daten.Message;
@@ -551,6 +552,50 @@ public class hauptprogramm {
         return new Message(true, "Benutzer erfolgreich hinzugefügt.");
     }
 
+    /* hole alle Benutzer
+     * 
+     */
+    public static ArrayList<daten.Benutzer> holeAlleBenutzer() {
+        String abfrage = "SELECT * from Benutzer;";
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        ArrayList<daten.Benutzer> listeBenutzer = new ArrayList<daten.Benutzer>();
+
+
+        //SQL-Abfrage wird abgeschickt
+        try {
+            rs = stmt.executeQuery(abfrage);
+            rsmd =rs.getMetaData();
+        } catch (SQLException e) {
+            return listeBenutzer;
+        }
+
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("benutzerId");
+                String name = rs.getString("Benutzername");
+                String passwort = rs.getString("Passwort");
+                boolean isAdmin = rs.getBoolean("isAdmin");
+                int index = 3;
+                ArrayList<String> attribute = new ArrayList<String>();
+
+                while (index <= rsmd.getColumnCount()) {
+                    attribute.add(rs.getString(index));
+                    index++;
+                }
+                Benutzer benutzer = new Benutzer(id, name, passwort, isAdmin);
+                listeBenutzer.add(benutzer);
+            }
+
+        } catch (SQLException e) {
+        	e.printStackTrace();
+            return listeBenutzer;
+        }
+        return listeBenutzer;
+    }
+    
+    
+    
     /**
      * löscht einen benutzer
      *
