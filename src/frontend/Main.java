@@ -86,14 +86,14 @@ public class Main extends JFrame {
 		contentPane.add(btnAbmelden);
 
 		scrollPane = new JScrollPane();
-		scrollPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				CIRecordAnsicht records = new CIRecordAnsicht();
-				records.setVisible(true);
-			}
-		});
+//		scrollPane.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				dispose();
+//				CIRecordAnsicht records = new CIRecordAnsicht();
+//				records.setVisible(true);
+//			}
+//		});
 		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
 		scrollPane.setBounds(10, 120, 1050, 450);
 		contentPane.add(scrollPane);
