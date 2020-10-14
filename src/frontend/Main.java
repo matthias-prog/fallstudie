@@ -34,6 +34,7 @@ public class Main extends JFrame {
 	private JScrollPane scrollPane;
 	private JLabel lblNewLabel;
 	private JLabel lblWhlenSieEinen;
+	private JButton btnAuswertungAnzeigen;
 
 	/**
 	 * Launch the application.
@@ -66,10 +67,11 @@ public class Main extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
+		contentPane.setFont(new Font("Calibri", Font.PLAIN, 14));
 		contentPane.setMaximumSize(new Dimension(1080, 720));
 		contentPane.setBounds(new Rectangle(0, 0, 1080, 720));
 		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -82,7 +84,7 @@ public class Main extends JFrame {
 				backend.hauptprogramm.logout(); // aktueller Benutzer wird im Backend abgemeldet bzw. "vergessen"
 			}
 		});
-		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAbmelden.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden.setBackground(Color.WHITE);
 		btnAbmelden.setBounds(880, 70, 180, 30);
@@ -162,6 +164,17 @@ public class Main extends JFrame {
 		lblWhlenSieEinen.setBackground(Color.WHITE);
 		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWhlenSieEinen);
+		
+		btnAuswertungAnzeigen = new JButton("Auswertung anzeigen");
+		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAuswertungAnzeigen.setBackground(Color.WHITE);
+		btnAuswertungAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAuswertungAnzeigen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAuswertungAnzeigen.setBounds(690, 70, 180, 30);
+		contentPane.add(btnAuswertungAnzeigen);
 
 	}
 }

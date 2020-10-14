@@ -124,8 +124,13 @@ public class Login {
 					
 					if (message.isErfolg()) {
 					frmItemproLogin.dispose();
+					
+					if (backend.hauptprogramm.pruefeAdmin(username)) {
+					MainAdmin mainAdmin = new MainAdmin();
+					mainAdmin.setVisible(true);
+					} else {
 					Main main = new Main();
-					main.setVisible(true);}
+					main.setVisible(true);}}
 					else {
 						txtAnmeldungFehlgeschlagen.setEnabled(true);
 						txtAnmeldungFehlgeschlagen.setVisible(true);}
@@ -188,47 +193,6 @@ public class Login {
 		frmItemproLogin.getContentPane().add(txtAnmeldungFehlgeschlagen);
 		txtAnmeldungFehlgeschlagen.setColumns(10);
 		
-		
-		JButton btnAnmeldenAdmin = new JButton("Anmelden - Admin");
-		btnAnmeldenAdmin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					String username = txtBenutzername.getText();
-					char [] passwort = passwordField.getPassword();
-					String password = String.valueOf(passwort);
-				
-					daten.Message message = backend.hauptprogramm.versucheLogin (username, password);
-					
-					if (message.isErfolg()) {
-					frmItemproLogin.dispose();
-					MainAdmin mainAdmin = new MainAdmin();
-					mainAdmin.setVisible(true);}
-					else {
-						txtAnmeldungFehlgeschlagen.setEnabled(true);
-						txtAnmeldungFehlgeschlagen.setVisible(true);}
-				
-				}
-				catch(Exception a){
-					a.printStackTrace();
-					System.out.println(a);
-					System.out.println("null");
-				}
-				
-			}
-		});
-		
-		btnAnmeldenAdmin.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnAnmeldenAdmin.setBackground(Color.WHITE);
-		btnAnmeldenAdmin.setFont(new Font("Calibri", Font.PLAIN, 12));
-		btnAnmeldenAdmin.setBounds(150, 380, 100, 30);
-		frmItemproLogin.getContentPane().add(btnAnmeldenAdmin);
-		
-		
-	}
-
-	public JFrame getFrmItemproLogin() {
-		return frmItemproLogin;
 	}
 
 }
