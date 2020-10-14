@@ -40,11 +40,13 @@ public class Benutzer {
         this.passwort = passwort;
     }
 
-    public boolean setIstAdmin() {
-        return istAdmin;
+    public String getIstAdmin() {
+    	String istAdminStr = Boolean.toString(istAdmin);
+        return istAdminStr;
     }
 
     public void setIstAdmin(boolean istAdmin) {
         this.istAdmin = istAdmin;
     }
+ 
 }
