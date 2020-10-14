@@ -65,6 +65,18 @@ public class Benutzerverwaltung extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Benutzer anlegen");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					NeuerBenutzer neuerBenutzer = new NeuerBenutzer();
+					neuerBenutzer.setVisible(true);
+					}
+					catch (Exception ert) {
+					ert.printStackTrace();
+					}
+					ladeTabelle();
+				}
+		});
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -89,6 +101,10 @@ public class Benutzerverwaltung extends JFrame {
 		scrollPane.setBounds(10, 120, 855, 450);
 		contentPane.add(scrollPane);
 		
+		ladeTabelle();
+		
+		scrollPane.setViewportView(table);
+		
 		JLabel lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Benutzer.");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblNewLabel_1.setBackground(Color.WHITE);
@@ -100,8 +116,26 @@ public class Benutzerverwaltung extends JFrame {
 		lblWaehlenSieEinen.setBackground(Color.WHITE);
 		lblWaehlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWaehlenSieEinen);
+				
 		
-		
+		JButton btnNewButton_3 = new JButton("Abmelden");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				
+			}
+		});
+		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnNewButton_3.setBackground(Color.WHITE);
+		btnNewButton_3.setBounds(880, 70, 180, 30);
+		contentPane.add(btnNewButton_3);
+	
+	
+	}
+	
+	private void ladeTabelle() {
 		ArrayList<daten.Benutzer> listeBenutzer = backend.hauptprogramm.holeAlleBenutzer();
 
 
@@ -119,6 +153,7 @@ public class Benutzerverwaltung extends JFrame {
 			datenArray[i][1] = benutzer.getBenutzername();
 			datenArray[i][2] = benutzer.getPasswort();
 			datenArray[i][3] = benutzer.getIstAdmin();
+		}
 
 			/*
 			for (int j = 2; j < 3; j++) {
@@ -134,22 +169,9 @@ public class Benutzerverwaltung extends JFrame {
 		table.setFont(new Font("Calibri", Font.PLAIN, 14));
 		table.setRowHeight(30);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		scrollPane.setViewportView(table);
 		
-		
-		JButton btnNewButton_3 = new JButton("Abmelden");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				
-			}
-		});
-		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton_3.setBackground(Color.WHITE);
-		btnNewButton_3.setBounds(880, 70, 180, 30);
-		contentPane.add(btnNewButton_3);
 	}
-}	
+	
+	
+	
 }
