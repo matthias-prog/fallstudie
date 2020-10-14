@@ -107,12 +107,18 @@ public class MainAdmin extends JFrame {
 		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzufuegen");
 		btnCiTypHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
 				NeuerCITyp neuerCITyp = new NeuerCITyp();
 				neuerCITyp.setVisible(true);
-				//ladeTabelle();
-
+				}
+				catch (Exception ert) {
+				ert.printStackTrace();
+				}
+				ladeTabelle();
 			}
 		});
+		
 		btnCiTypHinzufuegen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypHinzufuegen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypHinzufuegen.setBackground(Color.WHITE);

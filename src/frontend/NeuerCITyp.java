@@ -30,10 +30,11 @@ import javax.swing.SpinnerListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class NeuerCITyp extends JFrame {
+public class NeuerCITyp extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -66,7 +67,8 @@ public class NeuerCITyp extends JFrame {
 	
 	public NeuerCITyp() {
 		setTitle("ItemPro - CI-Typ hinzufügen");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setModalityType(ModalityType.APPLICATION_MODAL);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 323, 560);
 		setLocationRelativeTo(null);
@@ -213,7 +215,7 @@ public class NeuerCITyp extends JFrame {
 				
 				if (textField_Attribut1.getText().isEmpty()) {
 					{JOptionPane.showMessageDialog(null,"Name des CITypen fehlt","Fehler",JOptionPane.ERROR_MESSAGE);
-					}
+					}	
 				} else {
 					citypName = textField_ciTypName.getText();
 				}
