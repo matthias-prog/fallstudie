@@ -1,30 +1,23 @@
 package frontend;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Font;
 import java.awt.Color;
-import java.awt.Image;
-import javax.swing.SwingConstants;
-import javax.swing.JTable;
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.Component;
-import javax.swing.border.LineBorder;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Rectangle;
-import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 public class Login {
 
@@ -95,7 +88,7 @@ public class Login {
 		stunde.get(Calendar.HOUR_OF_DAY);
 		String gruss;
 		
-		//Zeitlich angepasste Begrüßung
+		//Zeitlich angepasste Begrï¿½ï¿½ung
 		int aktStunde = stunde.get(Calendar.HOUR_OF_DAY);
 		if (aktStunde < 11) {
 			gruss = "Guten Morgen!";}
@@ -195,7 +188,7 @@ public class Login {
 		
 	}
 	
-	public JFrame getFrmItemproLogin() { //Methode wird für den Logout benötigt!
+	public JFrame getFrmItemproLogin() { //Methode wird fï¿½r den Logout benï¿½tigt!
 		return frmItemproLogin;
 	}
 	

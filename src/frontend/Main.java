@@ -80,7 +80,7 @@ public class Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Login login = new Login();
-				login.getFrmItemproLogin().setVisible(true); // öffnet das Login-Fenster
+				login.getFrmItemproLogin().setVisible(true); // ï¿½ffnet das Login-Fenster
 				backend.hauptprogramm.logout(); // aktueller Benutzer wird im Backend abgemeldet bzw. "vergessen"
 			}
 		});
@@ -164,6 +164,38 @@ public class Main extends JFrame {
 		lblWhlenSieEinen.setBackground(Color.WHITE);
 		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWhlenSieEinen);
+		
+		JButton btnCiRecordsAnzeigen = new JButton("CI Records anzeigen");
+		btnCiRecordsAnzeigen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				int row = tableCITypen.getSelectedRow();
+				if (row != -1) {
+					int anzahlSpalten = tableCITypen.getColumnCount();
+					String id1 = (String) tableCITypen.getValueAt(row, 0);
+					int id = Integer.parseInt(id1);
+					String ciTypName = (String) tableCITypen.getValueAt(row, 1);
+					ArrayList<String> attributNamen = new ArrayList<String>();
+
+					for (int i = 2; i < anzahlSpalten; i++) {
+						String attribut = (String) tableCITypen.getValueAt(row, i);
+						if (attribut != null) {
+							attributNamen.add(attribut);
+						}
+					}
+
+					CITyp selectedCITyp = new CITyp(id, ciTypName, attributNamen);
+					CIRecordAnsicht ciRecordAnsicht = new CIRecordAnsicht(selectedCITyp);
+					ciRecordAnsicht.setVisible(true);
+				}
+
+			}
+		});
+		btnCiRecordsAnzeigen.setBounds(497, 70, 183, 30);
+		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
+		contentPane.add(btnCiRecordsAnzeigen);
 		
 		btnAuswertungAnzeigen = new JButton("Auswertung anzeigen");
 		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));

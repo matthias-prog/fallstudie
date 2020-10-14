@@ -9,30 +9,20 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
+
+import daten.CIRecord;
+import daten.CITyp;
+
 import java.awt.Color;
 
 public class Auswertung extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Auswertung frame = new Auswertung();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -56,6 +46,24 @@ public class Auswertung extends JFrame {
 		textArea.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textArea.setBorder(new LineBorder(new Color(0, 0, 0)));
 		textArea.setBounds(10, 52, 1048, 220);
+		textArea.setEditable(false);
 		contentPane.add(textArea);
+		
+		int anzahlTypen = backend.hauptprogramm.zeigeAnzahlTypen();
+		String anzahlCITypen = "Anzahl aller vorhanden CITypen: " + anzahlTypen;
+		ArrayList <CITyp> alleCITypen = new ArrayList<CITyp>();
+		alleCITypen = backend.hauptprogramm.holeAlleCITypen();
+		//ArrayList <CIRecord> alleCIRecords = new ArrayList<CIRecord>();
+		//alleCIRecords = backend.hauptprogramm.holeAlleRecordsVonCITyp(CITyp)
+		
+		textArea.setText(anzahlCITypen + "\n");
+		for (int i =0; i< anzahlTypen; i++){
+			String nameCITyp = alleCITypen.get(i).getCItypName();
+			int anzahlRecords = backend.hauptprogramm.zeigeAnzahlRecords(nameCITyp);
+			
+			textArea.append("Anzahl der CIRecords von " + nameCITyp + " :" + anzahlRecords + "\n");
 	}
+		
+		
+}
 }

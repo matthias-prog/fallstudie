@@ -17,21 +17,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import backend.hauptprogramm;
-
-import java.awt.FlowLayout;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerListModel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import daten.CITyp;
 
 public class NeuerCIRecord extends JFrame {
 
@@ -54,18 +46,17 @@ public class NeuerCIRecord extends JFrame {
 	private JTextField textField_Attribut15;
 	private JTextField textField_ciRecordName;
 
-	static NeuerCIRecord frame = new NeuerCIRecord();
+	//static NeuerCIRecord frame = new NeuerCIRecord();
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
-	private JButton btnAbmelden_1;
 
 	/**
 	 * Create the frame.
 	 */
 
-	public NeuerCIRecord() {
-		setTitle("ItemPro - CI-Record hinzufügen");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public NeuerCIRecord(CITyp cityp) {
+		setTitle("ItemPro - CI-Record hinzufï¿½gen");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 323, 560);
 		setLocationRelativeTo(null);
@@ -89,13 +80,6 @@ public class NeuerCIRecord extends JFrame {
 		textField.setBorder(new LineBorder(new Color(171, 173, 179)));
 		textField.setBounds(17, 60, 600, 50);
 		contentPane_1.add(textField);
-
-		/*
-		 * JButton btnAbmelden = new JButton("Abmelden"); btnAbmelden.setFont(new
-		 * Font("Tahoma", Font.PLAIN, 14)); btnAbmelden.setBorder(new LineBorder(new
-		 * Color(0, 0, 0))); btnAbmelden.setBackground(Color.WHITE);
-		 * btnAbmelden.setBounds(861, 60, 185, 50); //contentPane_1.add(btnAbmelden);
-		 */
 
 		JButton btnSuche = new JButton("\uD83D\uDD0D");
 		btnSuche.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
@@ -312,7 +296,7 @@ public class NeuerCIRecord extends JFrame {
 					attribute.add(attribut15);
 				}
 
-				// daten.Message message = hauptprogramm.erstelleCIRecord(CITyp, attribute);
+				daten.Message message = hauptprogramm.erstelleCIRecord(cityp.getCItypName(), attribute);
 
 				dispose();
 

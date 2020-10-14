@@ -1,6 +1,5 @@
 package frontend;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -8,10 +7,9 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,17 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
 import daten.Message;
-
-import javax.swing.ImageIcon;
 
 //import com.sun.tools.javac.comp.Todo;
 
@@ -41,7 +34,6 @@ public class MainAdmin extends JFrame {
 	private JTable tableCITypen;
 	private JScrollPane scrollPane;
 	private JButton btnCiTypHinzufuegen;
-	private JButton btnCiTypAendern;
 	private JButton btnCiTypLoeschen;
 	private JLabel lblNewLabel;
 
@@ -85,50 +77,7 @@ public class MainAdmin extends JFrame {
 //		});
 		contentPane.add(scrollPane);
 
-		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
-
-		// es wird berechnet wie lang der lÃ¤ngste CITyp ist
-		int maxlength = 0;
-		for (CITyp c : listeCITypen) {
-			int i = 0;
-			for (String s : c.getAttributnamen()) {
-				if (s != null) {
-					i++;
-				}
-			}
-			if (i > maxlength) {
-				maxlength = i;
-			}
-		}
-
-		String[][] datenArray = new String[listeCITypen.size()][maxlength + 2];
-		String[] spaltenNamen = new String[maxlength + 2];
-		spaltenNamen[0] = "ID";
-		spaltenNamen[1] = "Name";
-		for (int i = 1; i <= maxlength; i++) {
-			spaltenNamen[i + 1] = "Attribut " + i;
-		}
-
-		for (int i = 0; i < listeCITypen.size(); i++) {
-			CITyp cityp = listeCITypen.get(i);
-			datenArray[i][0] = String.valueOf(cityp.getCItypID());
-			datenArray[i][1] = cityp.getCItypName();
-
-			for (int j = 2; j < maxlength + 2; j++) {
-				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
-				System.out.println(cityp.getAttributnamen().get(j));
-			}
-
-		}
-
-		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
-
-		tableCITypen = new JTable(tabelle);
-		scrollPane.setViewportView(tableCITypen);
-		tableCITypen.setRowHeight(30);
-		tableCITypen.setName("");
-		tableCITypen.setOpaque(false);
-		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		ladeTabelle();
 
 		/*
 		 * funktioniert nicht tableCITypen.getModel().addTableModelListener(new
@@ -158,30 +107,23 @@ public class MainAdmin extends JFrame {
 		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzufuegen");
 		btnCiTypHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
 				NeuerCITyp neuerCITyp = new NeuerCITyp();
 				neuerCITyp.setVisible(true);
-
+				}
+				catch (Exception ert) {
+				ert.printStackTrace();
+				}
+				ladeTabelle();
 			}
 		});
+		
 		btnCiTypHinzufuegen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypHinzufuegen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypHinzufuegen.setBackground(Color.WHITE);
-		btnCiTypHinzufuegen.setBounds(880, 120, 180, 50);
+		btnCiTypHinzufuegen.setBounds(880, 120, 180, 36);
 		contentPane.add(btnCiTypHinzufuegen);
-
-		// Button "CI-Typ ï¿½ndern"
-		btnCiTypAendern = new JButton("CI-Typ Bearbeiten");
-		btnCiTypAendern.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				NeuerCITyp neuerCITyp = new NeuerCITyp();
-				neuerCITyp.setVisible(true);
-			}
-		});
-		btnCiTypAendern.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnCiTypAendern.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnCiTypAendern.setBackground(Color.WHITE);
-		btnCiTypAendern.setBounds(880, 180, 180, 50);
-		contentPane.add(btnCiTypAendern);
 
 		// Button "CI-Typ Lï¿½schen"
 		btnCiTypLoeschen = new JButton("CI-Typ Loeschen");
@@ -193,12 +135,13 @@ public class MainAdmin extends JFrame {
 				System.out.println("CI-Typ "+typ+ " wird gelöscht...");
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
+				ladeTabelle();
 			}
 		});
 		btnCiTypLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypLoeschen.setBackground(Color.WHITE);
-		btnCiTypLoeschen.setBounds(880, 240, 180, 50);
+		btnCiTypLoeschen.setBounds(880, 171, 180, 36);
 		contentPane.add(btnCiTypLoeschen);
 
 		lblNewLabel = new JLabel("CI-Typ-Uebersicht (Admin)");
@@ -274,7 +217,7 @@ public class MainAdmin extends JFrame {
 
 			}
 		});
-		btnCiRecordsAnzeigen.setBounds(449, 70, 183, 30);
+		btnCiRecordsAnzeigen.setBounds(495, 29, 183, 30);
 		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
@@ -287,6 +230,54 @@ public class MainAdmin extends JFrame {
 		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAuswertungAnzeigen.setBounds(495, 70, 180, 30);
 		contentPane.add(btnAuswertungAnzeigen);
+		
+	}
+	
+	private void ladeTabelle() {
+		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
+
+		// es wird berechnet wie lang der lÃ¤ngste CITyp ist
+		int maxlength = 0;
+		for (CITyp c : listeCITypen) {
+			int i = 0;
+			for (String s : c.getAttributnamen()) {
+				if (s != null) {
+					i++;
+				}
+			}
+			if (i > maxlength) {
+				maxlength = i;
+			}
+		}
+
+		String[][] datenArray = new String[listeCITypen.size()][maxlength + 2];
+		String[] spaltenNamen = new String[maxlength + 2];
+		spaltenNamen[0] = "ID";
+		spaltenNamen[1] = "Name";
+		for (int i = 1; i <= maxlength; i++) {
+			spaltenNamen[i + 1] = "Attribut " + i;
+		}
+
+		for (int i = 0; i < listeCITypen.size(); i++) {
+			CITyp cityp = listeCITypen.get(i);
+			datenArray[i][0] = String.valueOf(cityp.getCItypID());
+			datenArray[i][1] = cityp.getCItypName();
+
+			for (int j = 2; j < maxlength + 2; j++) {
+				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
+				System.out.println(cityp.getAttributnamen().get(j));
+			}
+
+		}
+
+		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
+
+		tableCITypen = new JTable(tabelle);
+		scrollPane.setViewportView(tableCITypen);
+		tableCITypen.setRowHeight(30);
+		tableCITypen.setName("");
+		tableCITypen.setOpaque(false);
+		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 	}
 }

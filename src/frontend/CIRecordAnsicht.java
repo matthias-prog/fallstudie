@@ -1,45 +1,37 @@
 package frontend;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.border.BevelBorder;
-import java.awt.ScrollPane;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import backend.hauptprogramm;
 import daten.CIRecord;
 import daten.CITyp;
-
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
-import javax.swing.UIManager;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class CIRecordAnsicht extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JScrollPane scrollPane;
+	private CITyp cityp;
 
 	/**
 	 * Create the frame.
 	 */
 	public CIRecordAnsicht(CITyp cityp) {
+		this.cityp=cityp;
 		setTitle("ItemPro - CI-Record");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
@@ -62,43 +54,21 @@ public class CIRecordAnsicht extends JFrame {
 				Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
 				int recordID = Integer.valueOf((String) ciRecordID);
 				
-				String cityp = "";
+				String citypname = cityp.getCItypName();
 				
-				backend.hauptprogramm.loescheCIRecord(cityp, recordID);
+				backend.hauptprogramm.loescheCIRecord(citypname, recordID);
+				ladeTabelle();
 			}
 		});
 		loeschenButton.setBounds(880, 240, 180, 50);
 		contentPane.add(loeschenButton);
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 120, 855, 450);
 		contentPane.add(scrollPane);
 		
-		ArrayList<CIRecord> listeCIRecords = backend.hauptprogramm.holeAlleRecordsVonCITyp(cityp.getCItypName());
-
-		String[][] datenArray = new String[listeCIRecords.size()][cityp.getAttributnamen().size() +1];
-		String[] spaltenNamen = new String[cityp.getAttributnamen().size()+1];
-		spaltenNamen[0] = "ID";
-		for (int i = 1; i < cityp.getAttributnamen().size()+1; i++) {
-			spaltenNamen[i] = cityp.getAttributnamen().get(i-1);
-		}
-
-		for (int i = 0; i < listeCIRecords.size(); i++) {
-			CIRecord cirecord = listeCIRecords.get(i);
-			datenArray[i][0] = String.valueOf(cirecord.getCIRecordID());
-
-			for (int j = 1; j < cityp.getAttributnamen().size()+1; j++) {
-				datenArray[i][j] = cirecord.getAttribute().get(j - 1);
-			}
-
-		}
-
-		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
-		
-		table = new JTable(tabelle);
-		table.setRowHeight(30);
-		scrollPane.setViewportView(table);
+		ladeTabelle();
 		
 		JButton bearbeitenButton = new JButton("CI-Record bearbeiten");
 		bearbeitenButton.addActionListener(new ActionListener() {
@@ -108,8 +78,7 @@ public class CIRecordAnsicht extends JFrame {
 					int selectedRow = table.getSelectedRow();
 					Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
 					int recordID = Integer.valueOf((String) ciRecordID);
-					// NeuerCIRecord neuerCIRecord = new NeuerCIRecord();
-					//neuerCIRecord.setVisible(true);
+
 				
 				}
 				catch(Exception a){
@@ -129,9 +98,8 @@ public class CIRecordAnsicht extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
-					// NeuerCIRecord neuerCIRecord = new NeuerCIRecord();
-					//neuerCIRecord.setVisible(true);
-				
+					NeuerCIRecord neuerCIRecord = new NeuerCIRecord(cityp);
+					neuerCIRecord.setVisible(true);
 				}
 				catch(Exception a){
 					System.out.println("null");
@@ -157,5 +125,32 @@ public class CIRecordAnsicht extends JFrame {
 		contentPane.add(lblHeader);
 		
 		
+	}
+	
+	private void ladeTabelle() {
+		ArrayList<CIRecord> listeCIRecords = backend.hauptprogramm.holeAlleRecordsVonCITyp(cityp.getCItypName());
+
+		String[][] datenArray = new String[listeCIRecords.size()][cityp.getAttributnamen().size() +1];
+		String[] spaltenNamen = new String[cityp.getAttributnamen().size()+1];
+		spaltenNamen[0] = "ID";
+		for (int i = 1; i < cityp.getAttributnamen().size()+1; i++) {
+			spaltenNamen[i] = cityp.getAttributnamen().get(i-1);
+		}
+
+		for (int i = 0; i < listeCIRecords.size(); i++) {
+			CIRecord cirecord = listeCIRecords.get(i);
+			datenArray[i][0] = String.valueOf(cirecord.getCIRecordID());
+
+			for (int j = 1; j < cityp.getAttributnamen().size()+1; j++) {
+				datenArray[i][j] = cirecord.getAttribute().get(j - 1);
+			}
+
+		}
+
+		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
+		
+		table = new JTable(tabelle);
+		table.setRowHeight(30);
+		scrollPane.setViewportView(table);
 	}
 }
