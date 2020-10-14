@@ -148,7 +148,7 @@ public class Benutzerverwaltung extends JFrame {
 		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnNewButton_3.setBackground(Color.WHITE);
-		btnNewButton_3.setBounds(878, 52, 180, 30);
+		btnNewButton_3.setBounds(880, 70, 180, 30);
 		contentPane.add(btnNewButton_3);
 	}
 }	
