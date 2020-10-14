@@ -194,5 +194,10 @@ public class Login {
 		txtAnmeldungFehlgeschlagen.setColumns(10);
 		
 	}
+	
+	public JFrame getFrmItemproLogin() { //Methode wird für den Logout benötigt!
+		return frmItemproLogin;
+	}
+	
 
 }
