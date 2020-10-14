@@ -83,6 +83,12 @@ public class hauptprogramm {
         }
     }
 
+    /**
+     * Nutzer wird auf Adminstatus ueberprueft
+     *
+     * @param benutzername zu ueberpruefender Benutzername
+     * @return boolean Wert (true = Admin, false = kein Admin)
+     */
     public static boolean pruefeAdmin (String benutzername) {
     	 String abfrage = "SELECT IsAdmin from Benutzer where Benutzername='" + benutzername + "'";
          ResultSet rs = null;
@@ -627,6 +633,28 @@ public class hauptprogramm {
             return numberOfRows;
         }
     
+        return numberOfRows;
+    }
+    
+    /**
+     * Holt Anzahl der CITypen
+     *
+     * @return anzahl der CITypen
+     */
+    public static int zeigeAnzahlTypen() {
+        String abfrage = "SELECT * from cityp";
+        ResultSet rs;
+        int numberOfRows = 0;
+        
+        //SQL-Abfrage wird abgeschickt
+        try {
+            rs = stmt.executeQuery(abfrage);
+            rs.last();
+            numberOfRows = rs.getRow();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return numberOfRows;
+        }
         return numberOfRows;
     }
 }
