@@ -34,7 +34,6 @@ public class MainAdmin extends JFrame {
 	private JTable tableCITypen;
 	private JScrollPane scrollPane;
 	private JButton btnCiTypHinzufuegen;
-	private JButton btnCiTypAendern;
 	private JButton btnCiTypLoeschen;
 	private JLabel lblNewLabel;
 
@@ -162,20 +161,6 @@ public class MainAdmin extends JFrame {
 		btnCiTypHinzufuegen.setBounds(880, 120, 180, 36);
 		contentPane.add(btnCiTypHinzufuegen);
 
-		// Button "CI-Typ ï¿½ndern"
-		btnCiTypAendern = new JButton("CI-Typ Bearbeiten");
-		btnCiTypAendern.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				NeuerCITyp neuerCITyp = new NeuerCITyp();
-				neuerCITyp.setVisible(true);
-			}
-		});
-		btnCiTypAendern.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnCiTypAendern.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnCiTypAendern.setBackground(Color.WHITE);
-		btnCiTypAendern.setBounds(880, 180, 180, 36);
-		contentPane.add(btnCiTypAendern);
-
 		// Button "CI-Typ Lï¿½schen"
 		btnCiTypLoeschen = new JButton("CI-Typ Loeschen");
 		btnCiTypLoeschen.addActionListener(new ActionListener() {
@@ -191,7 +176,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypLoeschen.setBackground(Color.WHITE);
-		btnCiTypLoeschen.setBounds(880, 240, 180, 30);
+		btnCiTypLoeschen.setBounds(880, 171, 180, 36);
 		contentPane.add(btnCiTypLoeschen);
 
 		lblNewLabel = new JLabel("CI-Typ-Uebersicht (Admin)");
