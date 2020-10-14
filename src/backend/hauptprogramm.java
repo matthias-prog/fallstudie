@@ -83,6 +83,26 @@ public class hauptprogramm {
         }
     }
 
+    public static boolean pruefeAdmin (String benutzername) {
+    	 String abfrage = "SELECT IsAdmin from Benutzer where Benutzername='" + benutzername + "'";
+         ResultSet rs = null;
+         boolean istAdmin = false;
+
+         //SQL-Abfrage wird abgeschickt
+         try {
+             rs = stmt.executeQuery(abfrage);
+         } catch (SQLException e) {
+        	 	System.out.println(e);
+         }
+			try {
+				 rs.next();
+				istAdmin = rs.getBoolean("IsAdmin");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+          return istAdmin;
+    }
+    
     /**
      * momentan angemeldeter Nutzer wird ausgeloggt, indem seine BenutzerID vergessen wird
      */
