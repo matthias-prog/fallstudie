@@ -78,7 +78,7 @@ public class Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Login login = new Login();
-				login.getFrmItemproLogin().setVisible(true);
+				login.getFrmItemproLogin().setVisible(true); // öffnet das Login-Fenster
 			}
 		});
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
