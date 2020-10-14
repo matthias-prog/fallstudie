@@ -77,50 +77,7 @@ public class MainAdmin extends JFrame {
 //		});
 		contentPane.add(scrollPane);
 
-		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
-
-		// es wird berechnet wie lang der lÃ¤ngste CITyp ist
-		int maxlength = 0;
-		for (CITyp c : listeCITypen) {
-			int i = 0;
-			for (String s : c.getAttributnamen()) {
-				if (s != null) {
-					i++;
-				}
-			}
-			if (i > maxlength) {
-				maxlength = i;
-			}
-		}
-
-		String[][] datenArray = new String[listeCITypen.size()][maxlength + 2];
-		String[] spaltenNamen = new String[maxlength + 2];
-		spaltenNamen[0] = "ID";
-		spaltenNamen[1] = "Name";
-		for (int i = 1; i <= maxlength; i++) {
-			spaltenNamen[i + 1] = "Attribut " + i;
-		}
-
-		for (int i = 0; i < listeCITypen.size(); i++) {
-			CITyp cityp = listeCITypen.get(i);
-			datenArray[i][0] = String.valueOf(cityp.getCItypID());
-			datenArray[i][1] = cityp.getCItypName();
-
-			for (int j = 2; j < maxlength + 2; j++) {
-				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
-				System.out.println(cityp.getAttributnamen().get(j));
-			}
-
-		}
-
-		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
-
-		tableCITypen = new JTable(tabelle);
-		scrollPane.setViewportView(tableCITypen);
-		tableCITypen.setRowHeight(30);
-		tableCITypen.setName("");
-		tableCITypen.setOpaque(false);
-		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		ladeTabelle();
 
 		/*
 		 * funktioniert nicht tableCITypen.getModel().addTableModelListener(new
@@ -152,6 +109,7 @@ public class MainAdmin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				NeuerCITyp neuerCITyp = new NeuerCITyp();
 				neuerCITyp.setVisible(true);
+				//ladeTabelle();
 
 			}
 		});
@@ -171,6 +129,7 @@ public class MainAdmin extends JFrame {
 				System.out.println("CI-Typ "+typ+ " wird gelöscht...");
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
+				ladeTabelle();
 			}
 		});
 		btnCiTypLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -265,6 +224,54 @@ public class MainAdmin extends JFrame {
 		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAuswertungAnzeigen.setBounds(495, 70, 180, 30);
 		contentPane.add(btnAuswertungAnzeigen);
+		
+	}
+	
+	private void ladeTabelle() {
+		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
+
+		// es wird berechnet wie lang der lÃ¤ngste CITyp ist
+		int maxlength = 0;
+		for (CITyp c : listeCITypen) {
+			int i = 0;
+			for (String s : c.getAttributnamen()) {
+				if (s != null) {
+					i++;
+				}
+			}
+			if (i > maxlength) {
+				maxlength = i;
+			}
+		}
+
+		String[][] datenArray = new String[listeCITypen.size()][maxlength + 2];
+		String[] spaltenNamen = new String[maxlength + 2];
+		spaltenNamen[0] = "ID";
+		spaltenNamen[1] = "Name";
+		for (int i = 1; i <= maxlength; i++) {
+			spaltenNamen[i + 1] = "Attribut " + i;
+		}
+
+		for (int i = 0; i < listeCITypen.size(); i++) {
+			CITyp cityp = listeCITypen.get(i);
+			datenArray[i][0] = String.valueOf(cityp.getCItypID());
+			datenArray[i][1] = cityp.getCItypName();
+
+			for (int j = 2; j < maxlength + 2; j++) {
+				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
+				System.out.println(cityp.getAttributnamen().get(j));
+			}
+
+		}
+
+		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
+
+		tableCITypen = new JTable(tabelle);
+		scrollPane.setViewportView(tableCITypen);
+		tableCITypen.setRowHeight(30);
+		tableCITypen.setName("");
+		tableCITypen.setOpaque(false);
+		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 	}
 }
