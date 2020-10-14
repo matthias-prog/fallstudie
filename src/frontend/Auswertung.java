@@ -63,5 +63,7 @@ public class Auswertung extends JFrame {
 			
 			textArea.append("Anzahl der CIRecords von " + nameCITyp + " :" + anzahlRecords + "\n");
 	}
+		
+		
 }
 }
