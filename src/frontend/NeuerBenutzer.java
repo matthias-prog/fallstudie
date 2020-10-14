@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -24,8 +25,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 
-public class NeuerBenutzer extends JFrame {
+public class NeuerBenutzer extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -45,8 +47,9 @@ public class NeuerBenutzer extends JFrame {
 
 	public NeuerBenutzer() {
 		setBackground(Color.WHITE);
+		setModalityType(ModalityType.APPLICATION_MODAL);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("ItemPro - Benutzer hinzufügen");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 350, 350);
 		setLocationRelativeTo(null);

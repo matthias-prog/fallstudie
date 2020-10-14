@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
+import daten.Message;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -75,9 +76,8 @@ public class Benutzerverwaltung extends JFrame {
 					catch (Exception ert) {
 					ert.printStackTrace();
 					}
-					
-				
-			}
+					ladeTabelle();
+				}
 		});
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -93,6 +93,17 @@ public class Benutzerverwaltung extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String benutzerID = table.getValueAt(table.getSelectedRow(), 0).toString();
+				int id = Integer.parseInt(benutzerID);
+				Message result = backend.hauptprogramm.benutzerLoeschen(id);
+				System.out.println(result.getNachricht());;
+				ladeTabelle();
+				
+			}
+		});
 		btnNewButton_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -102,6 +113,10 @@ public class Benutzerverwaltung extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 120, 855, 450);
 		contentPane.add(scrollPane);
+		
+		ladeTabelle();
+		
+		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Benutzer.");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -114,8 +129,26 @@ public class Benutzerverwaltung extends JFrame {
 		lblWaehlenSieEinen.setBackground(Color.WHITE);
 		lblWaehlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWaehlenSieEinen);
+				
 		
-		
+		JButton btnNewButton_3 = new JButton("Abmelden");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				
+			}
+		});
+		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnNewButton_3.setBackground(Color.WHITE);
+		btnNewButton_3.setBounds(880, 70, 180, 30);
+		contentPane.add(btnNewButton_3);
+	
+	
+	}
+	
+	private void ladeTabelle() {
 		ArrayList<daten.Benutzer> listeBenutzer = backend.hauptprogramm.holeAlleBenutzer();
 
 
@@ -133,6 +166,7 @@ public class Benutzerverwaltung extends JFrame {
 			datenArray[i][1] = benutzer.getBenutzername();
 			datenArray[i][2] = benutzer.getPasswort();
 			datenArray[i][3] = benutzer.getIstAdmin();
+		}
 
 			/*
 			for (int j = 2; j < 3; j++) {
@@ -148,22 +182,9 @@ public class Benutzerverwaltung extends JFrame {
 		table.setFont(new Font("Calibri", Font.PLAIN, 14));
 		table.setRowHeight(30);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		scrollPane.setViewportView(table);
 		
-		
-		JButton btnNewButton_3 = new JButton("Abmelden");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				
-			}
-		});
-		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton_3.setBackground(Color.WHITE);
-		btnNewButton_3.setBounds(880, 70, 180, 30);
-		contentPane.add(btnNewButton_3);
 	}
-}	
+	
+	
+	
 }
