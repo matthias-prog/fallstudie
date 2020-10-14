@@ -1,6 +1,5 @@
 package frontend;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -8,10 +7,9 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,17 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
 import daten.Message;
-
-import javax.swing.ImageIcon;
 
 //import com.sun.tools.javac.comp.Todo;
 
@@ -166,7 +159,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypHinzufuegen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypHinzufuegen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypHinzufuegen.setBackground(Color.WHITE);
-		btnCiTypHinzufuegen.setBounds(880, 120, 180, 50);
+		btnCiTypHinzufuegen.setBounds(880, 120, 180, 36);
 		contentPane.add(btnCiTypHinzufuegen);
 
 		// Button "CI-Typ ï¿½ndern"
@@ -180,7 +173,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypAendern.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypAendern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypAendern.setBackground(Color.WHITE);
-		btnCiTypAendern.setBounds(880, 180, 180, 50);
+		btnCiTypAendern.setBounds(880, 180, 180, 36);
 		contentPane.add(btnCiTypAendern);
 
 		// Button "CI-Typ Lï¿½schen"
@@ -198,7 +191,7 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypLoeschen.setBackground(Color.WHITE);
-		btnCiTypLoeschen.setBounds(880, 240, 180, 50);
+		btnCiTypLoeschen.setBounds(880, 240, 180, 30);
 		contentPane.add(btnCiTypLoeschen);
 
 		lblNewLabel = new JLabel("CI-Typ-Uebersicht (Admin)");
@@ -274,7 +267,7 @@ public class MainAdmin extends JFrame {
 
 			}
 		});
-		btnCiRecordsAnzeigen.setBounds(449, 70, 183, 30);
+		btnCiRecordsAnzeigen.setBounds(495, 29, 183, 30);
 		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
