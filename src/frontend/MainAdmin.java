@@ -187,8 +187,8 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen = new JButton("CI-Typ Loeschen");
 		btnCiTypLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NeuerCITyp neuerCITyp = new NeuerCITyp();
-				neuerCITyp.setVisible(true);
+				//TODO: Methode löscheCITyp
+
 			}
 		});
 		btnCiTypLoeschen.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -208,6 +208,7 @@ public class MainAdmin extends JFrame {
 				dispose();
 				Login login = new Login();
 				login.getFrmItemproLogin().setVisible(true); // öffnet das Login-Fenster
+				backend.hauptprogramm.logout(); // aktueller Benutzer wird im Backend abgemeldet bzw. "vergessen"
 			}
 		});
 		
