@@ -65,6 +65,20 @@ public class Benutzerverwaltung extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Benutzer anlegen");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					NeuerBenutzer neuerBenutzer = new NeuerBenutzer();
+					neuerBenutzer.setVisible(true);
+					}
+					catch (Exception ert) {
+					ert.printStackTrace();
+					}
+					
+				
+			}
+		});
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 14));
