@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
+import daten.Message;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -91,6 +92,17 @@ public class Benutzerverwaltung extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String benutzerID = table.getValueAt(table.getSelectedRow(), 0).toString();
+				int id = Integer.parseInt(benutzerID);
+				Message result = backend.hauptprogramm.benutzerLoeschen(id);
+				System.out.println(result.getNachricht());;
+				ladeTabelle();
+				
+			}
+		});
 		btnNewButton_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.setFont(new Font("Calibri", Font.PLAIN, 14));
