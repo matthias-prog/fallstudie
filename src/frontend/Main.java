@@ -34,7 +34,7 @@ public class Main extends JFrame {
 	private JScrollPane scrollPane;
 	private JLabel lblNewLabel;
 	private JLabel lblWhlenSieEinen;
-	private JButton btnNewButton;
+	private JButton btnAuswertungAnzeigen;
 
 	/**
 	 * Launch the application.
@@ -165,16 +165,16 @@ public class Main extends JFrame {
 		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWhlenSieEinen);
 		
-		btnNewButton = new JButton("Auswertung anzeigen");
-		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton.addActionListener(new ActionListener() {
+		btnAuswertungAnzeigen = new JButton("Auswertung anzeigen");
+		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAuswertungAnzeigen.setBackground(Color.WHITE);
+		btnAuswertungAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAuswertungAnzeigen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(690, 70, 180, 30);
-		contentPane.add(btnNewButton);
+		btnAuswertungAnzeigen.setBounds(690, 70, 180, 30);
+		contentPane.add(btnAuswertungAnzeigen);
 
 	}
 }

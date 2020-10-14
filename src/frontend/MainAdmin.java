@@ -45,6 +45,7 @@ public class MainAdmin extends JFrame {
 	static MainAdmin frame = new MainAdmin();
 	private JLabel lblNewLabel_1;
 	private JLabel lblWhlenSieEinen;
+	private JButton btnAuswertungAnzeigen;
 
 	
 	/**
@@ -148,7 +149,7 @@ public class MainAdmin extends JFrame {
 				//TODO: ActionEvent: Funktionalit�t hinzuf�gen
 			}
 		});
-		btnBenutzerverwaltung.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBenutzerverwaltung.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnBenutzerverwaltung.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnBenutzerverwaltung.setBackground(Color.WHITE);
 		btnBenutzerverwaltung.setBounds(685, 70, 180, 30);
@@ -163,7 +164,7 @@ public class MainAdmin extends JFrame {
 				
 			}
 		});
-		btnCiTypHinzufuegen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiTypHinzufuegen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypHinzufuegen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypHinzufuegen.setBackground(Color.WHITE);
 		btnCiTypHinzufuegen.setBounds(880, 120, 180, 50);
@@ -177,7 +178,7 @@ public class MainAdmin extends JFrame {
 				neuerCITyp.setVisible(true);
 			}
 		});
-		btnCiTypAendern.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiTypAendern.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypAendern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypAendern.setBackground(Color.WHITE);
 		btnCiTypAendern.setBounds(880, 180, 180, 50);
@@ -191,7 +192,7 @@ public class MainAdmin extends JFrame {
 
 			}
 		});
-		btnCiTypLoeschen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiTypLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiTypLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiTypLoeschen.setBackground(Color.WHITE);
 		btnCiTypLoeschen.setBounds(880, 240, 180, 50);
@@ -212,7 +213,7 @@ public class MainAdmin extends JFrame {
 			}
 		});
 		
-		btnAbmelden_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAbmelden_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden_1.setBackground(Color.WHITE);
 		btnAbmelden_1.setBounds(880, 70, 180, 30);
@@ -241,8 +242,15 @@ public class MainAdmin extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(645, 70, 30, 30);
+		btnNewButton.setBounds(1030, 11, 30, 30);
 		contentPane.add(btnNewButton);
+		
+		btnAuswertungAnzeigen = new JButton("Auswertung anzeigen");
+		btnAuswertungAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAuswertungAnzeigen.setBackground(Color.WHITE);
+		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAuswertungAnzeigen.setBounds(495, 70, 180, 30);
+		contentPane.add(btnAuswertungAnzeigen);
 		
 		
 	}
