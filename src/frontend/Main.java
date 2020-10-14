@@ -79,6 +79,7 @@ public class Main extends JFrame {
 				dispose();
 				Login login = new Login();
 				login.getFrmItemproLogin().setVisible(true); // öffnet das Login-Fenster
+				backend.hauptprogramm.logout(); // aktueller Benutzer wird im Backend abgemeldet bzw. "vergessen"
 			}
 		});
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 14));
