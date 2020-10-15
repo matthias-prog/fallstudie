@@ -101,7 +101,7 @@ public class Main extends JFrame {
 		spaltenNamen[0] = "ID";
 		spaltenNamen[1] = "Name";
 		for (int i = 1; i <= maxlength; i++) {
-			spaltenNamen[i + 1] = "Attribut" + i;
+			spaltenNamen[i + 1] = "Attribut " + i;
 		}
 
 		for (int i = 0; i < listeCITypen.size(); i++) {

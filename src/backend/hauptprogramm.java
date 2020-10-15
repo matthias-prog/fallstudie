@@ -404,7 +404,7 @@ public class hauptprogramm {
             rs = stmt.executeQuery(ueberpruefung);
             rs.next();
             rs.getString(2); //hier tritt die SQLException auf wenn die Anfrage keine Datensätze geliefert hat --> wollen wir haben
-            return new Message(false, "Löschen blockiert: Es existieren noch CIRecords von diesem Typ");
+            return new Message(false, "Loeschen blockiert: Es existieren noch CIRecords von diesem Typ");
 
         } catch (SQLException e1) {
 
@@ -412,10 +412,10 @@ public class hauptprogramm {
             try {
                 stmt.executeUpdate(delete);
                 stmt.execute(dropTable);
-                return new Message(true, "Erfolgreich gelöscht!");
+                return new Message(true, "Erfolgreich geloescht!");
 
             } catch (SQLException e2) {
-                return new Message(false, "Fehler beim Löschen aufgetreten!");
+                return new Message(false, "Fehler beim Loeschen aufgetreten!");
             }
         }
     }

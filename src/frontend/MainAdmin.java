@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -117,9 +118,11 @@ public class MainAdmin extends JFrame {
 				//Methode löscheCITyp
 			
 				String typ = tableCITypen.getValueAt(tableCITypen.getSelectedRow(), 1).toString();
-				System.out.println("CI-Typ "+typ+ " wird geloescht...");
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
+				if (result.isErfolg() == false) {
+				JOptionPane.showMessageDialog(null, result.getNachricht(), "Fehler",
+						JOptionPane.ERROR_MESSAGE);}
 				ladeTabelle();
 			}
 		});

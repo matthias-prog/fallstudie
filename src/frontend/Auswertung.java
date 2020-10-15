@@ -28,8 +28,8 @@ public class Auswertung extends JFrame {
 	 * Create the frame.
 	 */
 	public Auswertung() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1080, 720);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 397, 383);
 		contentPane = new JPanel();
 		contentPane.setFont(new Font("Calibri", Font.PLAIN, 14));
 		contentPane.setMinimumSize(new Dimension(1080, 720));
@@ -45,7 +45,7 @@ public class Auswertung extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textArea.setBorder(new LineBorder(new Color(0, 0, 0)));
-		textArea.setBounds(10, 52, 1048, 220);
+		textArea.setBounds(10, 52, 365, 220);
 		textArea.setEditable(false);
 		contentPane.add(textArea);
 		

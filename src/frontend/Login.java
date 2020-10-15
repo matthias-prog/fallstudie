@@ -126,6 +126,7 @@ public class Login {
 					Main main = new Main();
 					main.setVisible(true);}}
 					else {
+						txtAnmeldungFehlgeschlagen.setText(message.getNachricht());
 						txtAnmeldungFehlgeschlagen.setEnabled(true);
 						txtAnmeldungFehlgeschlagen.setVisible(true);}
 				
