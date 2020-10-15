@@ -100,7 +100,7 @@ public class MainAdmin extends JFrame {
 		btnBenutzerverwaltung.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnBenutzerverwaltung.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnBenutzerverwaltung.setBackground(Color.WHITE);
-		btnBenutzerverwaltung.setBounds(685, 70, 180, 30);
+		btnBenutzerverwaltung.setBounds(685, 70, 180, 36);
 		contentPane.add(btnBenutzerverwaltung);
 
 		// Button "CI-Typ Hinzufï¿½gen"
@@ -162,7 +162,7 @@ public class MainAdmin extends JFrame {
 		btnAbmelden_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden_1.setBackground(Color.WHITE);
-		btnAbmelden_1.setBounds(880, 70, 180, 30);
+		btnAbmelden_1.setBounds(880, 70, 180, 36);
 		contentPane.add(btnAbmelden_1);
 
 		lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
@@ -217,7 +217,7 @@ public class MainAdmin extends JFrame {
 
 			}
 		});
-		btnCiRecordsAnzeigen.setBounds(495, 29, 183, 30);
+		btnCiRecordsAnzeigen.setBounds(880, 221, 180, 36);
 		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
@@ -225,10 +225,16 @@ public class MainAdmin extends JFrame {
 
 		
 		btnAuswertungAnzeigen = new JButton("Auswertung anzeigen");
+		btnAuswertungAnzeigen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Auswertung auswertung = new Auswertung();
+				auswertung.setVisible(true);
+			}
+		});
 		btnAuswertungAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAuswertungAnzeigen.setBackground(Color.WHITE);
 		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnAuswertungAnzeigen.setBounds(495, 70, 180, 30);
+		btnAuswertungAnzeigen.setBounds(495, 70, 180, 36);
 		contentPane.add(btnAuswertungAnzeigen);
 		
 	}

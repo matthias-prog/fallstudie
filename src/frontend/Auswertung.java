@@ -61,7 +61,7 @@ public class Auswertung extends JFrame {
 			String nameCITyp = alleCITypen.get(i).getCItypName();
 			int anzahlRecords = backend.hauptprogramm.zeigeAnzahlRecords(nameCITyp);
 			
-			textArea.append("Anzahl der CIRecords von " + nameCITyp + " :" + anzahlRecords + "\n");
+			textArea.append("Anzahl der CIRecords von " + nameCITyp + " : " + anzahlRecords + "\n");
 	}
 		
 		
