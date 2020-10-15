@@ -30,23 +30,6 @@ import daten.CITyp;
 public class NeuerCIRecord extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_Attribut1;
-	private JTextField textField_Attribut2;
-	private JTextField textField_Attribut3;
-	private JTextField textField_Attribut4;
-	private JTextField textField_Attribut5;
-	private JTextField textField_Attribut6;
-	private JTextField textField_Attribut7;
-	private JTextField textField_Attribut8;
-	private JTextField textField_Attribut9;
-	private JTextField textField_Attribut10;
-	private JTextField textField_Attribut11;
-	private JTextField textField_Attribut12;
-	private JTextField textField_Attribut13;
-	private JTextField textField_Attribut14;
-	private JTextField textField_Attribut15;
-	private JTextField textField_ciRecordName;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JTextField[] textfelder = new JTextField[15];
@@ -64,31 +47,12 @@ public class NeuerCIRecord extends JDialog {
 		int hoehe = 84 + cityp.getAttributnamen().size() * 45+70;
 		setBounds(100, 100, 323, hoehe);
 		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JPanel contentPane_1 = new JPanel();
-		contentPane_1.setLayout(null);
-		contentPane_1.setMaximumSize(new Dimension(1080, 720));
-		contentPane_1.setBounds(new Rectangle(172, 19, 1, 1));
-		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane_1.setBackground(Color.WHITE);
-		contentPane.add(contentPane_1);
-
-		JButton btnSuche = new JButton("\uD83D\uDD0D");
-		btnSuche.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
-		btnSuche.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnSuche.setBackground(Color.WHITE);
-		btnSuche.setBounds(622, 60, 50, 50);
-		contentPane_1.add(btnSuche);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		scrollPane.setBounds(17, 160, 1029, 513);
-		contentPane_1.add(scrollPane);
 
 		for (int i = 0; i < cityp.getAttributnamen().size(); i++) {
 			textfelder[i] = new JTextField();
