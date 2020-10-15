@@ -91,7 +91,7 @@ public class CIRecordAnsicht extends JFrame {
 		});
 		bearbeitenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		bearbeitenButton.setBackground(Color.WHITE);
-		bearbeitenButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		bearbeitenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
 		bearbeitenButton.setBounds(880, 180, 180, 50);
 		contentPane.add(bearbeitenButton);
 		

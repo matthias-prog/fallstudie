@@ -189,7 +189,7 @@ public class MainAdmin extends JFrame {
 			}
 		});
 		btnCiRecordsAnzeigen.setBounds(880, 221, 180, 36);
-		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiRecordsAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
 		contentPane.add(btnCiRecordsAnzeigen);
