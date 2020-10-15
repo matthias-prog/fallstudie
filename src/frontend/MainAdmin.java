@@ -117,7 +117,7 @@ public class MainAdmin extends JFrame {
 				//Methode löscheCITyp
 			
 				String typ = tableCITypen.getValueAt(tableCITypen.getSelectedRow(), 1).toString();
-				System.out.println("CI-Typ "+typ+ " wird gelöscht...");
+				System.out.println("CI-Typ "+typ+ " wird geloescht...");
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
 				ladeTabelle();
@@ -161,20 +161,6 @@ public class MainAdmin extends JFrame {
 		lblWhlenSieEinen.setBackground(Color.WHITE);
 		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWhlenSieEinen);
-
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(MainAdmin.class.getResource("/img/refresh.png")));
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				frame.dispose(); // this will close frame i.e. NewJFrame
-
-				frame.setVisible(true);
-			}
-		});
-		btnNewButton.setBounds(1030, 11, 30, 30);
-		contentPane.add(btnNewButton);
 
 		JButton btnCiRecordsAnzeigen = new JButton("CI Records anzeigen");
 		btnCiRecordsAnzeigen.addActionListener(new ActionListener() {

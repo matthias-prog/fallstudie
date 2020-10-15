@@ -24,8 +24,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import backend.hauptprogramm;
+
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class NeuerBenutzer extends JDialog {
 
@@ -40,6 +45,9 @@ public class NeuerBenutzer extends JDialog {
 	private JButton btnAbmelden_1;
 	private JLabel lblPassword;
 	private JLabel lblAdmin;
+	String passwort;
+	String benutzername;
+	boolean sollAdmin;
 
 	/**
 	 * Create the frame.
@@ -89,7 +97,11 @@ public class NeuerBenutzer extends JDialog {
 		contentPane.add(txtFieldPasswort);
 		txtFieldPasswort.setColumns(10);
 
-		
+		JCheckBox chckbxAdmin = new JCheckBox("Ja");
+		chckbxAdmin.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxAdmin.setBackground(Color.WHITE);
+		chckbxAdmin.setBounds(10, 187, 93, 21);
+		contentPane.add(chckbxAdmin);
 
 		JButton btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -123,8 +135,8 @@ public class NeuerBenutzer extends JDialog {
 								JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
-					String benutzername = txtFieldName.getText();
-					attribute.add(benutzername);
+					benutzername = txtFieldName.getText();
+					
 				};
 				
 				if (txtFieldPasswort.getText().isEmpty()) {
@@ -133,32 +145,17 @@ public class NeuerBenutzer extends JDialog {
 								JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
-					String passwort = txtFieldPasswort.getText();
-					attribute.add(passwort);
+					passwort = txtFieldPasswort.getText();
+					
 				};
 				
-				JCheckBox chckbxIsAdmin = new JCheckBox("Ja");
-				chckbxIsAdmin.setBackground(Color.WHITE);
-				chckbxIsAdmin.setBounds(10, 190, 120, 20);
-				contentPane.add(chckbxIsAdmin);
 				
-				boolean sollAdmin = false;
-				if(chckbxIsAdmin.isSelected() == true){sollAdmin = true;}
-				else {sollAdmin=false;}
+				sollAdmin = chckbxAdmin.isSelected();
 				
 
-				
-				
-
-				
-
-				// daten.Message message = hauptprogramm.erstelleCIRecord(CITyp, attribute);
+				daten.Message message = hauptprogramm.benutzerAnlegen(benutzername, passwort, sollAdmin);
 
 				dispose();
-
-				// MainAdmin.frame.dispose();
-
-				// new MainAdmin().setVisible(true);
 
 			}
 		});
@@ -183,9 +180,12 @@ public class NeuerBenutzer extends JDialog {
 		lblAdmin.setBounds(10, 170, 120, 20);
 		contentPane.add(lblAdmin);
 		
-		JCheckBox chckbxIsAdmin = new JCheckBox("Ja");
-		chckbxIsAdmin.setBackground(Color.WHITE);
-		chckbxIsAdmin.setBounds(10, 190, 120, 20);
-		contentPane.add(chckbxIsAdmin);
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Ja");
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxNewCheckBox.setBackground(Color.WHITE);
+		chckbxNewCheckBox.setBounds(10, 187, 93, 21);
+		contentPane.add(chckbxNewCheckBox);
+		
+		
 	}
 }
