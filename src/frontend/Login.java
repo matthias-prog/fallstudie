@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -143,6 +144,38 @@ public class Login {
 		btnAnmelden.setFont(new Font("Calibri", Font.PLAIN, 12));
 		btnAnmelden.setBounds(150, 330, 100, 30);
 		frmItemproLogin.getContentPane().add(btnAnmelden);
+		
+		passwordField.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String username = txtBenutzername.getText();
+					char [] passwort = passwordField.getPassword();
+					String password = String.valueOf(passwort);
+				
+					daten.Message message = backend.hauptprogramm.versucheLogin (username, password);
+					
+					if (message.isErfolg()) {
+					frmItemproLogin.dispose();
+					
+					if (backend.hauptprogramm.pruefeAdmin(username)) {
+					MainAdmin mainAdmin = new MainAdmin();
+					mainAdmin.setVisible(true);
+					} else {
+					Main main = new Main();
+					main.setVisible(true);}}
+					else {
+						txtAnmeldungFehlgeschlagen.setEnabled(true);
+						txtAnmeldungFehlgeschlagen.setVisible(true);}
+				
+				}
+				catch(Exception a){
+					a.printStackTrace();
+					System.out.println(a);
+					System.out.println("null");
+				}
+			}
+		});
 		
 		lblAnmelden1 = new JLabel("Melden Sie sich an,");
 		lblAnmelden1.setFont(new Font("Calibri", Font.PLAIN, 12));

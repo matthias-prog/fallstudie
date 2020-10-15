@@ -76,16 +76,8 @@ public class Main extends JFrame {
 		contentPane.add(btnAbmelden);
 
 		scrollPane = new JScrollPane();
-//		scrollPane.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				dispose();
-//				CIRecordAnsicht records = new CIRecordAnsicht();
-//				records.setVisible(true);
-//			}
-//		});
 		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
-		scrollPane.setBounds(69, 122, 1050, 450);
+		scrollPane.setBounds(10, 122, 1050, 450);
 		contentPane.add(scrollPane);
 		
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();

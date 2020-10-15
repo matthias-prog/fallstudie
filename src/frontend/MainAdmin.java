@@ -67,24 +67,9 @@ public class MainAdmin extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		scrollPane.setBounds(10, 120, 855, 450);
-//		scrollPane.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				dispose();
-//				CIRecordAnsicht records = new CIRecordAnsicht();
-//				records.setVisible(true);
-//			}
-//		});
 		contentPane.add(scrollPane);
 
 		ladeTabelle();
-
-		/*
-		 * funktioniert nicht tableCITypen.getModel().addTableModelListener(new
-		 * TableModelListener() {
-		 * 
-		 * public void tableChanged(TableModelEvent e) { tableCITypen.repaint(); } });
-		 */
 
 		// Button "Benutzerverwaltung"
 		JButton btnBenutzerverwaltung = new JButton("Benutzerverwaltung");
