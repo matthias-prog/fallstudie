@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -32,21 +30,7 @@ public class BearbeiteCIRecord extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField[] textfelder = new JTextField[15];
-	private JTextField textField_Attribut1;
-	private JTextField textField_Attribut2;
-	private JTextField textField_Attribut3;
-	private JTextField textField_Attribut4;
-	private JTextField textField_Attribut5;
-	private JTextField textField_Attribut6;
-	private JTextField textField_Attribut7;
-	private JTextField textField_Attribut8;
-	private JTextField textField_Attribut9;
-	private JTextField textField_Attribut10;
-	private JTextField textField_Attribut11;
-	private JTextField textField_Attribut12;
-	private JTextField textField_Attribut13;
-	private JTextField textField_Attribut14;
-	private JTextField textField_Attribut15;
+	private JLabel[] attributNamen = new JLabel[15];
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 
@@ -56,10 +40,11 @@ public class BearbeiteCIRecord extends JDialog {
 
 	public BearbeiteCIRecord(CITyp cityp, int RecordID) {
 		setModalityType(ModalityType.APPLICATION_MODAL);
-		setTitle("ItemPro - CI-Record hinzuf�gen");
+		setTitle("ItemPro - CI-Record hinzufügen");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
-		setBounds(100, 100, 323, 560);
+		int hoehe = 84 + cityp.getAttributnamen().size() * 45+70;
+		setBounds(100, 100, 323, hoehe);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -98,9 +83,15 @@ public class BearbeiteCIRecord extends JDialog {
 
 		for (int i = 0; i < cityp.getAttributnamen().size(); i++) {
 			textfelder[i] = new JTextField(cirecord.getAttribute().get(i));
-			textfelder[i].setBounds(10, 95 + i * 25, 291, 20);
+			int abstand = 84 + i * 45;
+			textfelder[i].setBounds(10, abstand, 291, 20);
 			contentPane.add(textfelder[i]);
 			textfelder[i].setColumns(10);
+
+			attributNamen[i] = new JLabel(cityp.getAttributnamen().get(i) + ":");
+			attributNamen[i].setFont(new Font("Calibri", Font.PLAIN, 14));
+			attributNamen[i].setBounds(10, abstand - 14, 290, 14);
+			contentPane.add(attributNamen[i]);
 		}
 
 		JButton btnAbbrechen = new JButton("Abbrechen");
@@ -114,7 +105,7 @@ public class BearbeiteCIRecord extends JDialog {
 				dispose();
 			}
 		});
-		btnAbbrechen.setBounds(178, 491, 123, 30);
+		btnAbbrechen.setBounds(178,hoehe-80, 123, 30);
 		contentPane.add(btnAbbrechen);
 
 		JButton btnSpeichern = new JButton("Speichern");
@@ -122,7 +113,7 @@ public class BearbeiteCIRecord extends JDialog {
 		btnSpeichern.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnSpeichern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnSpeichern.setBackground(Color.WHITE);
-		btnSpeichern.setBounds(10, 491, 123, 30);
+		btnSpeichern.setBounds(10, hoehe-80, 123, 30);
 		contentPane.add(btnSpeichern);
 
 		btnSpeichern.addActionListener(new ActionListener() {
@@ -141,13 +132,13 @@ public class BearbeiteCIRecord extends JDialog {
 		});
 
 		lblNewLabel = new JLabel("Neuer CI-Record");
-		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
 		lblNewLabel.setBounds(10, 19, 105, 21);
 		contentPane.add(lblNewLabel);
 
-		lblNewLabel_1 = new JLabel("Attribute");
+		lblNewLabel_1 = new JLabel("Attribute:");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 74, 82, 14);
+		lblNewLabel_1.setBounds(10, 44, 85, 14);
 		contentPane.add(lblNewLabel_1);
 	}
 }

@@ -254,6 +254,17 @@ public class hauptprogramm {
     public static Message erstelleCITyp(String CITypName, ArrayList<String> Attribute) {
 
         PreparedStatement neuerCITyp;
+        String abfrage = "SELECT * from cityp where typname = '" + CITypName + "';";
+        ResultSet rs;
+        
+        //SQL-Abfrage wird abgeschickt
+        try {
+            rs = stmt.executeQuery(abfrage);
+            if (rs.next()) {
+            	return new Message(false, "Es existiert bereits ein CITyp mit diesem Namen.");
+            }
+        } catch (SQLException e) {
+        }
 
         try {
             neuerCITyp = con.prepareStatement("INSERT into cityp (TypName, Attribut1, Attribut2, Attribut3, Attribut4, Attribut5, Attribut6,Attribut7,Attribut8,Attribut9,Attribut10,Attribut11,Attribut12,Attribut13,Attribut14,Attribut15)" +

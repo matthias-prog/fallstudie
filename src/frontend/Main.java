@@ -36,21 +36,6 @@ public class Main extends JFrame {
 	private JLabel lblWhlenSieEinen;
 	private JButton btnAuswertungAnzeigen;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Main frame = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -87,7 +72,7 @@ public class Main extends JFrame {
 		btnAbmelden.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden.setBackground(Color.WHITE);
-		btnAbmelden.setBounds(880, 70, 180, 30);
+		btnAbmelden.setBounds(880, 70, 180, 36);
 		contentPane.add(btnAbmelden);
 
 		scrollPane = new JScrollPane();
@@ -100,7 +85,7 @@ public class Main extends JFrame {
 //			}
 //		});
 		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
-		scrollPane.setBounds(10, 120, 1050, 450);
+		scrollPane.setBounds(69, 122, 1050, 450);
 		contentPane.add(scrollPane);
 		
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
@@ -191,7 +176,7 @@ public class Main extends JFrame {
 
 			}
 		});
-		btnCiRecordsAnzeigen.setBounds(497, 70, 183, 30);
+		btnCiRecordsAnzeigen.setBounds(497, 70, 183, 36);
 		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
@@ -203,9 +188,11 @@ public class Main extends JFrame {
 		btnAuswertungAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAuswertungAnzeigen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Auswertung auswertung = new Auswertung();
+				auswertung.setVisible(true);
 			}
 		});
-		btnAuswertungAnzeigen.setBounds(690, 70, 180, 30);
+		btnAuswertungAnzeigen.setBounds(690, 70, 180, 36);
 		contentPane.add(btnAuswertungAnzeigen);
 
 	}

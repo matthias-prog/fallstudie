@@ -313,7 +313,9 @@ public class NeuerCITyp extends JDialog {
 				}
 				
 				daten.Message message = hauptprogramm.erstelleCITyp(citypName, attribute);
-				System.out.println(message.getNachricht());
+				if (message.isErfolg() == false) {
+					JOptionPane.showMessageDialog(null, message.getNachricht(),"Fehler",JOptionPane.ERROR_MESSAGE);
+				}
 				
 				dispose();
 				

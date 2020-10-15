@@ -100,7 +100,7 @@ public class MainAdmin extends JFrame {
 		btnBenutzerverwaltung.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnBenutzerverwaltung.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnBenutzerverwaltung.setBackground(Color.WHITE);
-		btnBenutzerverwaltung.setBounds(685, 70, 180, 30);
+		btnBenutzerverwaltung.setBounds(685, 70, 180, 36);
 		contentPane.add(btnBenutzerverwaltung);
 
 		// Button "CI-Typ Hinzufï¿½gen"
@@ -132,7 +132,7 @@ public class MainAdmin extends JFrame {
 				//Methode löscheCITyp
 			
 				String typ = tableCITypen.getValueAt(tableCITypen.getSelectedRow(), 1).toString();
-				System.out.println("CI-Typ "+typ+ " wird gelöscht...");
+				System.out.println("CI-Typ "+typ+ " wird geloescht...");
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
 				ladeTabelle();
@@ -162,7 +162,7 @@ public class MainAdmin extends JFrame {
 		btnAbmelden_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAbmelden_1.setBackground(Color.WHITE);
-		btnAbmelden_1.setBounds(880, 70, 180, 30);
+		btnAbmelden_1.setBounds(880, 70, 180, 36);
 		contentPane.add(btnAbmelden_1);
 
 		lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
@@ -176,20 +176,6 @@ public class MainAdmin extends JFrame {
 		lblWhlenSieEinen.setBackground(Color.WHITE);
 		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWhlenSieEinen);
-
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(MainAdmin.class.getResource("/img/refresh.png")));
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				frame.dispose(); // this will close frame i.e. NewJFrame
-
-				frame.setVisible(true);
-			}
-		});
-		btnNewButton.setBounds(1030, 11, 30, 30);
-		contentPane.add(btnNewButton);
 
 		JButton btnCiRecordsAnzeigen = new JButton("CI Records anzeigen");
 		btnCiRecordsAnzeigen.addActionListener(new ActionListener() {
@@ -217,7 +203,7 @@ public class MainAdmin extends JFrame {
 
 			}
 		});
-		btnCiRecordsAnzeigen.setBounds(495, 29, 183, 30);
+		btnCiRecordsAnzeigen.setBounds(880, 221, 180, 36);
 		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
@@ -225,10 +211,16 @@ public class MainAdmin extends JFrame {
 
 		
 		btnAuswertungAnzeigen = new JButton("Auswertung anzeigen");
+		btnAuswertungAnzeigen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Auswertung auswertung = new Auswertung();
+				auswertung.setVisible(true);
+			}
+		});
 		btnAuswertungAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAuswertungAnzeigen.setBackground(Color.WHITE);
 		btnAuswertungAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnAuswertungAnzeigen.setBounds(495, 70, 180, 30);
+		btnAuswertungAnzeigen.setBounds(495, 70, 180, 36);
 		contentPane.add(btnAuswertungAnzeigen);
 		
 	}
