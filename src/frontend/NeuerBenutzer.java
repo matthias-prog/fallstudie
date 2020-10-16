@@ -1,13 +1,10 @@
 package frontend;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,6 +12,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,22 +26,14 @@ import javax.swing.border.LineBorder;
 
 import backend.hauptprogramm;
 
-import javax.swing.JCheckBox;
-import javax.swing.JDialog;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
-
 public class NeuerBenutzer extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField txtFieldName;
 	private JTextField txtFieldPasswort;
 
-	static NeuerBenutzer frame = new NeuerBenutzer();
 	private JLabel lblNewLabel;
 	private JLabel lblUsername;
-	private JButton btnAbmelden_1;
 	private JLabel lblPassword;
 	private JLabel lblAdmin;
 	String passwort;
@@ -57,7 +48,7 @@ public class NeuerBenutzer extends JDialog {
 		setBackground(Color.WHITE);
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setTitle("ItemPro - Benutzer hinzufügen");
+		setTitle("ItemPro - Benutzer hinzufï¿½gen");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 350, 350);
 		setLocationRelativeTo(null);
@@ -66,26 +57,6 @@ public class NeuerBenutzer extends JDialog {
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JPanel contentPane_1 = new JPanel();
-		contentPane_1.setLayout(null);
-		contentPane_1.setMaximumSize(new Dimension(1080, 720));
-		contentPane_1.setBounds(new Rectangle(172, 19, 1, 1));
-		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane_1.setBackground(Color.WHITE);
-		contentPane.add(contentPane_1);
-
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField.setColumns(10);
-		textField.setBorder(new LineBorder(new Color(171, 173, 179)));
-		textField.setBounds(17, 60, 600, 50);
-		contentPane_1.add(textField);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		scrollPane.setBounds(17, 160, 1029, 513);
-		contentPane_1.add(scrollPane);
 
 		txtFieldName = new JTextField();
 		txtFieldName.setBounds(10, 90, 300, 20);

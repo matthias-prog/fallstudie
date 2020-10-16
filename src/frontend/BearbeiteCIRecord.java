@@ -31,8 +31,8 @@ public class BearbeiteCIRecord extends JDialog {
 	private JPanel contentPane;
 	private JTextField[] textfelder = new JTextField[15];
 	private JLabel[] attributNamen = new JLabel[15];
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
+	private JLabel ueberschriftLabel;
+	private JLabel unterUeberschriftLabel;
 
 	/**
 	 * Create the frame.
@@ -111,14 +111,14 @@ public class BearbeiteCIRecord extends JDialog {
 			}
 		});
 
-		lblNewLabel = new JLabel("Neuer CI-Record");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 19, 105, 21);
-		contentPane.add(lblNewLabel);
+		ueberschriftLabel = new JLabel("Neuer CI-Record");
+		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 14));
+		ueberschriftLabel.setBounds(10, 19, 105, 21);
+		contentPane.add(ueberschriftLabel);
 
-		lblNewLabel_1 = new JLabel("Attribute:");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 44, 85, 14);
-		contentPane.add(lblNewLabel_1);
+		unterUeberschriftLabel = new JLabel("Attribute:");
+		unterUeberschriftLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
+		unterUeberschriftLabel.setBounds(10, 44, 85, 14);
+		contentPane.add(unterUeberschriftLabel);
 	}
 }

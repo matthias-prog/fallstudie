@@ -1,9 +1,7 @@
 package frontend;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,23 +13,19 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import backend.hauptprogramm;
-import daten.CIRecord;
 import daten.CITyp;
 
 public class NeuerCIRecord extends JDialog {
 
 	private JPanel contentPane;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
+	private JLabel ueberschriftLabel;
+	private JLabel unterUeberschriftLabel;
 	private JTextField[] textfelder = new JTextField[15];
 	private JLabel[] attributNamen = new JLabel[15];
 
@@ -106,14 +100,14 @@ public class NeuerCIRecord extends JDialog {
 		});
 
 
-		lblNewLabel = new JLabel("Neuer CI-Record");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 19, 105, 21);
-		contentPane.add(lblNewLabel);
+		ueberschriftLabel = new JLabel("Neuer CI-Record");
+		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 14));
+		ueberschriftLabel.setBounds(10, 19, 105, 21);
+		contentPane.add(ueberschriftLabel);
 
-		lblNewLabel_1 = new JLabel("Attribute:");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 44, 82, 14);
-		contentPane.add(lblNewLabel_1);
+		unterUeberschriftLabel = new JLabel("Attribute:");
+		unterUeberschriftLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
+		unterUeberschriftLabel.setBounds(10, 44, 82, 14);
+		contentPane.add(unterUeberschriftLabel);
 	}
 }
