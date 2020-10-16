@@ -1,36 +1,30 @@
 package frontend;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
-
-import javax.swing.JButton;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-
-import daten.CITyp;
-import daten.Message;
-
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+
+import daten.Message;
 
 public class Benutzerverwaltung extends JFrame {
 
 	private JPanel contentPane;
+	private JScrollPane scrollPane;
 	private JTable table;
 	private JTable table_1;
-
-	
 
 	/**
 	 * Create the frame.
@@ -41,30 +35,35 @@ public class Benutzerverwaltung extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 1080, 720);
 		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Benutzerverwaltung");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblNewLabel.setBounds(10, 11, 286, 30);
-		contentPane.add(lblNewLabel);
-		
-		JButton btnNewButton = new JButton("Benutzer anlegen");
-		btnNewButton.addActionListener(new ActionListener() {
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 120, 855, 450);
+		contentPane.add(scrollPane);
+
+		JLabel ueberschriftLabel = new JLabel("Benutzerverwaltung");
+		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 24));
+		ueberschriftLabel.setBounds(10, 11, 286, 30);
+		contentPane.add(ueberschriftLabel);
+
+		JButton anlegenButton = new JButton("Benutzer anlegen");
+		anlegenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 					NeuerBenutzer neuerBenutzer = new NeuerBenutzer();
 					neuerBenutzer.setVisible(true);
-					}
-					catch (Exception ert) {
-					ert.printStackTrace();
-					}
 					ladeTabelle();
+				} catch (Exception ert) {
+					ert.printStackTrace();
 				}
+				ladeTabelle();
+			}
 		});
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -100,44 +99,38 @@ public class Benutzerverwaltung extends JFrame {
 		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String benutzerID = table.getValueAt(table.getSelectedRow(), 0).toString();
 				int id = Integer.parseInt(benutzerID);
 				Message result = backend.hauptprogramm.benutzerLoeschen(id);
-				System.out.println(result.getNachricht());;
+				System.out.println(result.getNachricht());
 				ladeTabelle();
-				
+
 			}
 		});
-		btnNewButton_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_2.setBackground(Color.WHITE);
-		btnNewButton_2.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton_2.setBounds(880, 240, 180, 50);
-		contentPane.add(btnNewButton_2);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 120, 855, 450);
-		contentPane.add(scrollPane);
-		
+		loeschenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		loeschenButton.setBackground(Color.WHITE);
+		loeschenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
+		loeschenButton.setBounds(880, 240, 180, 50);
+		contentPane.add(loeschenButton);
+
 		ladeTabelle();
-		
-		scrollPane.setViewportView(table);
-		
+
+
 		JLabel lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Benutzer.");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblNewLabel_1.setBackground(Color.WHITE);
 		lblNewLabel_1.setBounds(10, 70, 300, 20);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblWaehlenSieEinen = new JLabel("Waehlen Sie einen Benutzer aus um ihn zu bearbeiten oder zu loeschen.");
 		lblWaehlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblWaehlenSieEinen.setBackground(Color.WHITE);
 		lblWaehlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWaehlenSieEinen);
-				
-		
-		JButton btnNewButton_3 = new JButton("Abmelden");
-		btnNewButton_3.addActionListener(new ActionListener() {
+
+		JButton abmeldenButton = new JButton("Abmelden");
+		abmeldenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Login login = new Login();
@@ -158,10 +151,9 @@ public class Benutzerverwaltung extends JFrame {
 	
 	
 	}
-	
+
 	private void ladeTabelle() {
 		ArrayList<daten.Benutzer> listeBenutzer = backend.hauptprogramm.holeAlleBenutzer();
-
 
 		String[][] datenArray = new String[listeBenutzer.size()][4];
 		String[] spaltenNamen = new String[4];
@@ -169,7 +161,6 @@ public class Benutzerverwaltung extends JFrame {
 		spaltenNamen[1] = "Benutzername";
 		spaltenNamen[2] = "Passwort";
 		spaltenNamen[3] = "Admin";
-		
 
 		for (int i = 0; i < listeBenutzer.size(); i++) {
 			daten.Benutzer benutzer = listeBenutzer.get(i);
@@ -179,21 +170,23 @@ public class Benutzerverwaltung extends JFrame {
 			datenArray[i][3] = benutzer.getIstAdmin();
 		}
 
-			/*
-			for (int j = 2; j < 3; j++) {
-				datenArray[i][j] = benutzer.getAttributnamen().get(j - 2);
-				System.out.println(benutzer.getAttributnamen().get(j));
-			}
+		/*
+		 * for (int j = 2; j < 3; j++) { datenArray[i][j] =
+		 * benutzer.getAttributnamen().get(j - 2);
+		 * System.out.println(benutzer.getAttributnamen().get(j)); }
+		 * 
+		 * }
+		 */
 
-		} */
+		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
 
-		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);		
-		
 		table = new JTable(tabelle);
 		table.setFont(new Font("Calibri", Font.PLAIN, 14));
 		table.setDefaultEditor(Object.class, null);
 		table.setRowHeight(30);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
+		scrollPane.setViewportView(table);
+
 	}
+
 }

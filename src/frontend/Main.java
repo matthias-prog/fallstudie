@@ -77,7 +77,7 @@ public class Main extends JFrame {
 
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
-		scrollPane.setBounds(69, 122, 1050, 450);
+		scrollPane.setBounds(10, 122, 1050, 450);
 		contentPane.add(scrollPane);
 		
 		ArrayList<CITyp> listeCITypen = backend.hauptprogramm.holeAlleCITypen();
@@ -101,7 +101,7 @@ public class Main extends JFrame {
 		spaltenNamen[0] = "ID";
 		spaltenNamen[1] = "Name";
 		for (int i = 1; i <= maxlength; i++) {
-			spaltenNamen[i + 1] = "Attribut" + i;
+			spaltenNamen[i + 1] = "Attribut " + i;
 		}
 
 		for (int i = 0; i < listeCITypen.size(); i++) {
@@ -170,7 +170,7 @@ public class Main extends JFrame {
 			}
 		});
 		btnCiRecordsAnzeigen.setBounds(497, 70, 183, 36);
-		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiRecordsAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
 		contentPane.add(btnCiRecordsAnzeigen);

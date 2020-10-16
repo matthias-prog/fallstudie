@@ -31,8 +31,8 @@ public class BearbeiteCIRecord extends JDialog {
 	private JPanel contentPane;
 	private JTextField[] textfelder = new JTextField[15];
 	private JLabel[] attributNamen = new JLabel[15];
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
+	private JLabel ueberschriftLabel;
+	private JLabel unterUeberschriftLabel;
 
 	/**
 	 * Create the frame.
@@ -52,26 +52,6 @@ public class BearbeiteCIRecord extends JDialog {
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JPanel contentPane_1 = new JPanel();
-		contentPane_1.setLayout(null);
-		contentPane_1.setMaximumSize(new Dimension(1080, 720));
-		contentPane_1.setBounds(new Rectangle(172, 19, 1, 1));
-		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane_1.setBackground(Color.WHITE);
-		contentPane.add(contentPane_1);
-
-		JButton btnSuche = new JButton("\uD83D\uDD0D");
-		btnSuche.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
-		btnSuche.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnSuche.setBackground(Color.WHITE);
-		btnSuche.setBounds(622, 60, 50, 50);
-		contentPane_1.add(btnSuche);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		scrollPane.setBounds(17, 160, 1029, 513);
-		contentPane_1.add(scrollPane);
 
 		ArrayList<CIRecord> cirecords = backend.hauptprogramm.holeAlleRecordsVonCITyp(cityp.getCItypName());
 		CIRecord cirecord = null;
@@ -131,14 +111,14 @@ public class BearbeiteCIRecord extends JDialog {
 			}
 		});
 
-		lblNewLabel = new JLabel("Neuer CI-Record");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 19, 105, 21);
-		contentPane.add(lblNewLabel);
+		ueberschriftLabel = new JLabel("Neuer CI-Record");
+		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 14));
+		ueberschriftLabel.setBounds(10, 19, 105, 21);
+		contentPane.add(ueberschriftLabel);
 
-		lblNewLabel_1 = new JLabel("Attribute:");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 44, 85, 14);
-		contentPane.add(lblNewLabel_1);
+		unterUeberschriftLabel = new JLabel("Attribute:");
+		unterUeberschriftLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
+		unterUeberschriftLabel.setBounds(10, 44, 85, 14);
+		contentPane.add(unterUeberschriftLabel);
 	}
 }

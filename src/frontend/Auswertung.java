@@ -48,7 +48,7 @@ public class Auswertung extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Calibri", Font.PLAIN, 14));
 		textArea.setBorder(new LineBorder(new Color(0, 0, 0)));
-		textArea.setBounds(10, 52, 1048, 220);
+		textArea.setBounds(10, 52, 365, 220);
 		textArea.setEditable(false);
 		contentPane.add(textArea);
 		

@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -67,24 +68,9 @@ public class MainAdmin extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		scrollPane.setBounds(10, 120, 855, 450);
-//		scrollPane.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				dispose();
-//				CIRecordAnsicht records = new CIRecordAnsicht();
-//				records.setVisible(true);
-//			}
-//		});
 		contentPane.add(scrollPane);
 
 		ladeTabelle();
-
-		/*
-		 * funktioniert nicht tableCITypen.getModel().addTableModelListener(new
-		 * TableModelListener() {
-		 * 
-		 * public void tableChanged(TableModelEvent e) { tableCITypen.repaint(); } });
-		 */
 
 		// Button "Benutzerverwaltung"
 		JButton btnBenutzerverwaltung = new JButton("Benutzerverwaltung");
@@ -132,9 +118,11 @@ public class MainAdmin extends JFrame {
 				//Methode löscheCITyp
 			
 				String typ = tableCITypen.getValueAt(tableCITypen.getSelectedRow(), 1).toString();
-				System.out.println("CI-Typ "+typ+ " wird geloescht...");
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
+				if (result.isErfolg() == false) {
+				JOptionPane.showMessageDialog(null, result.getNachricht(), "Fehler",
+						JOptionPane.ERROR_MESSAGE);}
 				ladeTabelle();
 			}
 		});
@@ -204,7 +192,7 @@ public class MainAdmin extends JFrame {
 			}
 		});
 		btnCiRecordsAnzeigen.setBounds(880, 221, 180, 36);
-		btnCiRecordsAnzeigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCiRecordsAnzeigen.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnCiRecordsAnzeigen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnCiRecordsAnzeigen.setBackground(Color.WHITE);
 		contentPane.add(btnCiRecordsAnzeigen);
