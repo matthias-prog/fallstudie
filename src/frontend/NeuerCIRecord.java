@@ -95,9 +95,7 @@ public class NeuerCIRecord extends JDialog {
 				
 				
 				for (int i = 0; i < cityp.getAttributnamen().size(); i++) {
-					if (!textfelder[i].getText().isEmpty()) {
 						attribute.add(textfelder[i].getText());
-					}
 				}
 
 				daten.Message message = hauptprogramm.erstelleCIRecord(cityp.getCItypName(), attribute);
