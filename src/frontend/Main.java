@@ -111,7 +111,6 @@ public class Main extends JFrame {
 
 			for (int j = 2; j < maxlength + 2; j++) {
 				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
-				System.out.println(cityp.getAttributnamen().get(j));
 			}
 
 		}

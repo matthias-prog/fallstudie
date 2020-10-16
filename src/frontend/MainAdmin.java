@@ -245,7 +245,6 @@ public class MainAdmin extends JFrame {
 
 			for (int j = 2; j < maxlength + 2; j++) {
 				datenArray[i][j] = cityp.getAttributnamen().get(j - 2);
-				System.out.println(cityp.getAttributnamen().get(j));
 			}
 
 		}
@@ -253,12 +252,12 @@ public class MainAdmin extends JFrame {
 		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
 
 		tableCITypen = new JTable(tabelle);
-		scrollPane.setViewportView(tableCITypen);
 		tableCITypen.setRowHeight(30);
 		tableCITypen.setName("");
 		tableCITypen.setOpaque(false);
 		tableCITypen.setDefaultEditor(Object.class, null);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		scrollPane.setViewportView(tableCITypen);
 		
 	}
 }
