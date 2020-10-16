@@ -58,7 +58,7 @@ public class NeuerCIRecord extends JDialog {
 
 	public NeuerCIRecord(CITyp cityp) {
 		setModalityType(ModalityType.APPLICATION_MODAL);
-		setTitle("ItemPro - CI-Record hinzufügen");
+		setTitle("ItemPro - CI-Record hinzufuegen");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		int hoehe = 84 + cityp.getAttributnamen().size() * 45+70;

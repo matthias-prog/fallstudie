@@ -66,7 +66,7 @@ public class NeuerCITyp extends JDialog {
 	 */
 	
 	public NeuerCITyp() {
-		setTitle("ItemPro - CI-Typ hinzufügen");
+		setTitle("ItemPro - CI-Typ hinzufuegen");
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));

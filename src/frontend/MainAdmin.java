@@ -269,6 +269,7 @@ public class MainAdmin extends JFrame {
 		tableCITypen.setRowHeight(30);
 		tableCITypen.setName("");
 		tableCITypen.setOpaque(false);
+		tableCITypen.setDefaultEditor(Object.class, null);
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 	}

@@ -28,6 +28,7 @@ public class Benutzerverwaltung extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JTable table_1;
 
 	
 
@@ -76,6 +77,24 @@ public class Benutzerverwaltung extends JFrame {
 		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnNewButton_1.setBounds(880, 180, 180, 50);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					int selectedRow = table.getSelectedRow();
+					Object benutzerID = table.getModel().getValueAt(selectedRow, 0);
+					int userID = Integer.valueOf((String) benutzerID);
+					BearbeiteBenutzer BearbeiteBenutzer = new BearbeiteBenutzer(userID);
+					BearbeiteBenutzer.setVisible(true);
+					ladeTabelle();
+				
+				}
+				catch(Exception a){
+					System.out.println("null");
+				}
+				
+			}
+		});
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
@@ -120,8 +139,10 @@ public class Benutzerverwaltung extends JFrame {
 		JButton btnNewButton_3 = new JButton("Abmelden");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				dispose();
+				Login login = new Login();
+				login.getFrmItemproLogin().setVisible(true); // öffnet das Login-Fenster
+				backend.hauptprogramm.logout(); // aktueller Benutzer wird im Backend abgemeldet bzw. "vergessen"
 				
 			}
 		});
@@ -130,6 +151,10 @@ public class Benutzerverwaltung extends JFrame {
 		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.setBounds(880, 70, 180, 30);
 		contentPane.add(btnNewButton_3);
+		
+		table_1 = new JTable();
+		table_1.setBounds(126, 580, 86, 54);
+		contentPane.add(table_1);
 	
 	
 	}
@@ -166,11 +191,9 @@ public class Benutzerverwaltung extends JFrame {
 		
 		table = new JTable(tabelle);
 		table.setFont(new Font("Calibri", Font.PLAIN, 14));
+		table.setDefaultEditor(Object.class, null);
 		table.setRowHeight(30);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 	}
-	
-	
-	
 }

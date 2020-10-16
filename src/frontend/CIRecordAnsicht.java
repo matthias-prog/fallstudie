@@ -155,6 +155,7 @@ public class CIRecordAnsicht extends JFrame {
 		
 		table = new JTable(tabelle);
 		table.setRowHeight(30);
+		table.setDefaultEditor(Object.class, null);
 		scrollPane.setViewportView(table);
 	}
 }

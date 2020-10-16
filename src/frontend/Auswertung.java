@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
@@ -28,8 +29,10 @@ public class Auswertung extends JFrame {
 	 * Create the frame.
 	 */
 	public Auswertung() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
+		setTitle("ItemPro - Auswertung");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		contentPane = new JPanel();
 		contentPane.setFont(new Font("Calibri", Font.PLAIN, 14));
 		contentPane.setMinimumSize(new Dimension(1080, 720));

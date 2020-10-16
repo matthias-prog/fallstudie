@@ -625,6 +625,27 @@ public class hauptprogramm {
             return new Message(false, "Fehler beim Löschen aufgetreten!");
         }
     }
+    
+    /**
+     * aktualisiert den Namen eines Users
+     *
+     * @param benutzerID BenutzerID des Users
+     * @param name   neuer Name des Users
+     * @return Message-Objekt mit Fehlermeldung und Erfolg
+     */
+    public static Message benutzerNameVeraendern(int benutzerID, String name) {
+
+        String update = "update Benutzer set Benutzername ='" + name + "' where BenutzerID=" + benutzerID;
+
+        //SQL-Update wird ausgeführt
+        try {
+            stmt.executeUpdate(update);
+        } catch (SQLException e) {
+            return new Message(false, "SQL-Update fehlgeschlagen");
+        }
+
+        return new Message(true, "Update erfolgreich erledigt");
+    }
 
     /**
      * aktualisiert das Passwort eines Users

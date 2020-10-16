@@ -1,10 +1,13 @@
 package frontend;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -12,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,28 +27,25 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import backend.hauptprogramm;
+import daten.Benutzer;
 import daten.CIRecord;
 import daten.CITyp;
 
-public class BearbeiteCIRecord extends JDialog {
+public class BearbeiteBenutzer extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField[] textfelder = new JTextField[15];
-	private JLabel[] attributNamen = new JLabel[15];
 	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
 
 	/**
 	 * Create the frame.
 	 */
 
-	public BearbeiteCIRecord(CITyp cityp, int RecordID) {
+	public BearbeiteBenutzer(int BenutzerID) {
 		setModalityType(ModalityType.APPLICATION_MODAL);
-		setTitle("ItemPro - CI-Record hinzufuegen");
+		setTitle("ItemPro - Benutzer bearbeiten");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
-		int hoehe = 84 + cityp.getAttributnamen().size() * 45+70;
-		setBounds(100, 100, 323, hoehe);
+		setBounds(100, 100, 350, 350);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -61,38 +62,31 @@ public class BearbeiteCIRecord extends JDialog {
 		contentPane_1.setBackground(Color.WHITE);
 		contentPane.add(contentPane_1);
 
-		JButton btnSuche = new JButton("\uD83D\uDD0D");
-		btnSuche.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
-		btnSuche.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnSuche.setBackground(Color.WHITE);
-		btnSuche.setBounds(622, 60, 50, 50);
-		contentPane_1.add(btnSuche);
+		
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		scrollPane.setBounds(17, 160, 1029, 513);
-		contentPane_1.add(scrollPane);
+		JTextField textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField.setColumns(10);
+		textField.setBorder(new LineBorder(new Color(171, 173, 179)));
+		textField.setBounds(17, 60, 600, 50);
+		contentPane_1.add(textField);
+		
 
-		ArrayList<CIRecord> cirecords = backend.hauptprogramm.holeAlleRecordsVonCITyp(cityp.getCItypName());
-		CIRecord cirecord = null;
-		for (CIRecord cir : cirecords) {
-			if (cir.getCIRecordID() == RecordID) {
-				cirecord = cir;
-			}
-		}
+		JTextField txtFieldName = new JTextField();
+		txtFieldName.setBounds(10, 90, 300, 20);
+		contentPane.add(txtFieldName);
+		txtFieldName.setColumns(10);
 
-		for (int i = 0; i < cityp.getAttributnamen().size(); i++) {
-			textfelder[i] = new JTextField(cirecord.getAttribute().get(i));
-			int abstand = 84 + i * 45;
-			textfelder[i].setBounds(10, abstand, 291, 20);
-			contentPane.add(textfelder[i]);
-			textfelder[i].setColumns(10);
+		JTextField txtFieldPasswort = new JTextField();
+		txtFieldPasswort.setBounds(10, 140, 300, 20);
+		contentPane.add(txtFieldPasswort);
+		txtFieldPasswort.setColumns(10);
 
-			attributNamen[i] = new JLabel(cityp.getAttributnamen().get(i) + ":");
-			attributNamen[i].setFont(new Font("Calibri", Font.PLAIN, 14));
-			attributNamen[i].setBounds(10, abstand - 14, 290, 14);
-			contentPane.add(attributNamen[i]);
-		}
+		JCheckBox chckbxAdmin = new JCheckBox("Ja");
+		chckbxAdmin.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxAdmin.setBackground(Color.WHITE);
+		chckbxAdmin.setBounds(10, 187, 93, 21);
+		contentPane.add(chckbxAdmin);
 
 		JButton btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -105,7 +99,7 @@ public class BearbeiteCIRecord extends JDialog {
 				dispose();
 			}
 		});
-		btnAbbrechen.setBounds(178,hoehe-80, 123, 30);
+		btnAbbrechen.setBounds(178,250, 123, 30);
 		contentPane.add(btnAbbrechen);
 
 		JButton btnSpeichern = new JButton("Speichern");
@@ -113,32 +107,44 @@ public class BearbeiteCIRecord extends JDialog {
 		btnSpeichern.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnSpeichern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnSpeichern.setBackground(Color.WHITE);
-		btnSpeichern.setBounds(10, hoehe-80, 123, 30);
+		btnSpeichern.setBounds(10, 250, 123, 30);
 		contentPane.add(btnSpeichern);
 
 		btnSpeichern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<String> attribute = new ArrayList<>();
-
-				for (int i = 0; i < cityp.getAttributnamen().size(); i++) {
-					if (!textfelder[i].getText().isEmpty()) {
-						attribute.add(textfelder[i].getText());
-					}
-				}
-				daten.Message message = hauptprogramm.aktualisiereCIRecord(cityp.getCItypName(), RecordID, attribute);
+				
+				//daten.Message message = hauptprogramm.benutzerNameVeraendern(BenutzerID, txtFieldName.getText());
 
 				dispose();
 			}
+			
 		});
 
-		lblNewLabel = new JLabel("Neuer CI-Record");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 19, 105, 21);
-		contentPane.add(lblNewLabel);
-
-		lblNewLabel_1 = new JLabel("Attribute:");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 44, 85, 14);
-		contentPane.add(lblNewLabel_1);
+		lblNewLabel = new JLabel("Benutzer bearbeiten:");
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 16));
+		lblNewLabel.setBounds(10, 20, 200, 20);
+		contentPane.add(lblNewLabel);	
+		
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Ja");
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxNewCheckBox.setBackground(Color.WHITE);
+		chckbxNewCheckBox.setBounds(10, 187, 93, 21);
+		contentPane.add(chckbxNewCheckBox);
+		
+		JLabel lblNutzername = new JLabel("Benutzername");
+		lblNutzername.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNutzername.setBounds(10, 70, 120, 20);
+		contentPane.add(lblNutzername);
+		
+		JLabel lblPasswort1 = new JLabel("Passwort");
+		lblPasswort1.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblPasswort1.setBounds(10, 120, 120, 20);
+		contentPane.add(lblPasswort1);
+		
+		JLabel lblAdmin = new JLabel("Admin");
+		lblAdmin.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblAdmin.setBounds(10, 170, 120, 20);
+		contentPane.add(lblAdmin);
 	}
 }
