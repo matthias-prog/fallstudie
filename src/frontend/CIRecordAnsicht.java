@@ -52,6 +52,8 @@ public class CIRecordAnsicht extends JFrame {
 		loeschenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
+				
+				if (selectedRow !=-1) {
 				Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
 				int recordID = Integer.valueOf((String) ciRecordID);
 				
@@ -59,6 +61,10 @@ public class CIRecordAnsicht extends JFrame {
 				
 				backend.hauptprogramm.loescheCIRecord(citypname, recordID);
 				ladeTabelle();
+				} else {
+						JOptionPane.showMessageDialog(null, "Kein CI-Record ausgewaehlt", "Fehler",
+								JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		loeschenButton.setBounds(880, 240, 180, 50);

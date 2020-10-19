@@ -116,6 +116,7 @@ public class MainAdmin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Methode löscheCITyp
 			
+				if (tableCITypen.getSelectedRow() != -1) {
 				String typ = tableCITypen.getValueAt(tableCITypen.getSelectedRow(), 1).toString();
 				Message result = backend.hauptprogramm.loescheCITyp(typ);
 				System.out.println(result.getNachricht());;
@@ -123,6 +124,10 @@ public class MainAdmin extends JFrame {
 				JOptionPane.showMessageDialog(null, result.getNachricht(), "Fehler",
 						JOptionPane.ERROR_MESSAGE);}
 				ladeTabelle();
+				} else {
+						JOptionPane.showMessageDialog(null, "Kein CI-Typ ausgewaehlt", "Fehler",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnCiTypLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
