@@ -109,12 +109,16 @@ public class Benutzerverwaltung extends JFrame {
 		loeschenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				if (table.getSelectedRow() != -1) {
 				String benutzerID = table.getValueAt(table.getSelectedRow(), 0).toString();
 				int id = Integer.parseInt(benutzerID);
 				Message result = backend.hauptprogramm.benutzerLoeschen(id);
 				System.out.println(result.getNachricht());
 				ladeTabelle();
-
+				} else {
+						JOptionPane.showMessageDialog(null, "Kein Benutzer ausgewaehlt", "Fehler",
+								JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		loeschenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
