@@ -29,7 +29,7 @@ public class Auswertung extends JFrame {
 	 * Create the frame.
 	 */
 	public Auswertung() {
-		setBounds(100, 100, 1080, 720);
+		setBounds(100, 100, 397, 318);
 		setTitle("ItemPro - Auswertung");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
