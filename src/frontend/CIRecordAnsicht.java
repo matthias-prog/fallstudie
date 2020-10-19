@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -76,12 +77,19 @@ public class CIRecordAnsicht extends JFrame {
 				
 				try {
 					int selectedRow = table.getSelectedRow();
+					
+					if (selectedRow != -1) {
 					Object ciRecordID = table.getModel().getValueAt(selectedRow, 0);
 					int recordID = Integer.valueOf((String) ciRecordID);
 					BearbeiteCIRecord bearbeiteFenster = new BearbeiteCIRecord(cityp, recordID);
 					bearbeiteFenster.setVisible(true);
 					ladeTabelle();
 				
+				}
+					else {
+						JOptionPane.showMessageDialog(null, "Kein CI-Record ausgewählt", "Fehler",
+								JOptionPane.ERROR_MESSAGE);
+					}
 				}
 				catch(Exception a){
 					System.out.println("null");

@@ -2,22 +2,16 @@ package frontend;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import daten.CITyp;
@@ -164,6 +158,10 @@ public class Main extends JFrame {
 					CITyp selectedCITyp = new CITyp(id, ciTypName, attributNamen);
 					CIRecordAnsicht ciRecordAnsicht = new CIRecordAnsicht(selectedCITyp);
 					ciRecordAnsicht.setVisible(true);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Kein CI-Typ ausgewaehlt", "Fehler",
+							JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

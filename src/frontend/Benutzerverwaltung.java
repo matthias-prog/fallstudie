@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -80,13 +81,21 @@ public class Benutzerverwaltung extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
+					
 					int selectedRow = table.getSelectedRow();
+					
+					if (selectedRow != -1) {
 					Object benutzerID = table.getModel().getValueAt(selectedRow, 0);
 					int userID = Integer.valueOf((String) benutzerID);
 					BearbeiteBenutzer bearbeiteFenster = new BearbeiteBenutzer(userID);
 					bearbeiteFenster.setVisible(true);
 					ladeTabelle();
 				
+				}
+					else {
+							JOptionPane.showMessageDialog(null, "Kein Benutzer ausgewaehlt", "Fehler",
+									JOptionPane.ERROR_MESSAGE);
+					}
 				}
 				catch(Exception a){
 					System.out.println("null");

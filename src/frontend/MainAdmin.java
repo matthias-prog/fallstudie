@@ -187,6 +187,10 @@ public class MainAdmin extends JFrame {
 					CIRecordAnsicht ciRecordAnsicht = new CIRecordAnsicht(selectedCITyp);
 					ciRecordAnsicht.setVisible(true);
 				}
+				else {
+					JOptionPane.showMessageDialog(null, "Kein CI-Typ ausgewaehlt", "Fehler",
+							JOptionPane.ERROR_MESSAGE);
+				}
 
 			}
 		});
