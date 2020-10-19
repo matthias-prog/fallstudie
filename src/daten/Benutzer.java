@@ -44,6 +44,11 @@ public class Benutzer {
     	String istAdminStr = Boolean.toString(istAdmin);
         return istAdminStr;
     }
+    
+    boolean IstAdminb = istAdmin;
+    public boolean getIstAdminb() {
+    	return IstAdminb;
+    }
 
     public void setIstAdmin(boolean istAdmin) {
         this.istAdmin = istAdmin;

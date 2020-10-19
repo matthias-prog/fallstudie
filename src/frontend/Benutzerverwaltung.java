@@ -31,7 +31,7 @@ public class Benutzerverwaltung extends JFrame {
 	 */
 	public Benutzerverwaltung() {
 		setTitle("ItemPro - Benutzerverwaltung");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 1080, 720);
 		setLocationRelativeTo(null);
@@ -65,26 +65,26 @@ public class Benutzerverwaltung extends JFrame {
 				ladeTabelle();
 			}
 		});
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton.setBounds(880, 120, 180, 50);
-		contentPane.add(btnNewButton);
+		anlegenButton.setBackground(Color.WHITE);
+		anlegenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		anlegenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
+		anlegenButton.setBounds(880, 120, 180, 50);
+		contentPane.add(anlegenButton);
 		
-		JButton btnNewButton_1 = new JButton("Benutzer bearbeiten");
-		btnNewButton_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton_1.setBackground(Color.WHITE);
-		btnNewButton_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_1.setBounds(880, 180, 180, 50);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton bearbeitenButton = new JButton("Benutzer bearbeiten");
+		bearbeitenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
+		bearbeitenButton.setBackground(Color.WHITE);
+		bearbeitenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		bearbeitenButton.setBounds(880, 180, 180, 50);
+		bearbeitenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
 					int selectedRow = table.getSelectedRow();
 					Object benutzerID = table.getModel().getValueAt(selectedRow, 0);
 					int userID = Integer.valueOf((String) benutzerID);
-					BearbeiteBenutzer BearbeiteBenutzer = new BearbeiteBenutzer(userID);
-					BearbeiteBenutzer.setVisible(true);
+					BearbeiteBenutzer bearbeiteFenster = new BearbeiteBenutzer(userID);
+					bearbeiteFenster.setVisible(true);
 					ladeTabelle();
 				
 				}
@@ -94,10 +94,10 @@ public class Benutzerverwaltung extends JFrame {
 				
 			}
 		});
-		contentPane.add(btnNewButton_1);
+		contentPane.add(bearbeitenButton);
 		
-		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton loeschenButton = new JButton("Benutzer loeschen");
+		loeschenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String benutzerID = table.getValueAt(table.getSelectedRow(), 0).toString();
@@ -117,11 +117,11 @@ public class Benutzerverwaltung extends JFrame {
 		ladeTabelle();
 
 
-		JLabel lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Benutzer.");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setBounds(10, 70, 300, 20);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblErklaerung = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Benutzer.");
+		lblErklaerung.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung.setBackground(Color.WHITE);
+		lblErklaerung.setBounds(10, 70, 300, 20);
+		contentPane.add(lblErklaerung);
 
 		JLabel lblWaehlenSieEinen = new JLabel("Waehlen Sie einen Benutzer aus um ihn zu bearbeiten oder zu loeschen.");
 		lblWaehlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -129,21 +129,7 @@ public class Benutzerverwaltung extends JFrame {
 		lblWaehlenSieEinen.setBounds(10, 90, 450, 20);
 		contentPane.add(lblWaehlenSieEinen);
 
-		JButton abmeldenButton = new JButton("Abmelden");
-		abmeldenButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Login login = new Login();
-				login.getFrmItemproLogin().setVisible(true); // öffnet das Login-Fenster
-				backend.hauptprogramm.logout(); // aktueller Benutzer wird im Backend abgemeldet bzw. "vergessen"
-				
-			}
-		});
-		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton_3.setBackground(Color.WHITE);
-		btnNewButton_3.setBounds(880, 70, 180, 30);
-		contentPane.add(btnNewButton_3);
+		
 		
 		table_1 = new JTable();
 		table_1.setBounds(126, 580, 86, 54);

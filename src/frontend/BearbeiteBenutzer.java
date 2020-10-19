@@ -19,6 +19,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -35,6 +36,9 @@ public class BearbeiteBenutzer extends JDialog {
 
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
+	String passwort;
+	String benutzername;
+	boolean sollAdmin;
 
 	/**
 	 * Create the frame.
@@ -61,23 +65,13 @@ public class BearbeiteBenutzer extends JDialog {
 		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane_1.setBackground(Color.WHITE);
 		contentPane.add(contentPane_1);
-
 		
-
-		JTextField textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField.setColumns(10);
-		textField.setBorder(new LineBorder(new Color(171, 173, 179)));
-		textField.setBounds(17, 60, 600, 50);
-		contentPane_1.add(textField);
-		
-
-		JTextField txtFieldName = new JTextField();
+		JTextField txtFieldName = new JTextField(Benutzer.getBenutzerName(BenutzerID));
 		txtFieldName.setBounds(10, 90, 300, 20);
 		contentPane.add(txtFieldName);
 		txtFieldName.setColumns(10);
 
-		JTextField txtFieldPasswort = new JTextField();
+		JTextField txtFieldPasswort = new JTextField(Benutzer.getPasswort(BenutzerID));
 		txtFieldPasswort.setBounds(10, 140, 300, 20);
 		contentPane.add(txtFieldPasswort);
 		txtFieldPasswort.setColumns(10);
@@ -86,6 +80,7 @@ public class BearbeiteBenutzer extends JDialog {
 		chckbxAdmin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxAdmin.setBackground(Color.WHITE);
 		chckbxAdmin.setBounds(10, 187, 93, 21);
+		chckbxAdmin.setSelected(Benutzer.getIstAdminb(BenutzerID));
 		contentPane.add(chckbxAdmin);
 
 		JButton btnAbbrechen = new JButton("Abbrechen");
@@ -112,8 +107,32 @@ public class BearbeiteBenutzer extends JDialog {
 
 		btnSpeichern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				if (txtFieldName.getText().isEmpty()) {
+					{
+						JOptionPane.showMessageDialog(null, "Benutzername fehlt", "Fehler",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					benutzername = txtFieldName.getText();
+					
+				};
 				
-				//daten.Message message = hauptprogramm.benutzerNameVeraendern(BenutzerID, txtFieldName.getText());
+				if (txtFieldPasswort.getText().isEmpty()) {
+					{
+						JOptionPane.showMessageDialog(null, "Passwort fehlt", "Fehler",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					passwort = txtFieldPasswort.getText();
+					
+				};
+				
+				sollAdmin = chckbxAdmin.isSelected();
+				
+				daten.Message message = hauptprogramm.benutzerNameVeraendern(BenutzerID, benutzername);
+				daten.Message message2 = hauptprogramm.benutzerPasswortVeraendern(BenutzerID, passwort);
+				daten.Message message3 = hauptprogramm.benutzerRechtVeraendern(BenutzerID, sollAdmin);
 
 				dispose();
 			}

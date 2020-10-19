@@ -77,7 +77,6 @@ public class MainAdmin extends JFrame {
 		btnBenutzerverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				dispose();
 				Benutzerverwaltung benutzerverwaltung = new Benutzerverwaltung();
 				benutzerverwaltung.setVisible(true);
 				// TODO: ActionEvent: Funktionalitï¿½t hinzufï¿½gen

@@ -48,7 +48,7 @@ public class NeuerBenutzer extends JDialog {
 		setBackground(Color.WHITE);
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setTitle("ItemPro - Benutzer hinzuf�gen");
+		setTitle("ItemPro - Benutzer hinzufuegen");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		setBounds(100, 100, 350, 350);
 		setLocationRelativeTo(null);

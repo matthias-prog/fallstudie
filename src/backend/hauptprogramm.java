@@ -465,7 +465,7 @@ public class hauptprogramm {
 		String abfrageRecord = "Select * from `" + CITyp + "` where RecordID=" + RecordID;
 		String abfrageCITyp = "Select * from CITyp where Typname='" + CITyp + "'";
 		ResultSet rs1;
-		ResultSet rs2;
+		ResultSet rs2; 
 		ResultSetMetaData rsmd1;
 		ResultSetMetaData rsmd2;
 		CIRecord alterSatz;
@@ -621,7 +621,7 @@ public class hauptprogramm {
 		}
 		return listeBenutzer;
 	}
-
+	
 	/**
 	 * lÃ¶scht einen benutzer
 	 *
@@ -641,6 +641,27 @@ public class hauptprogramm {
 		}
 	}
 
+	/**
+     * aktualisiert den Namen eines Users
+     *
+     * @param benutzerID BenutzerID des Users
+     * @param name   neuer Name des Users
+     * @return Message-Objekt mit Fehlermeldung und Erfolg
+     */
+    public static Message benutzerNameVeraendern(int benutzerID, String name) {
+
+        String update = "update Benutzer set Benutzername ='" + name + "' where BenutzerID=" + benutzerID;
+
+        //SQL-Update wird ausgeführt
+        try {
+            stmt.executeUpdate(update);
+        } catch (SQLException e) {
+            return new Message(false, "SQL-Update fehlgeschlagen");
+        }
+
+        return new Message(true, "Update erfolgreich erledigt");
+    }
+	
 	/**
 	 * aktualisiert das Passwort eines Users
 	 *

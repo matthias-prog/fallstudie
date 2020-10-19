@@ -40,7 +40,7 @@ public class BearbeiteCIRecord extends JDialog {
 
 	public BearbeiteCIRecord(CITyp cityp, int RecordID) {
 		setModalityType(ModalityType.APPLICATION_MODAL);
-		setTitle("ItemPro - CI-Record hinzufuegen");
+		setTitle("ItemPro - CI-Record bearbeiten");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
 		int hoehe = 84 + cityp.getAttributnamen().size() * 45+70;
