@@ -65,11 +65,11 @@ public class Benutzerverwaltung extends JFrame {
 				ladeTabelle();
 			}
 		});
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton.setBounds(880, 120, 180, 50);
-		contentPane.add(btnNewButton);
+		anlegenButton.setBackground(Color.WHITE);
+		anlegenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		anlegenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
+		anlegenButton.setBounds(880, 120, 180, 50);
+		contentPane.add(anlegenButton);
 		
 		JButton btnNewButton_1 = new JButton("Benutzer bearbeiten");
 		btnNewButton_1.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -96,8 +96,8 @@ public class Benutzerverwaltung extends JFrame {
 		});
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Benutzer loeschen");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton loeschenButton = new JButton("Benutzer loeschen");
+		loeschenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String benutzerID = table.getValueAt(table.getSelectedRow(), 0).toString();
@@ -139,11 +139,11 @@ public class Benutzerverwaltung extends JFrame {
 				
 			}
 		});
-		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnNewButton_3.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnNewButton_3.setBackground(Color.WHITE);
-		btnNewButton_3.setBounds(880, 70, 180, 30);
-		contentPane.add(btnNewButton_3);
+		abmeldenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		abmeldenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
+		abmeldenButton.setBackground(Color.WHITE);
+		abmeldenButton.setBounds(880, 70, 180, 30);
+		contentPane.add(abmeldenButton);
 		
 		table_1 = new JTable();
 		table_1.setBounds(126, 580, 86, 54);
