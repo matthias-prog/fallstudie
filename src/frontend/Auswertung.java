@@ -33,6 +33,7 @@ public class Auswertung extends JFrame {
 		setTitle("ItemPro - Auswertung");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/Favicon.png")));
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setFont(new Font("Calibri", Font.PLAIN, 14));
 		contentPane.setMinimumSize(new Dimension(1080, 720));
@@ -40,17 +41,17 @@ public class Auswertung extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblAuswertung = new JLabel("Auswertung");
-		lblAuswertung.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblAuswertung.setBounds(10, 11, 180, 30);
-		contentPane.add(lblAuswertung);
+		JLabel lblTitel = new JLabel("Auswertung");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(10, 11, 180, 30);
+		contentPane.add(lblTitel);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("Calibri", Font.PLAIN, 14));
-		textArea.setBorder(new LineBorder(new Color(0, 0, 0)));
-		textArea.setBounds(10, 52, 365, 220);
-		textArea.setEditable(false);
-		contentPane.add(textArea);
+		JTextArea textAreaAuswertung = new JTextArea();
+		textAreaAuswertung.setFont(new Font("Calibri", Font.PLAIN, 14));
+		textAreaAuswertung.setBorder(new LineBorder(new Color(0, 0, 0)));
+		textAreaAuswertung.setBounds(10, 52, 365, 220);
+		textAreaAuswertung.setEditable(false);
+		contentPane.add(textAreaAuswertung);
 		
 		int anzahlTypen = backend.hauptprogramm.zeigeAnzahlTypen();
 		String anzahlCITypen = "Anzahl aller vorhanden CITypen: " + anzahlTypen;
@@ -59,12 +60,12 @@ public class Auswertung extends JFrame {
 		//ArrayList <CIRecord> alleCIRecords = new ArrayList<CIRecord>();
 		//alleCIRecords = backend.hauptprogramm.holeAlleRecordsVonCITyp(CITyp)
 		
-		textArea.setText(anzahlCITypen + "\n");
+		textAreaAuswertung.setText(anzahlCITypen + "\n");
 		for (int i =0; i< anzahlTypen; i++){
 			String nameCITyp = alleCITypen.get(i).getCItypName();
 			int anzahlRecords = backend.hauptprogramm.zeigeAnzahlRecords(nameCITyp);
 			
-			textArea.append("Anzahl der CIRecords von " + nameCITyp + " : " + anzahlRecords + "\n");
+			textAreaAuswertung.append("Anzahl der CIRecords von " + nameCITyp + " : " + anzahlRecords + "\n");
 	}
 		
 		

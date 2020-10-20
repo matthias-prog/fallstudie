@@ -58,12 +58,12 @@ public class CIRecordAnsicht extends JFrame {
 		btnZurueck.setBounds(880, 70, 180, 36);
 		contentPane.add(btnZurueck);
 		
-		JButton loeschenButton = new JButton("CI-Record l\u00F6schen");
+		JButton btnLoeschen = new JButton("CI-Record l\u00F6schen");
 		
-		loeschenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		loeschenButton.setBackground(Color.WHITE);
-		loeschenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		loeschenButton.addActionListener(new ActionListener() {
+		btnLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnLoeschen.setBackground(Color.WHITE);
+		btnLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
 				
@@ -81,18 +81,19 @@ public class CIRecordAnsicht extends JFrame {
 				}
 			}
 		});
-		loeschenButton.setBounds(880, 240, 180, 50);
-		contentPane.add(loeschenButton);
+		btnLoeschen.setBounds(880, 240, 180, 50);
+		contentPane.add(btnLoeschen);
 		
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 14));
 		scrollPane.setBounds(10, 120, 855, 450);
 		contentPane.add(scrollPane);
 		
 		ladeTabelle();
 		
-		JButton bearbeitenButton = new JButton("CI-Record bearbeiten");
-		bearbeitenButton.addActionListener(new ActionListener() {
+		JButton btnBearbeiten = new JButton("CI-Record bearbeiten");
+		btnBearbeiten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
@@ -117,14 +118,14 @@ public class CIRecordAnsicht extends JFrame {
 				
 			}
 		});
-		bearbeitenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		bearbeitenButton.setBackground(Color.WHITE);
-		bearbeitenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		bearbeitenButton.setBounds(880, 180, 180, 50);
-		contentPane.add(bearbeitenButton);
+		btnBearbeiten.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnBearbeiten.setBackground(Color.WHITE);
+		btnBearbeiten.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnBearbeiten.setBounds(880, 180, 180, 50);
+		contentPane.add(btnBearbeiten);
 		
-		JButton anlegenButton = new JButton("CI-Record anlegen");
-		anlegenButton.addActionListener(new ActionListener() {
+		JButton btnAnlegen = new JButton("CI-Record anlegen");
+		btnAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
@@ -139,22 +140,28 @@ public class CIRecordAnsicht extends JFrame {
 				
 			}
 		});
-		anlegenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		anlegenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		anlegenButton.setBackground(Color.WHITE);
-		anlegenButton.setBounds(880, 120, 180, 50);
-		contentPane.add(anlegenButton);
+		btnAnlegen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAnlegen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAnlegen.setBackground(Color.WHITE);
+		btnAnlegen.setBounds(880, 120, 180, 50);
+		contentPane.add(btnAnlegen);
 		
-		JLabel lblNewLabel = new JLabel("CI-Records von CI Typ "+cityp.getCItypName());
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblNewLabel.setBounds(15, 15, 345, 30);
-		contentPane.add(lblNewLabel);
+		JLabel lblTitel = new JLabel("CI-Records von CI Typ "+cityp.getCItypName());
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(15, 15, 345, 30);
+		contentPane.add(lblTitel);
 		
-		JLabel lblHeader = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Records eines CI Typen.");
-		lblHeader.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblHeader.setBackground(Color.WHITE);
-		lblHeader.setBounds(10, 70, 371, 20);
-		contentPane.add(lblHeader);
+		JLabel lblErklaerung = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Records eines CI Typen.");
+		lblErklaerung.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung.setBackground(Color.WHITE);
+		lblErklaerung.setBounds(10, 70, 500, 20);
+		contentPane.add(lblErklaerung);
+		
+		JLabel lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Record aus um ihn zu bearbeiten oder zu loeschen.");
+		lblErklaerung2.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung2.setBackground(Color.WHITE);
+		lblErklaerung2.setBounds(10, 90, 500, 20);
+		contentPane.add(lblErklaerung2);
 		
 		
 	}

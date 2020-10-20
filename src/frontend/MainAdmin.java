@@ -36,11 +36,11 @@ public class MainAdmin extends JFrame {
 	private JScrollPane scrollPane;
 	private JButton btnCiTypHinzufuegen;
 	private JButton btnCiTypLoeschen;
-	private JLabel lblNewLabel;
+	private JLabel lblTitel;
 
 	static MainAdmin frame = new MainAdmin();
-	private JLabel lblNewLabel_1;
-	private JLabel lblWhlenSieEinen;
+	private JLabel lblErklaerung1;
+	private JLabel lblErklaerung2;
 	private JButton btnAuswertungAnzeigen;
 
 	/**
@@ -136,13 +136,13 @@ public class MainAdmin extends JFrame {
 		btnCiTypLoeschen.setBounds(880, 171, 180, 36);
 		contentPane.add(btnCiTypLoeschen);
 
-		lblNewLabel = new JLabel("CI-Typ-Uebersicht (Admin)");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblNewLabel.setBounds(15, 15, 354, 30);
-		contentPane.add(lblNewLabel);
+		lblTitel = new JLabel("CI-Typ-Uebersicht (Admin)");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(15, 15, 354, 30);
+		contentPane.add(lblTitel);
 
-		JButton btnAbmelden_1 = new JButton("Abmelden");
-		btnAbmelden_1.addActionListener(new ActionListener() {
+		JButton btnAbmelden = new JButton("Abmelden");
+		btnAbmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Login login = new Login();
@@ -151,23 +151,23 @@ public class MainAdmin extends JFrame {
 			}
 		});
 		
-		btnAbmelden_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnAbmelden_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnAbmelden_1.setBackground(Color.WHITE);
-		btnAbmelden_1.setBounds(880, 70, 180, 36);
-		contentPane.add(btnAbmelden_1);
+		btnAbmelden.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAbmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAbmelden.setBackground(Color.WHITE);
+		btnAbmelden.setBounds(880, 70, 180, 36);
+		contentPane.add(btnAbmelden);
 
-		lblNewLabel_1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setBounds(10, 70, 300, 20);
-		contentPane.add(lblNewLabel_1);
+		lblErklaerung1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
+		lblErklaerung1.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung1.setBackground(Color.WHITE);
+		lblErklaerung1.setBounds(10, 70, 400, 20);
+		contentPane.add(lblErklaerung1);
 
-		lblWhlenSieEinen = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
-		lblWhlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblWhlenSieEinen.setBackground(Color.WHITE);
-		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
-		contentPane.add(lblWhlenSieEinen);
+		lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
+		lblErklaerung2.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung2.setBackground(Color.WHITE);
+		lblErklaerung2.setBounds(10, 90, 500, 20);
+		contentPane.add(lblErklaerung2);
 
 		JButton btnCiRecordsAnzeigen = new JButton("CI Records anzeigen");
 		btnCiRecordsAnzeigen.addActionListener(new ActionListener() {

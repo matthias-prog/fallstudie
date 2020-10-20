@@ -32,9 +32,9 @@ public class NeuerBenutzer extends JDialog {
 	private JTextField txtFieldName;
 	private JTextField txtFieldPasswort;
 
-	private JLabel lblNewLabel;
-	private JLabel lblUsername;
-	private JLabel lblPassword;
+	private JLabel lblTitel;
+	private JLabel lblBenutzername;
+	private JLabel lblPasswort;
 	private JLabel lblAdmin;
 	String passwort;
 	String benutzername;
@@ -59,17 +59,19 @@ public class NeuerBenutzer extends JDialog {
 		contentPane.setLayout(null);
 
 		txtFieldName = new JTextField();
+		txtFieldName.setFont(new Font("Calibri", Font.PLAIN, 12));
 		txtFieldName.setBounds(10, 90, 300, 20);
 		contentPane.add(txtFieldName);
 		txtFieldName.setColumns(10);
 
 		txtFieldPasswort = new JTextField();
+		txtFieldPasswort.setFont(new Font("Calibri", Font.PLAIN, 12));
 		txtFieldPasswort.setBounds(10, 140, 300, 20);
 		contentPane.add(txtFieldPasswort);
 		txtFieldPasswort.setColumns(10);
 
 		JCheckBox chckbxAdmin = new JCheckBox("Ja");
-		chckbxAdmin.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxAdmin.setFont(new Font("Calibri", Font.PLAIN, 12));
 		chckbxAdmin.setBackground(Color.WHITE);
 		chckbxAdmin.setBounds(10, 187, 93, 21);
 		contentPane.add(chckbxAdmin);
@@ -131,20 +133,20 @@ public class NeuerBenutzer extends JDialog {
 			}
 		});
 
-		lblNewLabel = new JLabel("Neuen Benutzer anlegen:");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 16));
-		lblNewLabel.setBounds(10, 20, 200, 20);
-		contentPane.add(lblNewLabel);
+		lblTitel = new JLabel("Neuen Benutzer anlegen:");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(10, 20, 291, 27);
+		contentPane.add(lblTitel);
 
-		lblUsername = new JLabel("Benutzername");
-		lblUsername.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblUsername.setBounds(10, 70, 120, 20);
-		contentPane.add(lblUsername);
+		lblBenutzername = new JLabel("Benutzername");
+		lblBenutzername.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblBenutzername.setBounds(10, 70, 120, 20);
+		contentPane.add(lblBenutzername);
 		
-		lblPassword = new JLabel("Passwort");
-		lblPassword.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblPassword.setBounds(10, 120, 120, 20);
-		contentPane.add(lblPassword);
+		lblPasswort = new JLabel("Passwort");
+		lblPasswort.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblPasswort.setBounds(10, 120, 120, 20);
+		contentPane.add(lblPasswort);
 		
 		lblAdmin = new JLabel("Admin");
 		lblAdmin.setFont(new Font("Calibri", Font.PLAIN, 14));

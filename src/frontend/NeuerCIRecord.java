@@ -24,8 +24,8 @@ import daten.CITyp;
 public class NeuerCIRecord extends JDialog {
 
 	private JPanel contentPane;
-	private JLabel ueberschriftLabel;
-	private JLabel unterUeberschriftLabel;
+	private JLabel lblTitel;
+	private JLabel lblAttribute;
 	private JTextField[] textfelder = new JTextField[15];
 	private JLabel[] attributNamen = new JLabel[15];
 
@@ -56,7 +56,7 @@ public class NeuerCIRecord extends JDialog {
 			textfelder[i].setColumns(10);
 
 			attributNamen[i] = new JLabel(cityp.getAttributnamen().get(i) + ":");
-			attributNamen[i].setFont(new Font("Calibri", Font.PLAIN, 14));
+			attributNamen[i].setFont(new Font("Calibri", Font.PLAIN, 12));
 			attributNamen[i].setBounds(10, abstand - 14, 290, 14);
 			contentPane.add(attributNamen[i]);
 		}
@@ -100,14 +100,14 @@ public class NeuerCIRecord extends JDialog {
 		});
 
 
-		ueberschriftLabel = new JLabel("Neuer CI-Record");
-		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 14));
-		ueberschriftLabel.setBounds(10, 19, 105, 21);
-		contentPane.add(ueberschriftLabel);
+		lblTitel = new JLabel("Neuer CI-Record:");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(10, 19, 200, 27);
+		contentPane.add(lblTitel);
 
-		unterUeberschriftLabel = new JLabel("Attribute:");
-		unterUeberschriftLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
-		unterUeberschriftLabel.setBounds(10, 44, 82, 14);
-		contentPane.add(unterUeberschriftLabel);
+		lblAttribute = new JLabel("Attribute:");
+		lblAttribute.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblAttribute.setBounds(10, 44, 82, 14);
+		contentPane.add(lblAttribute);
 	}
 }

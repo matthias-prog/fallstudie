@@ -37,12 +37,12 @@ import javax.swing.SwingConstants;
 public class NeuerCITyp extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField_ciTypName;
+	private JTextField textFieldName;
 
 	private JTextField[] textfelder = new JTextField[15];
 
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
+	private JLabel lblTitel;
+	private JLabel lblAttribute;
 
 	/**
 	 * Create the frame.
@@ -70,20 +70,21 @@ public class NeuerCITyp extends JDialog {
 			textfelder[i].setColumns(10);
 		}
 
-		textField_ciTypName = new JTextField();
-		textField_ciTypName.setBounds(10, 43, 105, 20);
-		contentPane.add(textField_ciTypName);
-		textField_ciTypName.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setFont(new Font("Calibri", Font.PLAIN, 12));
+		textFieldName.setBounds(10, 43, 105, 20);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 
-		lblNewLabel = new JLabel("Neuer CI-Typ");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 19, 105, 21);
-		contentPane.add(lblNewLabel);
+		lblTitel = new JLabel("Neuer CI-Typ");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(10, 19, 200, 27);
+		contentPane.add(lblTitel);
 
-		lblNewLabel_1 = new JLabel("Attribute:");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 74, 82, 14);
-		contentPane.add(lblNewLabel_1);
+		lblAttribute = new JLabel("Attribute:");
+		lblAttribute.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblAttribute.setBounds(10, 74, 82, 14);
+		contentPane.add(lblAttribute);
 
 		JButton btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -111,13 +112,13 @@ public class NeuerCITyp extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String citypName = "";
 
-				if (textField_ciTypName.getText().isEmpty()) {
+				if (textFieldName.getText().isEmpty()) {
 					{
 						JOptionPane.showMessageDialog(null, "Name des CITypen fehlt", "Fehler",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
-					citypName = textField_ciTypName.getText();
+					citypName = textFieldName.getText();
 				}
 
 				ArrayList<String> attribute = new ArrayList<>();

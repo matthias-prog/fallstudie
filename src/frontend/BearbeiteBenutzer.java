@@ -29,7 +29,7 @@ import daten.Benutzer;
 public class BearbeiteBenutzer extends JDialog {
 
 	private JPanel contentPane;
-	private JLabel lblNewLabel;
+	private JLabel lblTitel;
 	String passwort;
 	String benutzername;
 	boolean sollAdmin;
@@ -69,17 +69,19 @@ public class BearbeiteBenutzer extends JDialog {
 		}
 
 		JTextField txtFieldName = new JTextField(benutzer.getBenutzername());
+		txtFieldName.setFont(new Font("Calibri", Font.PLAIN, 12));
 		txtFieldName.setBounds(10, 90, 300, 20);
 		contentPane.add(txtFieldName);
 		txtFieldName.setColumns(10);
 
 		JTextField txtFieldPasswort = new JTextField(benutzer.getPasswort());
+		txtFieldPasswort.setFont(new Font("Calibri", Font.PLAIN, 12));
 		txtFieldPasswort.setBounds(10, 140, 300, 20);
 		contentPane.add(txtFieldPasswort);
 		txtFieldPasswort.setColumns(10);
 
 		JCheckBox chckbxAdmin = new JCheckBox("Ja");
-		chckbxAdmin.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxAdmin.setFont(new Font("Calibri", Font.PLAIN, 12));
 		chckbxAdmin.setBackground(Color.WHITE);
 		chckbxAdmin.setBounds(10, 187, 93, 21);
 		chckbxAdmin.setSelected(benutzer.getIstAdminb());
@@ -141,10 +143,10 @@ public class BearbeiteBenutzer extends JDialog {
 
 		});
 
-		lblNewLabel = new JLabel("Benutzer bearbeiten:");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 16));
-		lblNewLabel.setBounds(10, 20, 200, 20);
-		contentPane.add(lblNewLabel);
+		lblTitel = new JLabel("Benutzer bearbeiten:");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(10, 20, 275, 30);
+		contentPane.add(lblTitel);
 
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Ja");
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 12));

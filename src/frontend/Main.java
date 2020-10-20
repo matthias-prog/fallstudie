@@ -26,8 +26,8 @@ public class Main extends JFrame {
 	private JTable tableCITypen;
 	private JButton btnAbmelden;
 	private JScrollPane scrollPane;
-	private JLabel lblNewLabel;
-	private JLabel lblWhlenSieEinen;
+	private JLabel lblErklaerung1;
+	private JLabel lblErklaerung2;
 	private JButton btnAuswertungAnzeigen;
 
 
@@ -70,7 +70,7 @@ public class Main extends JFrame {
 		contentPane.add(btnAbmelden);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 12));
+		scrollPane.setFont(new Font("Calibri", Font.PLAIN, 14));
 		scrollPane.setBounds(10, 122, 1050, 450);
 		contentPane.add(scrollPane);
 		
@@ -119,22 +119,22 @@ public class Main extends JFrame {
 		tableCITypen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setViewportView(tableCITypen);		
 		
-		JLabel lblCitypbersicht = new JLabel("CI-Typ-Uebersicht");
-		lblCitypbersicht.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblCitypbersicht.setBounds(15, 15, 230, 30);
-		contentPane.add(lblCitypbersicht);
+		JLabel lblTitel = new JLabel("CI-Typ-Uebersicht");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(15, 15, 230, 30);
+		contentPane.add(lblTitel);
 		
-		lblNewLabel = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
-		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(10, 70, 300, 20);
-		contentPane.add(lblNewLabel);
+		lblErklaerung1 = new JLabel("Hier sehen Sie eine Uebersicht ueber alle CI-Typen.");
+		lblErklaerung1.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung1.setBackground(Color.WHITE);
+		lblErklaerung1.setBounds(10, 70, 400, 20);
+		contentPane.add(lblErklaerung1);
 		
-		lblWhlenSieEinen = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
-		lblWhlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblWhlenSieEinen.setBackground(Color.WHITE);
-		lblWhlenSieEinen.setBounds(10, 90, 450, 20);
-		contentPane.add(lblWhlenSieEinen);
+		lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
+		lblErklaerung2.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung2.setBackground(Color.WHITE);
+		lblErklaerung2.setBounds(10, 90, 500, 20);
+		contentPane.add(lblErklaerung2);
 		
 		JButton btnCiRecordsAnzeigen = new JButton("CI Records anzeigen");
 		btnCiRecordsAnzeigen.addActionListener(new ActionListener() {

@@ -47,10 +47,10 @@ public class Benutzerverwaltung extends JFrame {
 		scrollPane.setBounds(10, 120, 855, 450);
 		contentPane.add(scrollPane);
 
-		JLabel ueberschriftLabel = new JLabel("Benutzerverwaltung");
-		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 24));
-		ueberschriftLabel.setBounds(10, 11, 286, 30);
-		contentPane.add(ueberschriftLabel);
+		JLabel lblTitel = new JLabel("Benutzerverwaltung");
+		lblTitel.setFont(new Font("Calibri", Font.BOLD, 24));
+		lblTitel.setBounds(10, 11, 286, 30);
+		contentPane.add(lblTitel);
 		
 		JButton btnZurueck = new JButton("Zurück");
 		btnZurueck.addActionListener(new ActionListener() {
@@ -66,8 +66,8 @@ public class Benutzerverwaltung extends JFrame {
 		btnZurueck.setBounds(880, 70, 180, 36);
 		contentPane.add(btnZurueck);
 
-		JButton anlegenButton = new JButton("Benutzer anlegen");
-		anlegenButton.addActionListener(new ActionListener() {
+		JButton btnAnlegen = new JButton("Benutzer anlegen");
+		btnAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
@@ -80,18 +80,18 @@ public class Benutzerverwaltung extends JFrame {
 				ladeTabelle();
 			}
 		});
-		anlegenButton.setBackground(Color.WHITE);
-		anlegenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		anlegenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		anlegenButton.setBounds(880, 120, 180, 50);
-		contentPane.add(anlegenButton);
+		btnAnlegen.setBackground(Color.WHITE);
+		btnAnlegen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnAnlegen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAnlegen.setBounds(880, 120, 180, 50);
+		contentPane.add(btnAnlegen);
 		
-		JButton bearbeitenButton = new JButton("Benutzer bearbeiten");
-		bearbeitenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		bearbeitenButton.setBackground(Color.WHITE);
-		bearbeitenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		bearbeitenButton.setBounds(880, 180, 180, 50);
-		bearbeitenButton.addActionListener(new ActionListener() {
+		JButton btnBearbeiten = new JButton("Benutzer bearbeiten");
+		btnBearbeiten.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnBearbeiten.setBackground(Color.WHITE);
+		btnBearbeiten.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnBearbeiten.setBounds(880, 180, 180, 50);
+		btnBearbeiten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
@@ -117,10 +117,10 @@ public class Benutzerverwaltung extends JFrame {
 				
 			}
 		});
-		contentPane.add(bearbeitenButton);
+		contentPane.add(btnBearbeiten);
 		
-		JButton loeschenButton = new JButton("Benutzer loeschen");
-		loeschenButton.addActionListener(new ActionListener() {
+		JButton btnLoeschen = new JButton("Benutzer loeschen");
+		btnLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				if (table.getSelectedRow() != -1) {
@@ -135,11 +135,11 @@ public class Benutzerverwaltung extends JFrame {
 				}
 			}
 		});
-		loeschenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		loeschenButton.setBackground(Color.WHITE);
-		loeschenButton.setFont(new Font("Calibri", Font.PLAIN, 14));
-		loeschenButton.setBounds(880, 240, 180, 50);
-		contentPane.add(loeschenButton);
+		btnLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnLoeschen.setBackground(Color.WHITE);
+		btnLoeschen.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnLoeschen.setBounds(880, 240, 180, 50);
+		contentPane.add(btnLoeschen);
 
 		ladeTabelle();
 
@@ -147,14 +147,14 @@ public class Benutzerverwaltung extends JFrame {
 		JLabel lblErklaerung = new JLabel("Hier sehen Sie eine Uebersicht ueber alle Benutzer.");
 		lblErklaerung.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblErklaerung.setBackground(Color.WHITE);
-		lblErklaerung.setBounds(10, 70, 300, 20);
+		lblErklaerung.setBounds(10, 70, 350, 20);
 		contentPane.add(lblErklaerung);
 
-		JLabel lblWaehlenSieEinen = new JLabel("Waehlen Sie einen Benutzer aus um ihn zu bearbeiten oder zu loeschen.");
-		lblWaehlenSieEinen.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblWaehlenSieEinen.setBackground(Color.WHITE);
-		lblWaehlenSieEinen.setBounds(10, 90, 450, 20);
-		contentPane.add(lblWaehlenSieEinen);
+		JLabel lblErklaerung2 = new JLabel("Waehlen Sie einen Benutzer aus um ihn zu bearbeiten oder zu loeschen.");
+		lblErklaerung2.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblErklaerung2.setBackground(Color.WHITE);
+		lblErklaerung2.setBounds(10, 90, 500, 20);
+		contentPane.add(lblErklaerung2);
 
 		
 		

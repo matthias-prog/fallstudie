@@ -70,17 +70,17 @@ public class Login {
 
     		
 		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Calibri", Font.PLAIN, 12));
+		passwordField.setFont(new Font("Calibri", Font.PLAIN, 14));
 		passwordField.setName("Passwort");
 		passwordField.setToolTipText("Passwort");
-		passwordField.setBounds(100, 250, 200, 30);
+		passwordField.setBounds(100, 275, 200, 30);
 		frmItemproLogin.getContentPane().add(passwordField);
 		
 		txtBenutzername = new JTextField();
-		txtBenutzername.setFont(new Font("Calibri", Font.PLAIN, 12));
+		txtBenutzername.setFont(new Font("Calibri", Font.PLAIN, 14));
 		txtBenutzername.setHorizontalAlignment(SwingConstants.LEFT);
 		txtBenutzername.setToolTipText("Benutzername");
-		txtBenutzername.setBounds(100, 185, 200, 30);
+		txtBenutzername.setBounds(100, 210, 200, 30);
 		frmItemproLogin.getContentPane().add(txtBenutzername);
 		txtBenutzername.setColumns(10);
 		
@@ -142,8 +142,8 @@ public class Login {
 		
 		btnAnmelden.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAnmelden.setBackground(Color.WHITE);
-		btnAnmelden.setFont(new Font("Calibri", Font.PLAIN, 12));
-		btnAnmelden.setBounds(150, 330, 100, 30);
+		btnAnmelden.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnAnmelden.setBounds(150, 355, 100, 30);
 		frmItemproLogin.getContentPane().add(btnAnmelden);
 		
 		passwordField.addActionListener(new AbstractAction() {
@@ -179,29 +179,29 @@ public class Login {
 		});
 		
 		lblAnmelden1 = new JLabel("Melden Sie sich an,");
-		lblAnmelden1.setFont(new Font("Calibri", Font.PLAIN, 12));
+		lblAnmelden1.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblAnmelden1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAnmelden1.setBackground(Color.WHITE);
-		lblAnmelden1.setBounds(125, 115, 150, 15);
+		lblAnmelden1.setBounds(125, 115, 150, 20);
 		frmItemproLogin.getContentPane().add(lblAnmelden1);
 		
 		JLabel lblAnmelden2 = new JLabel("um fortzufahren.");
-		lblAnmelden2.setFont(new Font("Calibri", Font.PLAIN, 12));
+		lblAnmelden2.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblAnmelden2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAnmelden2.setBackground(Color.WHITE);
-		lblAnmelden2.setBounds(125, 130, 150, 15);
+		lblAnmelden2.setBounds(125, 132, 150, 20);
 		frmItemproLogin.getContentPane().add(lblAnmelden2);
 		
 		JLabel lblBenutzername = new JLabel("Benutzername");
 		lblBenutzername.setBackground(Color.WHITE);
-		lblBenutzername.setFont(new Font("Calibri", Font.PLAIN, 10));
-		lblBenutzername.setBounds(100, 170, 88, 10);
+		lblBenutzername.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblBenutzername.setBounds(100, 190, 100, 20);
 		frmItemproLogin.getContentPane().add(lblBenutzername);
 		
 		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setFont(new Font("Calibri", Font.PLAIN, 10));
+		lblPasswort.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblPasswort.setBackground(Color.WHITE);
-		lblPasswort.setBounds(100, 235, 88, 10);
+		lblPasswort.setBounds(100, 255, 88, 20);
 		frmItemproLogin.getContentPane().add(lblPasswort);
 		
 		txtAnmeldungFehlgeschlagen = new JTextField();
@@ -216,7 +216,7 @@ public class Login {
 		txtAnmeldungFehlgeschlagen.setForeground(Color.RED);
 		txtAnmeldungFehlgeschlagen.setEditable(false);
 		txtAnmeldungFehlgeschlagen.setFont(new Font("Calibri", Font.PLAIN, 10));
-		txtAnmeldungFehlgeschlagen.setBounds(113, 290, 175, 15);
+		txtAnmeldungFehlgeschlagen.setBounds(113, 320, 175, 15);
 		frmItemproLogin.getContentPane().add(txtAnmeldungFehlgeschlagen);
 		txtAnmeldungFehlgeschlagen.setColumns(10);
 		
