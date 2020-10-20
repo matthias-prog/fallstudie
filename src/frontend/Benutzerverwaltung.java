@@ -51,6 +51,20 @@ public class Benutzerverwaltung extends JFrame {
 		ueberschriftLabel.setFont(new Font("Calibri", Font.BOLD, 24));
 		ueberschriftLabel.setBounds(10, 11, 286, 30);
 		contentPane.add(ueberschriftLabel);
+		
+		JButton btnZurueck = new JButton("Zurück");
+		btnZurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+		});
+		
+		btnZurueck.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnZurueck.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnZurueck.setBackground(Color.WHITE);
+		btnZurueck.setBounds(880, 70, 180, 36);
+		contentPane.add(btnZurueck);
 
 		JButton anlegenButton = new JButton("Benutzer anlegen");
 		anlegenButton.addActionListener(new ActionListener() {

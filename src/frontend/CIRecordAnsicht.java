@@ -44,6 +44,20 @@ public class CIRecordAnsicht extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JButton btnZurueck = new JButton("Zurück");
+		btnZurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+		});
+		
+		btnZurueck.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnZurueck.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnZurueck.setBackground(Color.WHITE);
+		btnZurueck.setBounds(880, 70, 180, 36);
+		contentPane.add(btnZurueck);
+		
 		JButton loeschenButton = new JButton("CI-Record l\u00F6schen");
 		
 		loeschenButton.setBorder(new LineBorder(new Color(0, 0, 0)));
