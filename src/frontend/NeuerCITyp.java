@@ -71,6 +71,7 @@ public class NeuerCITyp extends JDialog {
 		}
 
 		textFieldName = new JTextField();
+		textFieldName.setToolTipText("Name");
 		textFieldName.setFont(new Font("Calibri", Font.PLAIN, 12));
 		textFieldName.setBounds(10, 43, 105, 20);
 		contentPane.add(textFieldName);
@@ -97,7 +98,7 @@ public class NeuerCITyp extends JDialog {
 				dispose();
 			}
 		});
-		btnAbbrechen.setBounds(178, 491, 123, 30);
+		btnAbbrechen.setBounds(178, 485, 123, 30);
 		contentPane.add(btnAbbrechen);
 
 		JButton btnSpeichern = new JButton("Speichern");
@@ -105,7 +106,7 @@ public class NeuerCITyp extends JDialog {
 		btnSpeichern.setFont(new Font("Calibri", Font.PLAIN, 14));
 		btnSpeichern.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnSpeichern.setBackground(Color.WHITE);
-		btnSpeichern.setBounds(10, 491, 123, 30);
+		btnSpeichern.setBounds(10, 485, 123, 30);
 		contentPane.add(btnSpeichern);
 
 		btnSpeichern.addActionListener(new ActionListener() {
