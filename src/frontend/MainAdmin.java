@@ -29,9 +29,8 @@ import daten.Message;
 
 public class MainAdmin extends JFrame {
 
-	private JFrame mainAdminFrame;
+	public JFrame mainAdminFrame;
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable tableCITypen;
 	private JScrollPane scrollPane;
 	private JButton btnCiTypHinzufuegen;
@@ -89,7 +88,7 @@ public class MainAdmin extends JFrame {
 		contentPane.add(btnBenutzerverwaltung);
 
 		// Button "CI-Typ Hinzufï¿½gen"
-		btnCiTypHinzufuegen = new JButton("CI-Typ Hinzufuegen");
+		btnCiTypHinzufuegen = new JButton("CI-Typ hinzufuegen");
 		btnCiTypHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -111,7 +110,7 @@ public class MainAdmin extends JFrame {
 		contentPane.add(btnCiTypHinzufuegen);
 
 		// Button "CI-Typ Lï¿½schen"
-		btnCiTypLoeschen = new JButton("CI-Typ Loeschen");
+		btnCiTypLoeschen = new JButton("CI-Typ loeschen");
 		btnCiTypLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Methode löscheCITyp

@@ -26,7 +26,6 @@ public class Login {
 	private JPasswordField passwordField;
 	private JTextField txtBenutzername;
 	private JLabel lblAnmelden1;
-	private JTable table;
 	private JTextField txtAnmeldungFehlgeschlagen;
 
 	/**

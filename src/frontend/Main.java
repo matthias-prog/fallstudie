@@ -20,9 +20,8 @@ import java.awt.event.MouseEvent;
 
 public class Main extends JFrame {
 
-	private JFrame mainFrame;
+	public JFrame mainFrame;
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable tableCITypen;
 	private JButton btnAbmelden;
 	private JScrollPane scrollPane;

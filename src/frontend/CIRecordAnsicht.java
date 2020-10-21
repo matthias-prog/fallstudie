@@ -28,6 +28,7 @@ public class CIRecordAnsicht extends JFrame {
 	private JScrollPane scrollPane;
 	private CITyp cityp;
 
+
 	/**
 	 * Create the frame.
 	 */
@@ -44,7 +45,14 @@ public class CIRecordAnsicht extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnZurueck = new JButton("Zurück");
+		
+		JButton btnZurueck = new JButton("Zurueck");
+		btnZurueck.setFont(new Font("Calibri", Font.PLAIN, 14));
+		btnZurueck.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnZurueck.setBackground(Color.WHITE);
+		btnZurueck.setBounds(880, 70, 180, 36);
+		contentPane.add(btnZurueck);
+		
 		btnZurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -52,13 +60,7 @@ public class CIRecordAnsicht extends JFrame {
 			}
 		});
 		
-		btnZurueck.setFont(new Font("Calibri", Font.PLAIN, 14));
-		btnZurueck.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnZurueck.setBackground(Color.WHITE);
-		btnZurueck.setBounds(880, 70, 180, 36);
-		contentPane.add(btnZurueck);
-		
-		JButton btnLoeschen = new JButton("CI-Record l\u00F6schen");
+		JButton btnLoeschen = new JButton("CI-Record loeschen");
 		
 		btnLoeschen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnLoeschen.setBackground(Color.WHITE);
@@ -108,7 +110,7 @@ public class CIRecordAnsicht extends JFrame {
 				
 				}
 					else {
-						JOptionPane.showMessageDialog(null, "Kein CI-Record ausgewählt", "Fehler",
+						JOptionPane.showMessageDialog(null, "Kein CI-Record ausgewaehlt", "Fehler",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}

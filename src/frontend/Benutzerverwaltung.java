@@ -52,7 +52,7 @@ public class Benutzerverwaltung extends JFrame {
 		lblTitel.setBounds(10, 11, 286, 30);
 		contentPane.add(lblTitel);
 		
-		JButton btnZurueck = new JButton("Zurück");
+		JButton btnZurueck = new JButton("Zurueck");
 		btnZurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -183,13 +183,6 @@ public class Benutzerverwaltung extends JFrame {
 			datenArray[i][3] = benutzer.getIstAdmin();
 		}
 
-		/*
-		 * for (int j = 2; j < 3; j++) { datenArray[i][j] =
-		 * benutzer.getAttributnamen().get(j - 2);
-		 * System.out.println(benutzer.getAttributnamen().get(j)); }
-		 * 
-		 * }
-		 */
 
 		DefaultTableModel tabelle = new DefaultTableModel(datenArray, spaltenNamen);
 
