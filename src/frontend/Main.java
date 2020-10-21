@@ -129,7 +129,7 @@ public class Main extends JFrame {
 		lblErklaerung1.setBounds(10, 70, 400, 20);
 		contentPane.add(lblErklaerung1);
 		
-		lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Typ aus um die zugehoerigen Records anzuzeigen.");
+		lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Typ aus, um die zugehoerigen Records anzuzeigen.");
 		lblErklaerung2.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblErklaerung2.setBackground(Color.WHITE);
 		lblErklaerung2.setBounds(10, 90, 500, 20);

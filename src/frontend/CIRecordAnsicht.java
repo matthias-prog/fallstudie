@@ -78,7 +78,7 @@ public class CIRecordAnsicht extends JFrame {
 				backend.hauptprogramm.loescheCIRecord(citypname, recordID);
 				ladeTabelle();
 				} else {
-						JOptionPane.showMessageDialog(null, "Kein CI-Record ausgewaehlt", "Fehler",
+						JOptionPane.showMessageDialog(null, "Kein CI-Record ausgew�hlt", "Fehler",
 								JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -159,7 +159,7 @@ public class CIRecordAnsicht extends JFrame {
 		lblErklaerung.setBounds(10, 70, 500, 20);
 		contentPane.add(lblErklaerung);
 		
-		JLabel lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Record aus um ihn zu bearbeiten oder zu loeschen.");
+		JLabel lblErklaerung2 = new JLabel("Waehlen Sie einen CI-Record aus, um ihn zu bearbeiten oder zu loeschen.");
 		lblErklaerung2.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lblErklaerung2.setBackground(Color.WHITE);
 		lblErklaerung2.setBounds(10, 90, 500, 20);

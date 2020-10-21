@@ -84,6 +84,7 @@ public class BearbeiteBenutzer extends JDialog {
 		chckbxAdmin.setFont(new Font("Calibri", Font.PLAIN, 12));
 		chckbxAdmin.setBackground(Color.WHITE);
 		chckbxAdmin.setBounds(10, 187, 93, 21);
+		System.out.println(benutzer.getIstAdminb());
 		chckbxAdmin.setSelected(benutzer.getIstAdminb());
 		contentPane.add(chckbxAdmin);
 
