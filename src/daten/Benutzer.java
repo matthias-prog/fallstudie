@@ -47,7 +47,7 @@ public class Benutzer {
     
     boolean IstAdminb = istAdmin;
     public boolean getIstAdminb() {
-    	return IstAdminb;
+    	return istAdmin;
     }
 
     public void setIstAdmin(boolean istAdmin) {
