@@ -89,7 +89,7 @@ public class Login {
 		stunde.get(Calendar.HOUR_OF_DAY);
 		String gruss;
 		
-		//Zeitlich angepasste Begrï¿½ï¿½ung
+		//Zeitlich angepasste Begrüßung
 		int aktStunde = stunde.get(Calendar.HOUR_OF_DAY);
 		if (aktStunde < 11) {
 			gruss = "Guten Morgen!";}
